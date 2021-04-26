@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html-basic</title>
+  <style>
+    .ges {
+      width: 200px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Lorem</h1>
+  <h2>lorem,ipsum</h2>
+  <h3>lorem,ipsum dolor</h3>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
+    sint aut. Blanditiis eveniet labore quis tempore rem
+    facilis, veritatis laboriosam aliquid quasi corporis quam
+    nobis pariatur ab fugiat. Harum, architecto.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt fuga maxime vel quam itaque facilis dolor
+    molestiae tempora culpa, omnis reiciendis ut aliquid eius sunt excepturi quod
+    delectus laudantium. Voluptates.</p>
+  <a href="https://global.jd.com/" target="_blank">在新窗口打开京东</a>
+  <a href="mailto:yrhtbqbp@gmail.com" target="_blank">点我发送邮件</a>
+  <a href="#love">跳到页面底部</a>
+  <a href="#">点我下载文件</a>
+  <img class="ges"
+    src="https://drscdn.500px.org/photo/229389427/m%3D1170/v2?user_id=7012987&webp=true&sig=196fa0c161aa562478d08571764872f7d69a346c3c0b2e12aa00e2c6414eb28b"
+    alt="">
+  <hr>
+  <hr>
+  <p><em>这几种强调</em>
+    <strong>有什么区别</strong>
+    <ins>下划线</ins>
+    <em>这个呢</em>
+    <br>
+    &lt;!-- 这段注释需要出现在页面里面 -->
+  </p>
+  <p>html的注释怎么写？
+  </p>
+  <p>下面是一段JavaScript代码，最合适用何种标签表示呢？</p>
+  <pre> function a(){
+            return 8
+                   }</code></pre>
+  <hr>
+  <marquee>芜湖，起飞🛫~~</marquee>
+  <marquee>芜湖，起飞🛫~~</marquee>
+  <ul>
+    <li>小学
+      <ol>
+        <li>一年级<ol>
+            <li>上学期</li>
+            <li>下学期</li>
+          </ol>
+        </li>
+        <li>二年级</li>
+        <li>三年级</li>
+      </ol>
+    </li>
+    <li>中学</li>
+    <li>大学</li>
+  </ul>
+  <hr>
+  <dl>
+    <dt>班级</dt>
+    <dd>三年二班</dd>
+
+    <dt>老师</dt>
+    <dd>张老师</dd>
+    <dd>李老师</dd>
+    <dd>王老师</dd>
+
+    <dt>学生</dt>
+    <dd>小明</dd>
+    <dd>豆豆</dd>
+  </dl>
+  <hr>
+  <p>google搜索</p>
+  <form action="http://google.com.hk/search">
+    <input type="text" required name="q">
+    <button>在新窗口打开</button>
+  </form>
+  <hr>
+  <form>
+    <p>个人信息调查表</p>
+    <dl>
+      <dt>性别</dt>
+      <dd><input type="radio">男
+        <input type="radio">女
+      </dd>
+
+      <dt>年龄</dt>
+      <dd><select name="age">
+          <option value hidden>请选择</option>
+          <optgroup label="少年">
+            <option>1到6岁</option>
+            <option>6到12</option>
+          </optgroup>
+          <optgroup label="青少年">
+            <option>13到16岁</option>
+            <option>16到20</option>
+          </optgroup>
+          <optgroup label="青年">
+            <option>21到25岁</option>
+            <option>25到30</option>
+          </optgroup>
+        </select></dd>
+      <dt>生日</dt>
+      <dd><input type="date"></dd>
+      <dt>生辰</dt>
+      <dd><input type="time"></dd>
+      <dt>照片</dt>
+      <dd><label for="iavatar"><input hidden type="file" name="avatar" id="iavatar">
+          点我上传照片
+        </label></dd>
+      <dt>喜爱的颜色</dt>
+      <dd><input type="color"></dd>
+      <dt>自我介绍</dt>
+      <dd>
+        <textarea cols="30" rows="10">
+          &lt;/textarea&gt;
+        </textarea>
+      </dd>
+    </dl>
+    <fieldset>
+      <legend>这里面全禁了</legend>
+      <input disabled type="text">
+      <input disabled type="text">
+      <input disabled type="text">
+      <input disabled type="text">
+      <input disabled type="text">
+    </fieldset>
+    <button id="love">提交</button>
+    <button type="reset">重置</button>
+  </form>
+
+</body>
+
+</html>
