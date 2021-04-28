@@ -1,0 +1,78 @@
+body>p {
+  color: red;
+}
+
+[tabindex="-1"]:focus {
+  color: blue;
+}
+
+[tabindex="-1"]:hover {
+  color: red;
+}
+
+[tabindex="-1"]:active {
+  color: green;
+}
+
+.a span {
+  color: red;
+}
+
+.c span span:first-child {
+  color: green;
+}
+
+.c span span:last-child {
+  color: blue;
+}
+
+a:link {
+  color: pink;
+}
+
+a:visited {
+  color: orange;
+}
+
+a[href *="@b.com"] {
+  color: blue;
+}
+
+a[href ^="tel"] {
+  color: yellow;
+}
+
+a[href ^="aaa"] {
+  font-size: 30px;
+}
+
+div.a ul li:nth-child(4),
+div.a ul li:nth-child(5),
+div.a ul li:nth-child(6),
+div.a ul li:nth-child(7) {
+  color: red;
+}
+
+div.b ul li:nth-child(-n+25) {
+  color: red;
+}
+
+div.b ul li:nth-child(n+65) {
+  color: green;
+}
+
+div.b ul li:nth-child(n+35):nth-child(-n+50) {
+  color: blue;
+}
+.prime ul li:nth-child(2n+4){
+  color: blue
+}
+.prime ul li:nth-child(3n+6){
+  color: blue;
+}
+.prime ul li:nth-child(5n+10){
+  color: blue;
+}
+.prime ul li:nth-child(7n+14){
+  color: blue;
+}
