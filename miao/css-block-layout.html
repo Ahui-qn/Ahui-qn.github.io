@@ -39,12 +39,14 @@
       margin: 10px auto;
     }
 
-    /* 选择框 */
-    /* .shop {
+    /* 选择框inline-block */
+    .inline-block {
       margin: 0 auto;
+      font-size: 0;
     }
 
-    .shop li {
+    .inline-block li {
+      font-size: 16px;
       color: rgb(255, 255, 255);
       width: 174px;
       height: 34px;
@@ -53,22 +55,24 @@
       display: inline-block;
       text-align: center;
       line-height: 34px;
-      margin: 11px 0 0 24px;
+      margin: 0 0 15px 30px;
     }
 
-    .shop li:hover {
+    .inline-block li:hover {
       background-color: rgb(252, 29, 29);
     }
 
-    .shop .no {
+    .inline-block .no {
       margin-left: 0;
-    } */
+    }
+
+    /* __--margin负值--_____---------————-——————————-———————— */
     .shop {
       margin: auto;
     }
 
     .shop li {
-      width: 180px;
+      width: 174px;
       height: 34px;
       border: solid 3px darkcyan;
       margin-bottom: 15px;
@@ -144,6 +148,20 @@
     <li>产品</li>
     <li>产品</li>
     <li>边框宽度3px</li>
+    <li>产品</li>
+    <li>产品</li>
+  </ul>
+  <ul class="inline-block z">
+    <li class="no">宽180高40(包含边框)</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li class="no">水平间隙30px</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li class="no">垂直间隙15px</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li class="no">边框宽度3px</li>
     <li>产品</li>
     <li>产品</li>
   </ul>
