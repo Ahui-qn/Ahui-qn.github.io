@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oald-layout-positon</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      position: relative;
+    }
+
+    .sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color: rgb(88, 125, 181);
+    }
+
+    .box {
+      width: calc(100vw - 600px);
+      height: 100vh;
+      background-color: rgb(213, 135, 210);
+      position: absolute;
+      left: 200px;
+      top: 0px;
+
+    }
+
+    .nav {
+      width: calc(100vw - 600px);
+      height: 60px;
+      background-color: rgb(155, 135, 135);
+
+    }
+
+    .context {
+      width: calc(100vw - 600px);
+      height: calc(100vh - 60px);
+      overflow: auto;
+      background-color: rgb(196, 196, 196);
+    }
+
+    .you1sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color: rgb(88, 191, 193);
+      position: absolute;
+      right: 0px;
+      top: 0px;
+
+    }
+
+
+
+    .you2sidebar {
+      width: 200px;
+      height: 100vh;
+      background-color: rgb(153, 208, 97);
+      position: absolute;
+      right: 200px;
+      top: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div class="sidebar"></div>
+    <div class="box">
+      <div class="nav"></div>
+      <div class="context">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi nisi facere, numquam
+        voluptate aliquid alias eaque fugit ipsa minus nulla nemo animi perspiciatis. Nemo cupiditate rem consectetur
+        perspiciatis eius modi.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi nisi facere, numquam
+        voluptate aliquid alias eaque fugit ipsa minus nulla nemo animi perspiciatis. Nemo cupiditate rem consectetur
+        perspiciatis eius modi.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi nisi facere, numquam
+        voluptate aliquid alias eaque fugit ipsa minus nulla nemo animi perspiciatis. Nemo cupiditate rem consectetur
+        perspiciatis eius modi.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi nisi facere, numquam
+        voluptate aliquid alias eaque fugit ipsa minus nulla nemo animi perspiciatis. Nemo cupiditate rem consectetur
+        perspiciatis eius modi.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi nisi facere, numquam
+        voluptate aliquid alias eaque fugit ipsa minus nulla nemo animi perspiciatis. Nemo cupiditate rem consectetur
+        perspiciatis eius modi.
+      </div>
+    </div>
+    <div class="you1sidebar"></div>
+    <div class="you2sidebar"></div>
+  </div>
+</body>
+
+</html>
