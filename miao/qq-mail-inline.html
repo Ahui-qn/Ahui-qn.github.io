@@ -13,43 +13,55 @@
       box-sizing: border-box;
     }
 
-    /* html,body{
-      height: 100%;
-    } */
+    body,
+    html {
+      width: 100%;
+      /* overflow: auto; */
+      font-size: 0;
+    }
+
     .nav {
+      display: inline-block;
+      width: 100%;
       height: 65px;
-      background-color: rgb(157, 242, 219);
+      background-color: rgb(65, 164, 149);
 
     }
 
     .main {
-      background-color: rgb(113, 176, 232);
+      display: inline-block;
+      background-color: rgb(36, 108, 171);
       padding: 8px 0px 0px 8px;
       margin-left: 8px;
       border-radius: 8px;
+      font-size: 0;
     }
 
     .email {
+      display: inline-block;
       width: 170px;
       height: 100px;
-      background-color: rgba(255, 237, 176);
+      background-color: rgb(232, 217, 57);
       border-radius: 4px;
+      vertical-align: top;
     }
 
     .inbox {
+      /* display: inline-block; */
       width: 170px;
       height: calc(100vh - 181px);
-      background-color: rgb(210, 184, 250);
+      background-color: rgb(160, 126, 184);
       margin-top: 8px;
       border-radius: 6px;
 
     }
 
     .centont {
+      display: inline-block;
       margin-left: 178px;
       margin-top: calc(74px - 100vh);
       height: calc(100vh - 74px);
-      background-color: rgb(255, 224, 234);
+      background-color: rgb(237, 237, 237);
       border-radius: 4px;
       overflow: auto;
       font-size: 16px;
