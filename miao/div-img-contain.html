@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>div-img-contain</title>
+  <style>
+    .position {
+      box-shadow: 0 0 2px red;
+      height: 400px;
+      border: 20px solid green;
+      background-image: url(https://tse1-mm.cn.bing.net/th/id/OIP.rXLbE9dTtxJgJXb4aQMaMQHaDt?w=330&h=175&c=7&o=5&dpr=2&pid=1.7);
+      background-repeat: no-repeat;
+      background-position: center;
+      text-align: center;
+      line-height: 400px;
+      font-size: 30px;
+      color: white;
+    }
+
+    div img {
+      width: 400px;
+      height: 400px;
+      object-fit: contain;
+      background-color: rgb(67, 153, 67);
+    }
+
+    section {
+      width: 400px;
+      height: 400px;
+      background-color: rgb(99, 208, 157);
+      position: relative;
+
+    }
+
+    section img {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .obj {
+      border: 20px solid rgb(79, 194, 79);
+      height: 300px;
+      /* width: 300px; */
+      background-image: url(https://tse1-mm.cn.bing.net/th/id/OIP.rXLbE9dTtxJgJXb4aQMaMQHaDt?w=330&h=175&c=7&o=5&dpr=2&pid=1.7);
+      background-repeat: no-repeat;
+      /* background-size: 100% 100%;  背景图片大小，x和y数值 */
+      /* background-origin: border-box;  背景图片从哪里开始展示 */
+      -webkit-background-clip: text;
+      background-size: 100%;
+      color: #0000;
+      font-size: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="position">position</div>
+  <div class="obj">新海诚（Makoto Shinkai），原名新津诚（Makoto
+    Niitsu），1973年2月9日出生于日本长野县南佐久郡小海町，日本动画导演、编剧、漫画作家，毕业于日本长野县野泽北高等学校、日本中央大学文学部日本文学系。
+    1997年，执导了黑白短片《遥远世界》，该片获得了eAT金沢’98にて特别赏 [1] 。2000年，执导了黑白动画短片《她和她的猫》，该片获得了第12届DoGA CG动画大赛最优秀奖 [1]
+    。2002年，执导的动画电影《星之声》。2004年11月20日，执导的个人首部长篇电影《云之彼端，约定的地方》上映，该片获得了第59届日本每日映画大奖动画奖 [2]
+    。2007年3月3日，编导的爱情动画电影《秒速5厘米》上映，该片获得了亚洲太平洋电影节最佳动画电影奖 [3] 。</div>
+  <div><img src="https://tse1-mm.cn.bing.net/th/id/OIP.rXLbE9dTtxJgJXb4aQMaMQHaDt?w=330&h=175&c=7&o=5&dpr=2&pid=1.7"
+      alt="">
+    img</div>
+  <section><img src="https://img.zcool.cn/community/0191105bf3021ea801209252f85fe9.jpg@1280w_1l_2o_100sh.jpg" alt="">
+  </section>
+
+</body>
+
+</html>
