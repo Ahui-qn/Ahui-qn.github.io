@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* background-color: rgba(92, 92, 92, 0.242);
+      box-shadow: 0 0 1px red; */
+    }
+
+    .bg {
+      height: 30px;
+      background-color: rgb(242, 242, 242);
+      /* filter: blur(10px); */
+      position: relative;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .nav {
+      overflow: auto;
+    }
+
+    .nav>li {
+      width: 50px;
+      display: inline-block;
+      margin-left: 5px;
+      line-height: 30px;
+      text-align: center;
+      vertical-align: top;
+      font-size: 14px;
+
+    }
+
+    .nav li .nav-file {
+      width: 230px;
+      height: 180px;
+      background-color: rgb(244, 244, 244);
+      position: absolute;
+      text-align: left;
+      padding: 8px;
+      border-radius: 10px;
+      border: solid 1px rgb(228, 228, 228);
+      display: none;
+
+    }
+
+    .nav li:nth-child(2):hover .nav-file {
+      display: block;
+    }
+
+    .nav-file li:nth-child(2) {
+      border-bottom: solid 1px rgb(126, 126, 126);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <ul class="nav">
+      <li></li>
+      <li>code
+        <ul class="nav-file">
+          <li>关于 Visual Studio Code</li>
+          <li>检查更新...</li>
+          <li>首选项</li>
+          <li>服务</li>
+          <li>隐藏 Visual Studio Code</li>
+        </ul>
+      </li>
+      <li>文件</li>
+      <li>编辑</li>
+      <li>选择</li>
+      <li>查看</li>
+      <li>转到</li>
+      <li>运行</li>
+      <li>终端</li>
+      <li>窗口</li>
+      <li>帮助</li>
+    </ul>
+  </div>
+</body>
+
+</html>

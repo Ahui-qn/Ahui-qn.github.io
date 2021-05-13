@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      zoom: 2;
+    }
+
+    .tst {
+      width: 100px;
+      height: 100px;
+      background-image: url(images/web_heart_animation.png);
+      background-position: -6px -7px;
+      background-repeat: no-repeat;
+      transition: 0;
+    }
+
+    .tst:hover {
+      transition: 0.4s steps(28);
+      background-position: -2805px 0;
+    }
+
+    /* _________________________分割线____________________________________ */
+
+
+    div {
+      width: 100px;
+      height: 100px;
+      border: solid 4px green;
+      position: relative;
+    }
+
+    .p {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .love {
+      width: 20px;
+      transition: 0.3s;
+    }
+
+    div:hover .love {
+      width: 0;
+    }
+
+
+    .yuan {
+      width: 0px;
+      height: 0px;
+      border: solid 1px red;
+      border-radius: 50px;
+      z-index: -1;
+      transition: 0.2s ease;
+      background-color: red;
+    }
+
+    div:hover .yuan {
+      width: 0px;
+      height: 0px;
+      border: solid 20px rgb(235, 103, 255);
+      visibility: hidden;
+    }
+
+
+    .yh {
+      width: 40px;
+      height: 40px;
+      border: solid 10px rgba(255, 0, 0, 0);
+      border-radius: 500px;
+      z-index: -2;
+      transition: 0s;
+    }
+
+    div:hover .yh {
+      transition: 0.5s 0.1s;
+      width: 50px;
+      height: 50px;
+      border: solid 1.5px rgb(235, 103, 255);
+      visibility: hidden;
+    }
+
+    .bgi {
+      width: 20px;
+      height: 20px;
+      border: 0;
+      background-image: url(/images/红色爱心.png);
+      background-repeat: no-repeat;
+      background-position: 36px;
+      background-size: 20px;
+      z-index: -3;
+      transition: 0.5s 1s ease;
+    }
+
+    div:hover .bgi {
+      background-size: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="tst"></div>
+  <div>
+    <img class="love p" src="/images/爱心.png" alt="">
+    <div class="yuan p"></div>
+    <div class="yh p"></div>
+    <div class="bgi p"></div>
+  </div>
+</body>
+
+</html>
