@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    input {
+      display: none;
+    }
+
+    .box {
+      display: block;
+      width: 400px;
+      height: 200px;
+      border-radius: 100px;
+      border: solid 2px rgb(255, 255, 255);
+      box-shadow: 1px 1px 3px rgb(255, 255, 255);
+      background-color: #fff;
+      position: relative;
+    }
+
+    strong {
+      /* 绿色层 */
+      opacity: 0;
+      display: block;
+      width: 396px;
+      height: 196px;
+      background-color: rgb(102, 249, 143);
+      border-radius: 100px;
+      transition: 1s;
+    }
+
+    input:checked~label strong {
+      opacity: 100;
+    }
+
+    div {
+      /* 白色底 */
+      position: absolute;
+      top: 0;
+      width: 396px;
+      height: 196px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 1px 1px 6px rgb(160, 160, 160);
+      border-radius: 100px;
+      transition: .5s .1s;
+    }
+
+    input:checked~label div {
+      transition: .5s .1s;
+      width: 0px;
+      height: 0px;
+      margin-top: 80px;
+      margin-left: 280px;
+    }
+
+    span {
+      /* 白色按钮 */
+      width: 160px;
+      height: 180px;
+      padding-left: 20px;
+      border-radius: 1000px;
+      box-shadow: 1px 1px 4px rgb(164, 164, 164);
+      background-color: white;
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      transition: .7s ease, width .8s .2s, padding .5s;
+      box-sizing: content-box;
+    }
+
+    input:checked~label span {
+      transition: left .7s ease, width 1s ease, padding .5s .4s ease;
+      position: absolute;
+      left: 210px;
+      width: 180px;
+      padding-left: 0;
+    }
+  </style>
+</head>
+
+<body><input type="checkbox" id="h">
+  <label class="box" for="h">
+    <strong></strong>
+    <div></div>
+    <span></span>
+  </label>
+
+</body>
+
+</html>
