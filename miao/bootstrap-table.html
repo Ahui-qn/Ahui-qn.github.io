@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bootstrap-table</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      /* box-shadow: aqua inset 0 0 1px; */
+      box-sizing: border-box;
+    }
+
+    .table {
+      border-collapse: collapse;
+      width: 100vw;
+      height: 150px;
+      margin: 20px 0 20px 0;
+    }
+
+    /* 表格一开始 */
+    .table thead {
+      border-bottom: solid 1px rgb(57, 57, 57);
+    }
+
+    .table tbody tr {
+      border-bottom: solid 1px #ddd;
+    }
+
+    .table th,
+    .table td {
+      padding: 20px;
+    }
+
+    .table th:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table thead th:nth-of-type(n) {
+      text-align: left;
+    }
+
+    .table tbody td:nth-of-type(1) {
+      text-align: left;
+    }
+
+    /* 表格一结束 */
+    /* —————————————————— */
+    /* 表格二开始 */
+    .table-dark thead {
+      border-bottom: solid 1px rgb(57, 57, 57);
+    }
+
+    .table-dark tbody tr {
+      border-bottom: solid 1px #ddd;
+    }
+
+    .table-dark th,
+    .table-dark td {
+      padding: 20px;
+    }
+
+    .table-dark th:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-dark thead th:nth-of-type(n) {
+      text-align: left;
+    }
+
+    .table-dark tbody td:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-dark {
+      background-color: rgb(31, 31, 31);
+      color: white;
+    }
+
+    .table-dark thead {
+      border-bottom: solid 1px rgb(228, 228, 228);
+    }
+
+    .table-dark tbody tr {
+      border-bottom: solid 1px rgb(72, 72, 72);
+    }
+
+    .table-dark tbody tr:nth-of-type(odd) {
+      background-color: rgba(111, 111, 111, 0.235);
+    }
+
+    /* 表格二结束 */
+    /* ---------------- */
+    /* 表格三开始 */
+    .table-striped thead {
+      border-bottom: solid 1px rgb(57, 57, 57);
+    }
+
+    .table-striped tbody tr {
+      border-bottom: solid 1px #ddd;
+    }
+
+    .table-striped th,
+    .table-striped td {
+      padding: 20px;
+    }
+
+    .table-striped th:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-striped thead th:nth-of-type(n) {
+      text-align: left;
+    }
+
+    .table-striped tbody td:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-striped thead {
+      border-bottom: solid 1px rgb(228, 228, 228);
+    }
+
+    .table-striped tbody tr {
+      border-bottom: solid 1px rgb(72, 72, 72);
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(138, 138, 138, 0.166);
+    }
+
+    /* 表格三结束 */
+    /* ----------- */
+    /* 表格四开始 */
+
+    .table-hover thead {
+      border-bottom: solid 1px rgb(57, 57, 57);
+    }
+
+    .table-hover tbody tr {
+      border-bottom: solid 1px #ddd;
+    }
+
+    .table-hover th,
+    .table-hover td {
+      padding: 20px;
+    }
+
+    .table-hover th:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-hover thead th:nth-of-type(n) {
+      text-align: left;
+    }
+
+    .table-hover tbody td:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-hover {
+      background-color: rgb(31, 31, 31);
+      color: white;
+    }
+
+    .table-hover thead {
+      border-bottom: solid 1px rgb(228, 228, 228);
+    }
+
+    .table-hover tbody tr {
+      border-bottom: solid 1px rgb(72, 72, 72);
+    }
+
+    .table-hover tbody tr:nth-of-type(odd) {
+      background-color: rgba(111, 111, 111, 0.235);
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: rgba(70, 70, 70, 0.899);
+    }
+
+    /* 表格四结束 */
+    /* ------------- */
+    /* 表格五开始 */
+    .table thead {
+      border-bottom: solid 1px rgb(57, 57, 57);
+    }
+
+    .table tbody tr {
+      border-bottom: solid 1px #ddd;
+    }
+
+    .table th,
+    .table td {
+      padding: 20px;
+    }
+
+    .table th:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table thead th:nth-of-type(n) {
+      text-align: left;
+    }
+
+    .table tbody td:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-bordered thead th,
+    .table-bordered tbody th,
+    .table-bordered tbody td {
+      border: solid 1px rgb(179, 178, 178);
+    }
+
+    /* 表格五结束 */
+    /* ------------- */
+    /* 表格六开始 */
+
+    .table-borderless thead {
+      border-bottom: none;
+    }
+
+    .table-borderless tbody tr {
+      border-bottom: none;
+    }
+
+    .table-borderless th,
+    .table-borderless td {
+      padding: 20px;
+    }
+
+    .table-borderless th:nth-of-type(1) {
+      text-align: left;
+    }
+
+    .table-borderless thead th:nth-of-type(n) {
+      text-align: left;
+    }
+
+    .table-borderless tbody td:nth-of-type(1) {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class=" table table-dark ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class=" table table-striped ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-hover ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class=" table table-bordered ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class=" table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
