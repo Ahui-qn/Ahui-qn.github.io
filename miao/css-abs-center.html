@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>abs - center</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+
+    div:nth-of-type(1) {
+      width: 200px;
+      height: 200px;
+      border: solid 5px green;
+      position: relative;
+    }
+
+    div:nth-of-type(1) span {
+      display: inline-block;
+      width: 100px;
+      height: 60px;
+      background-color: green;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    div:nth-of-type(2) {
+      width: 200px;
+      height: 200px;
+      border: solid 5px green;
+      text-align: center;
+    }
+
+    div:nth-of-type(2) span {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      vertical-align: middle;
+      margin: auto;
+    }
+
+    div:nth-of-type(2) strong {
+      width: 0;
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    div:nth-of-type(3) {
+      display: table-cell;
+      width: 200px;
+      height: 200px;
+      border: solid 5px green;
+      vertical-align: middle;
+    }
+
+    div:nth-of-type(3) span {
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(106, 134, 203);
+      margin: auto;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div><span></span></div>
+  <div><span></span>
+    <strong></strong>
+  </div>
+  <div><span></span></div>
+</body>
+
+</html>
