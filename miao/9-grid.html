@@ -12,28 +12,25 @@
       padding: 0;
     }
 
-    table {
+    .box1 {
       margin: auto;
       width: 200px;
       height: 200px;
       text-align: center;
       border-collapse: collapse;
-    }
-
-    table {
       border: solid 5px green;
-
     }
 
-    table td {
+
+    .box1 td {
       border-left: solid 5px green;
     }
 
-    table tr {
+    .box1 tr {
       border: solid 5px green;
     }
 
-    table tr td:hover {
+    .box1 tr td:hover {
       border: 5px solid red;
     }
 
@@ -62,11 +59,30 @@
       position: relative;
       z-index: 100000000;
     }
+
+    .col {
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      border-collapse: collapse;
+    }
+
+    .col col {
+      border: solid 5px green;
+    }
+
+    .col tr {
+      border: solid 5px green;
+    }
+
+    .col td:hover {
+      border: solid 5px red;
+    }
   </style>
 </head>
 
 <body>
-  <table>
+  <table class="box1">
     <tr>
       <td>1</td>
       <td>2</td>
@@ -94,7 +110,25 @@
     <li>8</li>
     <li>9</li>
   </ul>
-
+  <table class="col">
+    <col>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <col>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </table>
 
 </body>
 
