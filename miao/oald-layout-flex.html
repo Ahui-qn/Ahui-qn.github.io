@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    div.flex_box {
+      display: flex;
+      height: 100%;
+    }
+
+    div.flex_box span.sidebar1 {
+      width: 200px;
+      background-color: aqua;
+      flex-shrink: 0;
+    }
+
+    div.flex_box main {
+      width: 400px;
+      background-color: blue;
+      flex-grow: 1;
+    }
+
+    div.flex_box main div:first-child {
+      height: 80px;
+      background-color: rgb(249, 255, 187);
+    }
+
+    div.flex_box span.sidebar2 {
+      width: 200px;
+      background-color: rgb(255, 190, 201);
+      flex-shrink: 0;
+    }
+
+    div.flex_box span.sidebar3 {
+      width: 200px;
+      background-color: rgb(186, 255, 163);
+      flex-shrink: 0;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex_box">
+    <span class="sidebar1"></span>
+    <main>
+      <div></div>
+      <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis similique tempora eligendi iste voluptas
+        accusantium nihil temporibus odio animi autem aliquam dolor quibusdam eum, consectetur culpa qui inventore
+        impedit <esse class="lorem"></esse>
+      </div>
+    </main>
+    <span class="sidebar2"></span>
+    <span class="sidebar3"></span>
+  </div>
+</body>
+
+</html>
