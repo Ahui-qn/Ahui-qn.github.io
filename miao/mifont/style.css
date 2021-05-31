@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div.box {
+    height: 110px;
+    width: 950px;
+    display: flex;
+    justify-content: space-between;
+    border: solid 5px rgb(126, 194, 126);
+    border-radius: 25px;
+    transition: 0.4s ease;
+}
+
+div.box div {
+    width: 120px;
+    padding: 10px 0;
+    border-radius: 20px;
+    border: solid 20px #0000;
+    box-sizing: content-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    transition: 0.4s ease;
+}
+
+div.box:hover {
+    height: 150px;
+    width: 960px;
+    transition: 0.2s ease;
+}
+
+div.box div:hover {
+    transition: 0.2s ease;
+    padding: 30px 0;
+    width: 300px;
+    box-shadow: 0px 0px 1px 0px rgb(205, 208, 204);
+    background-color: rgb(185, 255, 236)
+}
+
+div.box div:hover i::before {
+    transition: 0.2s ease;
+    font-size: 25px;
+    padding: 100px;
+}
+
+div.box div:hover p {
+    transition: 0.2s ease;
+    font-size: 18px;
+}
+
+div.box div p {
+    margin-top: 10px;
+    transition: 0.4s ease;
+    font-size: 14px;
+}
+
+i {
+    margin: 0 20px 0 20px;
+}
+
+i::before {
+    transition: 0.4s ease;
+    font-size: 20px;
+}

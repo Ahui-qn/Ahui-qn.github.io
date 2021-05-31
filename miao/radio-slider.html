@@ -2,108 +2,111 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    div {
-      position: relative;
-      width: 300px;
-      height: 180px;
-      background-color: pink;
-      list-style: none;
-      overflow: hidden;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      transition: .4s ease;
-    }
-
-    div img:nth-of-type(1) {
-      left: 0;
-    }
-
-    div img:nth-of-type(2) {
-      left: 100%;
-    }
-
-    div img:nth-of-type(3) {
-      left: 200%;
-    }
-
-    input:nth-of-type(1):checked~div img:nth-of-type(1) {
-      left: 0;
-    }
-
-    input:nth-of-type(2):checked~div img:nth-of-type(2),
-    input:nth-of-type(3):checked~div img:nth-of-type(3) {
-      left: -0%;
-    }
-
-
-
-    label {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background-color: rgb(0, 0, 0);
-      border-radius: 100px;
-      border: solid 1px #fff;
-    }
-
-    p {
-      position: absolute;
-      left: 50%;
-      bottom: 10px;
-      z-index: 100;
-    }
-
-    input {
-      display: none;
-    }
-
-
-
-    input:nth-of-type(1):checked~div label:nth-of-type(1),
-    input:nth-of-type(2):checked~div label:nth-of-type(2),
-    input:nth-of-type(3):checked~div label:nth-of-type(3) {
-      background-color: white;
-      border: solid 2px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        div {
+            float: left;
+            position: relative;
+            width: 200px;
+            height: 500px;
+            margin: auto;
+            border: solid 1px rgb(255, 255, 255);
+            overflow: hidden;
+        }
+        
+        div img {
+            position: absolute;
+            top: 0;
+            left: -470%;
+            height: 100%;
+            transition: 1s;
+            z-index: 100;
+            animation: late 1s;
+        }
+        
+        @keyframes late {
+            from {
+                left: 0;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        
+        input[type="radio"]:nth-of-type(1):checked~div.a img:nth-of-type(1),
+        input[type="radio"]:nth-of-type(2):checked~div.a img:nth-of-type(2),
+        input[type="radio"]:nth-of-type(3):checked~div.a img:nth-of-type(3),
+        input[type="radio"]:nth-of-type(4):checked~div.a img:nth-of-type(4) {
+            left: 0;
+            animation: none;
+        }
+        
+        input[type="radio"]:nth-of-type(1):checked~div.b img:nth-of-type(1),
+        input[type="radio"]:nth-of-type(2):checked~div.b img:nth-of-type(2),
+        input[type="radio"]:nth-of-type(3):checked~div.b img:nth-of-type(3),
+        input[type="radio"]:nth-of-type(4):checked~div.b img:nth-of-type(4) {
+            left: -100%;
+            animation: none;
+        }
+        
+        input[type="radio"]:nth-of-type(1):checked~div.c img:nth-of-type(1),
+        input[type="radio"]:nth-of-type(2):checked~div.c img:nth-of-type(2),
+        input[type="radio"]:nth-of-type(3):checked~div.c img:nth-of-type(3),
+        input[type="radio"]:nth-of-type(4):checked~div.c img:nth-of-type(4) {
+            left: -200%;
+            animation: none;
+        }
+        
+        input[type="radio"]:nth-of-type(1):checked~div.d img:nth-of-type(1),
+        input[type="radio"]:nth-of-type(2):checked~div.d img:nth-of-type(2),
+        input[type="radio"]:nth-of-type(3):checked~div.d img:nth-of-type(3),
+        input[type="radio"]:nth-of-type(4):checked~div.d img:nth-of-type(4) {
+            left: -300%;
+            animation: none;
+        }
+    </style>
 </head>
 
 <body>
-  <input type="radio" name="a" id="b1" checked>
-  <input type="radio" name="a" id="b2">
-  <input type="radio" name="a" id="b3">
-
-  <div class="a1">
-    <p>
-      <label for="b1"></label>
-      <label for="b2"></label>
-      <label for="b3"></label>
-    </p>
-    <img
-      src="https://travel.12306.cn/imgs/resources/uploadfiles/images/c7c03732-3c86-4308-aea7-df747d4999e8_product_W572_H370.jpg"
-      alt="">
-    <img
-      src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg"
-      alt="">
-    <img
-      src="https://travel.12306.cn/imgs/resources/uploadfiles/images/d9ae79de-2f3f-4e9f-ad6e-bdc291dda92a_product_W572_H370.jpg"
-      alt="">
-  </div>
+    <section>
+        <input type="radio" name="a" id="" checked>
+        <input type="radio" name="a" id="">
+        <input type="radio" name="a" id="">
+        <input type="radio" name="a" id="">
+        <div class="a">
+            <img src="https://pic1.zhimg.com/v2-1f64d1fa0021a73d07ac113f329160e8_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-75c6ff38f146de7005e2d94342a42eb1_r.jpg" alt="">
+            <img src="https://pic1.zhimg.com/v2-5a570c531fcd0fe1781b6eb1b3c743b0_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-4b2ad858110ee59b17365d90bd9ad9f1_r.jpg" alt="">
+        </div>
+        <div class="b">
+            <img src="https://pic1.zhimg.com/v2-1f64d1fa0021a73d07ac113f329160e8_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-75c6ff38f146de7005e2d94342a42eb1_r.jpg" alt="">
+            <img src="https://pic1.zhimg.com/v2-5a570c531fcd0fe1781b6eb1b3c743b0_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-4b2ad858110ee59b17365d90bd9ad9f1_r.jpg" alt="">
+        </div>
+        <div class="c">
+            <img src="https://pic1.zhimg.com/v2-1f64d1fa0021a73d07ac113f329160e8_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-75c6ff38f146de7005e2d94342a42eb1_r.jpg" alt="">
+            <img src="https://pic1.zhimg.com/v2-5a570c531fcd0fe1781b6eb1b3c743b0_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-4b2ad858110ee59b17365d90bd9ad9f1_r.jpg" alt="">
+        </div>
+        <div class="d">
+            <img src="https://pic1.zhimg.com/v2-1f64d1fa0021a73d07ac113f329160e8_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-75c6ff38f146de7005e2d94342a42eb1_r.jpg" alt="">
+            <img src="https://pic1.zhimg.com/v2-5a570c531fcd0fe1781b6eb1b3c743b0_r.jpg" alt="">
+            <img src="https://pic2.zhimg.com/v2-4b2ad858110ee59b17365d90bd9ad9f1_r.jpg" alt="">
+        </div>
+    </section>
 </body>
 
 </html>
