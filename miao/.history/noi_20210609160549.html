@@ -183,13 +183,21 @@
     } else
         console.log('NO')
 </script>
-<script id="ch0104/10">
+<script id="ch0104/09">
     var a = +prompt('a:')
     var b = +prompt('b:')
     if (a < 60 || b < 60) {
         console.log(Number('1'))
     } else
         console.log(Number('0'))
+</script>
+<script id="ch0104/10">
+    var a = +prompt('a:')
+    var x = a % 2 == 0 || a == 7
+    if (x) {
+        console.log('YES')
+    } else
+        console.log('NO')
 </script>
 <script id="ch0104/11">
     var a = +prompt('a:')
@@ -201,14 +209,6 @@
 </script>
 <script id="ch0104/12">
     var a = +prompt('a:')
-    var x = a % 2 == 0 || a == 7
-    if (x) {
-        console.log('YES')
-    } else
-        console.log('NO')
-</script>
-<script id="ch0104/13">
-    var a = +prompt('a:')
     var x = a / 1.2
     var y = a / 3 + 27 + 23
     if (y > x) {
@@ -217,4 +217,14 @@
         console.log('Bike')
     } else if (x == y)
         console.log('ALL')
+</script>
+<script>
+    var x = Number(prompt('x:'))
+    if ((x >= 0) && (x < 5)) {
+        console.log((-x + 2.5).toFixed(3))
+    } else if ((x >= 5) && (x < 10)) {
+        console.log((2 - 1.5 * (x - 3) * (x - 3)).toFixed(3))
+    } else if ((x >= 10) && (x < 20)) {
+        console.log((x / 2 - 1.5).toFixed(3))
+    }
 </script>
