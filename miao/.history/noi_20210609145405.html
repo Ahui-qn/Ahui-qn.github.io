@@ -136,85 +136,9 @@
     console.log(Math.abs(n))
 </script>
 <script id="ch0104/03">
-    var n = (prompt('n:'))
-    if (n % 2 == 1) {
-        console.log('odd')
-    } else
+    var n = Number(prompt('n:'))
+    if (n % 2 == 0) {
         console.log('even')
-</script>
-<script id="ch0104/04">
-    var n = (prompt('n:'))
-    if (n.charCodeAt() % 2 == 1)
-        console.log('YES')
-    else
-        console.log('NO')
-</script>
-<script id="ch0104/05">
-    var a = +(prompt('a:'))
-    var b = +(prompt('b:'))
-    if (a > b) {
-        console.log('>')
-    } else if (a == b) {
-        console.log('=')
-    } else
-        console.log('<')
-</script>
-<script id="ch0104/06">
-    var a = +(prompt('a:'))
-    if (a > 9) {
-        console.log(Number(1))
-    } else
-        console.log(Number(0))
-</script>
-<script id="ch0104/07">
-    var a = +prompt('a:')
-    var b = +prompt('b:')
-    if (a > 10 || b > 20) {
-        console.log(Number('1'))
-    } else
-        console.log(Number('0'))
-</script>
-<script id="ch0104/08">
-    var a = +prompt('a:')
-    var b = a % 3 == 0
-    var c = a % 5 == 0
-    if (b && c) {
-        console.log('YES')
-    } else
-        console.log('NO')
-</script>
-<script id="ch0104/09">
-    var a = +prompt('a:')
-    var b = +prompt('b:')
-    if (a < 60 || b < 60) {
-        console.log(Number('1'))
-    } else
-        console.log(Number('0'))
-</script>
-<script id="ch0104/10">
-    var a = +prompt('a:')
-    var x = a % 2 == 0 || a == 7
-    if (x) {
-        console.log('YES')
-    } else
-        console.log('NO')
-</script>
-<script id="ch0104/11">
-    var a = +prompt('a:')
-    var x = a % 2 == 0 || a == 7
-    if (x) {
-        console.log('YES')
-    } else
-        console.log('NO')
-</script>
-<script id="ch0104/12">
-    var a = +prompt('a:')
-    var x = a / 1.2
-    var y = a / 3 + 27 + 23
-    if (y > x) {
-        consol.log('Bike')
-    } else if (x > y) {
-        console.log('WaLk')
-    } else if (x == y)
-        console.log('ALL')
+    } else(n % 2 !== 0)
+    console.log('odd')
 </script>

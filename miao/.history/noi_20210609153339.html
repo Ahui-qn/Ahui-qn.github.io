@@ -209,12 +209,9 @@
 </script>
 <script id="ch0104/12">
     var a = +prompt('a:')
-    var x = a / 1.2
-    var y = a / 3 + 27 + 23
-    if (y > x) {
-        consol.log('Bike')
-    } else if (x > y) {
-        console.log('WaLk')
-    } else if (x == y)
-        console.log('ALL')
+    var x = a % 2 == 0 || a == 7
+    if (x) {
+        console.log('YES')
+    } else
+        console.log('NO')
 </script>
