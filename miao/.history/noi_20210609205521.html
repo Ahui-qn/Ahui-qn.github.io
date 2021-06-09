@@ -287,13 +287,13 @@
 <script id="ch0104/19">
     var a = +prompt('a:')
     var b = +prompt('b:')
-    var c = prompt('c:')
+    var c = String(prompt('c:'))
     if (c == '/' && b == 0) {
         console.log('Divided by zero')
-    } else if (c !== '+' && c !== '-' && c !== '/' && c !== '*') {
-        console.log('Invalid operator!')
+    }
+
     } else if (c == '+') {
-        console.log(Number(a + b))
+        consol.log(Number(a + b))
     } else if (c == '*') {
         console.log(Number(a * b))
     } else if (c == '/') {
@@ -301,12 +301,4 @@
     } else if (c == '-') {
         console.log(Number(a - b))
     }
-</script>
-<script id="ch0104/20">
-</script>
-<script id="ch0104/21">
-    var n = +prompt('a:')
-    var x = +prompt('b:')
-    var y = +prompt('c:')
-    console.log(n - Math.ceil(y / x))
 </script>
