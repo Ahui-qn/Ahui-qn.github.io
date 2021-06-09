@@ -128,9 +128,8 @@
         console.log('positive')
     } else if (n == 0) {
         console.log('zero')
-    } else if (n < 0) {
-        console.log('negative')
-    }
+    } else(n < 0)
+    console.log('negative')
 </script>
 <script id="ch0104/02">
     var n = Number(prompt('n:'))
@@ -163,17 +162,17 @@
 <script id="ch0104/06">
     var a = +(prompt('a:'))
     if (a > 9) {
-        console.log(1)
+        console.log(Number(1))
     } else
-        console.log(0)
+        console.log(Number(0))
 </script>
 <script id="ch0104/07">
     var a = +prompt('a:')
     var b = +prompt('b:')
     if (a > 10 || b > 20) {
-        console.log(1)
+        console.log(Number('1'))
     } else
-        console.log(0)
+        console.log(Number('0'))
 </script>
 <script id="ch0104/08">
     var a = +prompt('a:')
@@ -188,9 +187,9 @@
     var a = +prompt('a:')
     var b = +prompt('b:')
     if (a < 60 || b < 60) {
-        console.log(1)
+        console.log(Number('1'))
     } else
-        console.log(0)
+        console.log(Number('0'))
 </script>
 
 <script id="ch0104/11">
@@ -217,5 +216,4 @@
 <script id="ch0104/14">
     var a = Number(prompt("a:"))
     var b = prompt("b:")
-    if () {}
 </script>
