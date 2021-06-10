@@ -233,7 +233,7 @@
     var x = +prompt('n:')
     var y
     if (x < 5) {
-        y = -x + 2.5
+        y = x / 2 - 1.5
     } else if (x < 10) {
         y = 2 - 1.5 * (x - 3) * (x - 3)
     } else {
@@ -324,13 +324,15 @@
     var a = Number(prompt())
     var b = Number(prompt())
     var c = Number(prompt())
+
     var delta = b * b - 4 * a * c
+
     if (delta == 0) {
 
     } else if (delta > 0) {
 
     } else if (delta < 0) {
-        var sd = Math.sqrt(-delta)
+        var sd = Math.sqrt(-delta) // 根号负delta
         var s1 = (-b / 2 / a).toFixed(5)
         var s2 = (sd / 2 / a).toFixed(5)
 

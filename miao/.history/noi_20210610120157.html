@@ -233,7 +233,7 @@
     var x = +prompt('n:')
     var y
     if (x < 5) {
-        y = -x + 2.5
+        y = x / 2 - 1.5
     } else if (x < 10) {
         y = 2 - 1.5 * (x - 3) * (x - 3)
     } else {
@@ -321,24 +321,6 @@
     }
 </script>
 <script id="ch0104/20">
-    var a = Number(prompt())
-    var b = Number(prompt())
-    var c = Number(prompt())
-    var delta = b * b - 4 * a * c
-    if (delta == 0) {
-
-    } else if (delta > 0) {
-
-    } else if (delta < 0) {
-        var sd = Math.sqrt(-delta)
-        var s1 = (-b / 2 / a).toFixed(5)
-        var s2 = (sd / 2 / a).toFixed(5)
-
-        var x1 = 'x1=' + s1 + '+' + s2 + 'i'
-        var x2 = 'x2=' + s1 + '-' + s2 + 'i'
-
-        console.log(x1 + ';' + x2)
-    }
 </script>
 <script id="ch0104/21">
     var n = +prompt('a:')
