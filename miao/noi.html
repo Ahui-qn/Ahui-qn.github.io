@@ -346,3 +346,190 @@
     var y = +prompt('c:')
     console.log(n - Math.ceil(y / x))
 </script>
+<script id="ch0105/01">
+    var n = +prompt('人数')
+    var i
+    var age = 0
+
+    for (i = 0; i < n; i++) {
+        age = age + +prompt('年龄')
+    }
+    console.log(+(sum / n).toFixed(2))
+</script>
+<script id="ch0105/02">
+    var mon = 0
+    var i
+    for (i = 0; i < 12; i++) {
+        mon = mon + +prompt('每个月的钱')
+    }
+    console.log('$' + (mon / 12).toFixed(2))
+</script>
+<script id="ch0105/03">
+    var n = +prompt('样本容量')
+    var sum = 0
+    var i
+    for (i = 0; i < n; i++) {
+        sum = sum + +prompt('')
+    }
+    console.log(+(sum / n).toFixed(4))
+</script>
+<script id="ch0105/04">
+    var n = +prompt('n个整数')
+    var sum = 0
+    var i
+    for (i = 0; i < n; i++) {
+        sum = sum + +prompt('输入N+1行每个数')
+    }
+    console.log(sum)
+    console.log(+(sum / n).toFixed(5))
+</script>
+<script id="ch0105/05">
+    var n = +prompt('输入考试人数')
+    var i
+    var grade
+    var max = 0
+    for (i = 0; i < n; i++) {
+        grade = +prompt('每个人成绩')
+        if (max < grade) {
+            max = grade
+        }
+    }
+    console.log(max)
+</script>
+<script id="ch0105/06">
+    var n = +prompt('输入序列个数')
+    var i
+    var max = 0
+    var min = Infinity
+    for (i = 0; i < n; i++) {
+        var list = +prompt('每个人成绩')
+        if (max < list) {
+            max = list
+        } else if (min > list) {
+            min = list
+        }
+    }
+    console.log(max - min)
+</script>
+<script id="ch0105/07">
+    var n = +prompt('参赛天数')
+    var i
+    var medal1 = 0
+    var medal2 = 0
+    var medal3 = 0
+    for (i = 0; i < n; i++) {
+        medal1 = medal1 + +prompt('金牌')
+        medal2 = medal2 + +prompt('银牌')
+        medal3 = medal3 + +prompt('铜牌')
+    }
+    console.log(medal1 + '' + medal2 + '' + medal3 + '' + (medal1 + medal2 + medal3))
+</script>
+
+<script id="ch0105/08">
+    var n = +prompt('几边形')
+    var i
+    var h = (n - 2) * 180
+    var angle = 0
+    for (i = 0; i < (n - 1); i++) {
+        angle = angle + +prompt('输入角度')
+    }
+    console.log(h - angle)
+</script>
+<script id="ch0105/09">
+    var m = +prompt('m')
+    var n = +prompt('n')
+    var i
+    var sum = 0
+    for (i = m; i <= n; i++) { // 初始化i的值为m  循环条件为 m <= n ，条件成立则判断奇偶
+        if (i % 2 == 1) {
+            sum = sum + i
+        }
+    }
+    console.log(sum)
+</script>
+<script id="ch0105/10">
+    var m = +prompt('m')
+    var n = +prompt('n')
+    var i
+    var sum = 0
+    for (i = m; i <= n; i++) {
+        if (i % 17 == 0) {
+            sum = sum + i
+        }
+    }
+    console.log(sum)
+</script>
+<script id="ch0105/11">
+    var k = +prompt('输入多少个数')
+    var i
+    var x = 0
+    var one = 0
+    var five = 0
+    var ten = 0
+    for (i = 1; i <= k; i++) {
+        x = +prompt('输入1-10之间的数')
+        if (x == 1) {
+            one++
+        } else if (x == 5) {
+            five++
+        } else if (x == 10) {
+            ten++
+        }
+    }
+    console.log(one, five, ten)
+</script>
+<script id="ch0105/12">
+    var N = +prompt('最大序列数')
+    var m = +prompt('最小序列数')
+    var i
+    var sum = 0
+    for (i = 0; i < N; i++) {
+        if (m == +prompt('输入大于m小于N的数')) {
+            sum++
+        }
+    }
+    console.log(sum)
+</script>
+<script id="ch0105/13">
+    var a = +prompt('a')
+    var n = +prompt('n')
+    var i
+    var power = 0
+    for (i = 0; i < n; i++) {
+        power = a ** n
+    }
+    console.log(power)
+</script>
+<script id="ch0105/14">
+    var x = +prompt('人口基数')
+    var n = +prompt('年数')
+    var i
+    for (i = 0; i < n; i++) {
+        x = x + (x * 0.001)
+    }
+    console.log(x.toFixed(4))
+</script>
+<script id="ch0105/15">
+    var R = +prompt('年利率')
+    var M = +prompt('约翰的钱')
+    var Y = +prompt('投资年数')
+    var i
+    for (i = 0; i < Y; i++) {
+        M = M + (M * (R / 100))
+
+    }
+    console.log(Math.trunc(M))
+</script>
+<script id="ch0105/16">
+    var N = +prompt('年利率')
+    var K = +prompt('约翰的钱')
+    var i
+    var s = 200
+    var nian = 50
+    var count = 1
+    for (i = 0; i < 20; i++) {
+        s = s + (s * (s / K))
+        nian = nian + 50
+        count++
+    }
+</script>
