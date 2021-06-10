@@ -243,17 +243,11 @@
     var a = +(prompt("a:")) //重量
     var x = prompt('x:')
     var b = 8
-    if (a <= 1000) {
+    if (a < 1000) {
         if (x == 'y') {
             console.log(b + 5)
         } else {
             console.log(b)
-        }
-    } else {
-        if (x == 'y') {
-            console.log(Math.ceil((a - 1000) / 500) * 4 + 5 + 8)
-        } else {
-            console.log(Math.ceil((a - 1000) / 500) * 4 + 8)
         }
     }
 </script>

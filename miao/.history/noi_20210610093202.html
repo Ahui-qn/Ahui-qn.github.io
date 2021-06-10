@@ -233,29 +233,11 @@
     var x = +prompt('n:')
     if (x < 5) {
         y = x / 2 - 1.5
-    } else if (x < 10) {
-        y = 2 - 1.5 * (x - 3) * (x - 3)
-    } else {
-        y = x / 2 - 1.5
-    }
+    } else if (x < 10)
 </script>
 <script id="ch0104/14">
     var a = +(prompt("a:")) //重量
-    var x = prompt('x:')
-    var b = 8
-    if (a <= 1000) {
-        if (x == 'y') {
-            console.log(b + 5)
-        } else {
-            console.log(b)
-        }
-    } else {
-        if (x == 'y') {
-            console.log(Math.ceil((a - 1000) / 500) * 4 + 5 + 8)
-        } else {
-            console.log(Math.ceil((a - 1000) / 500) * 4 + 8)
-        }
-    }
+    var b = prompt("b:") //邮费
 </script>
 <script id="ch0104/15">
     var a = +prompt('a:')
@@ -263,9 +245,11 @@
     var c = +prompt('c:')
     if (a >= b && a >= c) {
         console.log(a)
-    } else if (b >= a && b >= c) {
+    }
+    if (b >= a && b >= c) {
         console.log(b)
-    } else if (c >= a && c >= b) {
+    }
+    if (c >= a && c >= b) {
         console.log(c)
     }
 </script>
