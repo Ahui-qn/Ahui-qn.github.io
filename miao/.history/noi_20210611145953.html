@@ -528,22 +528,22 @@
     var nian = 50
     var count = 1
     for (i = 0; i < 20; i++) {
-        s = s + (s * (K / 100)) // 房子增长的金额
-        nian = nian + 50 //程序员每年的工资
+        s = s + (s * (K / 100))
+        nian = nian + 50
         count++
-        if (nian >= s) { // 当程序员的钱大于房子的钱，则购买   跳出
+        if (nian > s) {
             break
         }
     }
     if (nian > s) {
         console.log(count)
-    } else if (count > 20) { // 如果二十年后还没有够买，则输出impossible
+    } else if (count > 20) {
         console.log('impossible')
     }
 </script>
 <script id="ch0105/17">
+    var K = +prompt('')
     var a = 1
-    var K = +prompt('') //题目需要用到变量交换
     var b = 1
     var c = 0
     var i
@@ -559,7 +559,7 @@
     console.log(c)
 </script>
 <script id="ch0105/18">
-    var N = +prompt('N') // 比较旧新疗法的有效率
+    var N = +prompt('N')
     var worn = +prompt('旧疗法病例')
     var valid = +prompt('旧疗法有效病例')
     var wvEfficient = valid / worn // 旧疗法有效率
@@ -567,7 +567,6 @@
     var newNovel
     var nnEfficient
     var i
-
     for (i = 1; i < N; i++) {
         novel = +prompt('新疗法病例')
         newNovel = +prompt('新疗法有效病例')
@@ -589,30 +588,24 @@
     var Y = 0
     var R = 0
     var time = 0
-
     for (i = 0; i < n; i++) {
         X = +prompt('x轴')
         Y = +prompt('Y轴')
         R = +prompt('人数')
         S = Math.sqrt((X * X) + (Y * Y)) //原点到屋顶的直线距离
-        time = time + Math.ceil(2 * S / 50 + R * 1.5) // 一个屋顶来回需要的总时间+上次救援的来回时间，也就是总时间
+        time = time + Math.ceil(2 * S / 50 + R * 1.5) // 一个屋顶来回需要的总时间
     }
-
     console.log(time)
 </script>
 <script id="ch0105/20">
-    var initialHeight = +prompt('球的初始高度') // 球在半空中的初始高度
+    var h = +prompt('球的初始高度')
     var i
-    var height = initialHeight // 记录每次弹跳的高度，直到最后一次，就是第十次
-    var total = 0 //总共弹跳的米数
-
+    var r = h
+    var h10 = h
     for (i = 0; i <= 10; i++) {
-        total += height * 2 // 这一次落地后的米数加上前面所有落地的米数
-        height = height / 2 // 落地后每次弹起的高度
+        r = r + h / 2
     }
-
-    total -= initialHeight // 减去初始弹起的高度，因为初始是没有弹起高度的。
-    console.log(total, height)
+    console.log(r)
 </script>
 <script id="ch0105/21">
     var N = +prompt('输入正整数')
@@ -628,19 +621,4 @@
     console.log('End')
 </script>
 <script id="ch0105/22">
-    var 每月预算 = 0
-    var 手上的钱 = 0
-    var i
-    var 存给妈妈的钱 = 0
-    for (i = 1; i <= 12; i++) {
-        每月预算 = +prompt('津津的每月预算')
-        手上的钱 += 300
-        if (手上的钱 < 每月预算) {
-            console.log(-i)
-        } else if (手上的钱 >= 100) {
-            存给妈妈的钱 += 手上的钱 - 手上的钱 % 100
-        }
-    }
-    var 年末返回的钱 = 存给妈妈的钱 * 0.2 + 手上的钱
-    console.log(年末返回的钱)
 </script>

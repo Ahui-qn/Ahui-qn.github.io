@@ -611,7 +611,7 @@
         height = height / 2 // 落地后每次弹起的高度
     }
 
-    total -= initialHeight // 减去初始弹起的高度，因为初始是没有弹起高度的。
+    total -= initialHeight
     console.log(total, height)
 </script>
 <script id="ch0105/21">
@@ -629,18 +629,13 @@
 </script>
 <script id="ch0105/22">
     var 每月预算 = 0
-    var 手上的钱 = 0
     var i
     var 存给妈妈的钱 = 0
-    for (i = 1; i <= 12; i++) {
+    for (i = 0; i <= 12; i++) {
         每月预算 = +prompt('津津的每月预算')
-        手上的钱 += 300
-        if (手上的钱 < 每月预算) {
-            console.log(-i)
-        } else if (手上的钱 >= 100) {
-            存给妈妈的钱 += 手上的钱 - 手上的钱 % 100
+        if ((300 - 每月预算) > 100) {
+            存给妈妈的钱 = 300 - 每月预算
         }
+
     }
-    var 年末返回的钱 = 存给妈妈的钱 * 0.2 + 手上的钱
-    console.log(年末返回的钱)
 </script>
