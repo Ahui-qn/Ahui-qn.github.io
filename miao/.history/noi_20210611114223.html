@@ -452,7 +452,7 @@
     var n = +prompt('n')
     var i
     var sum = 0
-    for (i = m; i <= n; i++) { //用变量i来遍历m到n之间所有的数
+    for (i = m; i <= n; i++) {
         if (i % 17 == 0) {
             sum = sum + i
         }
@@ -603,9 +603,11 @@
     var r = h
     var h10 = h
     for (i = 0; i <= 10; i++) {
-        r = r + h / 2
+        h = h / 2
+        r = r + h * 2
     }
     console.log(r)
+    console.log(h10 / 2)
 </script>
 <script id="ch0105/21">
 </script>

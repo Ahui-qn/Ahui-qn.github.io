@@ -441,7 +441,7 @@
     var i
     var sum = 0
     for (i = m; i <= n; i++) { // 初始化i的值为m  循环条件为 m <= n ，条件成立则判断奇偶
-        if (i % 2 == 1) { // 找出奇数
+        if (i % 2 == 1) {
             sum = sum + i
         }
     }
@@ -452,7 +452,7 @@
     var n = +prompt('n')
     var i
     var sum = 0
-    for (i = m; i <= n; i++) { //用变量i来遍历m到n之间所有的数
+    for (i = m; i <= n; i++) {
         if (i % 17 == 0) {
             sum = sum + i
         }
@@ -598,14 +598,19 @@
     console.log(time)
 </script>
 <script id="ch0105/20">
-    var h = +prompt('球的初始高度')
+    var n = +prompt('屋顶数量')
     var i
-    var r = h
-    var h10 = h
-    for (i = 0; i <= 10; i++) {
-        r = r + h / 2
+    var S = 0
+    var X = 0
+    var Y = 0
+    var R = 0
+    var time = 0
+    for (i = 0; i < n; i++) {
+        X = +prompt('x轴')
+        Y = +prompt('Y轴')
+        R = +prompt('人数')
+        S = Math.sqrt((X * X) + (Y * Y)) //原点到屋顶的直线距离
+        time = time + Math.ceil(2 * S / 50 + R * 1.5) // 一个屋顶来回需要的总时间
     }
-    console.log(r)
-</script>
-<script id="ch0105/21">
+    console.log(time)
 </script>
