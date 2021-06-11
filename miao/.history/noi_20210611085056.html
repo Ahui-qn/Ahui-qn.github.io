@@ -570,7 +570,7 @@
     for (i = 1; i < N; i++) {
         novel = +prompt('新疗法病例')
         newNovel = +prompt('新疗法有效病例')
-        nnEfficient = newNovel / novel //每一组新疗法的有效率
+        nnEfficient = novel / newNovel //每一组新疗法的有效率
         if ((nnEfficient - wvEfficient) > 0.05) {
             console.log('better')
         } else if ((wvEfficient - nnEfficient) > 0.05) {
@@ -579,9 +579,4 @@
             console.log('same')
         }
     }
-</script>
-<script id="ch0105/19">
-    var n = +prompt('屋顶数量')
-    var i
-    var
 </script>

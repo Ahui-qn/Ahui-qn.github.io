@@ -562,26 +562,12 @@
     var N = +prompt('N')
     var worn = +prompt('旧疗法病例')
     var valid = +prompt('旧疗法有效病例')
-    var wvEfficient = valid / worn // 旧疗法有效率
     var novel
-    var newNovel
-    var nnEfficient
+    var newNovel = +prompt('新疗法病例')
     var i
-    for (i = 1; i < N; i++) {
-        novel = +prompt('新疗法病例')
-        newNovel = +prompt('新疗法有效病例')
-        nnEfficient = newNovel / novel //每一组新疗法的有效率
-        if ((nnEfficient - wvEfficient) > 0.05) {
-            console.log('better')
-        } else if ((wvEfficient - nnEfficient) > 0.05) {
-            console.log('worse')
-        } else {
-            console.log('same')
-        }
+    for (i = 0; i < N; i++) {
+
+
+
     }
-</script>
-<script id="ch0105/19">
-    var n = +prompt('屋顶数量')
-    var i
-    var
 </script>

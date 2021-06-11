@@ -550,38 +550,10 @@
     if (K == 1 || K == 2) {
         console.log(1)
     } else {
-        for (i = 3; i <= K; i++) {
-            c = a + b // c 就是第三个数，始终等于前两个数的和
-            a = b // c 往后面算一位，就需要将前面一位数字覆盖，将b的值给a
-            b = c // 将 c 的值给b  ，此时b就是上一个从，而c已经往后一位了，下一个c就等于上一个c的值加上上一个b的值
+        for (i = 3; i < K; i++) {
+            c = a + b
+            a = b + c
+            b = a + c
         }
     }
-    console.log(c)
-</script>
-<script id="ch0105/18">
-    var N = +prompt('N')
-    var worn = +prompt('旧疗法病例')
-    var valid = +prompt('旧疗法有效病例')
-    var wvEfficient = valid / worn // 旧疗法有效率
-    var novel
-    var newNovel
-    var nnEfficient
-    var i
-    for (i = 1; i < N; i++) {
-        novel = +prompt('新疗法病例')
-        newNovel = +prompt('新疗法有效病例')
-        nnEfficient = newNovel / novel //每一组新疗法的有效率
-        if ((nnEfficient - wvEfficient) > 0.05) {
-            console.log('better')
-        } else if ((wvEfficient - nnEfficient) > 0.05) {
-            console.log('worse')
-        } else {
-            console.log('same')
-        }
-    }
-</script>
-<script id="ch0105/19">
-    var n = +prompt('屋顶数量')
-    var i
-    var
 </script>
