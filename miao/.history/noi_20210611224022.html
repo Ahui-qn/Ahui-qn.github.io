@@ -601,15 +601,18 @@
     console.log(time)
 </script>
 <script id="ch0105/20">
-    var Height = +prompt('球的初始高度') // 球在半空中的初始高度
-    var sum = 20 // 球总共经过的高度
-    var r10 = 0 // 球第十次弹跳的高度
-    for (var i = 2; i <= 10; i++) { // 第一次弹跳只加下落的，就是20，第二次弹跳才是 弹起和下落一起算，所以从第二次开始循环
-        Height /= 2 // 每次落地之后，球再次弹起的高度减半
-        sum += Height * 2 // 高度减半后，弹起的高度加上下落的高度
+    var initialHeight = +prompt('球的初始高度') // 球在半空中的初始高度
+    var i
+    var height = initialHeight // 记录每次弹跳的高度，直到最后一次，就是第十次
+    var total = 0 //总共弹跳的米数
+
+    for (i = 0; i <= 10; i++) {
+        total += height * 2 // 这一次落地后的米数加上前面所有落地的米数
+        height = height / 2 // 落地后每次弹起的高度
     }
-    console.log(sum.toFixed(4))
-    console.log((Height / 2).toFixed(7)) // 由于前面循环是从第二次开始，所以到结束的时候只弹跳了9次，所以还需要除以最后一次弹跳
+
+    total -= initialHeight // 减去初始弹起的高度，因为初始是没有弹起高度的。
+    console.log(total, height)
 </script>
 <script id="ch0105/21">
     var N = +prompt('输入正整数')
@@ -655,12 +658,10 @@
     var p = +prompt('取药人数')
     for (var i = 0; i < p; i++) {
         var num = +prompt('每个人取走的数量') // 每个人取走的数量不能大于上一个人取走药品之后库存的总数
-        if (sum >= num) {
-            sum -= num
-        } else {
+        sum = sum - num
+        if (num > sum) {
             var reject = 0
             reject++
         }
     }
-    console.log(reject)
 </script>

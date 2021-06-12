@@ -602,14 +602,12 @@
 </script>
 <script id="ch0105/20">
     var Height = +prompt('球的初始高度') // 球在半空中的初始高度
-    var sum = 20 // 球总共经过的高度
+    var sum = 0 // 球总共经过的高度
     var r10 = 0 // 球第十次弹跳的高度
-    for (var i = 2; i <= 10; i++) { // 第一次弹跳只加下落的，就是20，第二次弹跳才是 弹起和下落一起算，所以从第二次开始循环
-        Height /= 2 // 每次落地之后，球再次弹起的高度减半
-        sum += Height * 2 // 高度减半后，弹起的高度加上下落的高度
+    for (var i = 2; i <= 10; i++) { //球总共经过的高度
+        sum += Height / 2
     }
-    console.log(sum.toFixed(4))
-    console.log((Height / 2).toFixed(7)) // 由于前面循环是从第二次开始，所以到结束的时候只弹跳了9次，所以还需要除以最后一次弹跳
+    console.log(sum)
 </script>
 <script id="ch0105/21">
     var N = +prompt('输入正整数')
