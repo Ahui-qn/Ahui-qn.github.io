@@ -653,107 +653,15 @@
 <script id="ch0105/23">
     var sum = +prompt('药品总数量')
     var p = +prompt('取药人数')
-    var reject = 0
-
     for (var i = 0; i < p; i++) {
+        var reject = 0
         var num = +prompt('每个人取走的数量') // 每个人取走的数量不能大于上一个人取走药品之后库存的总数
         if (sum >= num) {
             sum -= num
         } else {
+
             reject++
         }
     }
     console.log(reject)
-</script>
-<script id="ch0105/24">
-    var n = +prompt('输入需要测试多少次血压')
-    var time = 0
-    for (var i = 0; i < n; i++) {
-        var shrink = +prompt('收缩压')
-        var diastole = +prompt('舒张压')
-
-        if (shrink >= 90 && shrink <= 140 && diastole >= 60 && diastole <= 90) {
-            time++ //  保持了则加1
-        } else {
-            time = 0 //  如果没有保持上面那个正常范围，则归零
-        }
-    }
-    console.log(time)
-</script>
-<script id="ch0105/25">
-    var n = +prompt('输入需要测试多少次血压')
-    var time = 0
-    for (var i = 0; i < n; i++) {
-        var shrink = +prompt('收缩压')
-        var diastole = +prompt('舒张压')
-
-        if (shrink >= 90 && shrink <= 140 && diastole >= 60 && diastole <= 90) {
-            time++ //  保持了则加1
-        } else {
-            time = 0 //  如果没有保持上面那个正常范围，则归零
-        }
-    }
-    console.log(time)
-</script>
-<script id="ch0105/26">
-    var n = +prompt('输入需要测试多少次血压')
-    var counter = 0
-    for (var i = 0; i < n; i++) {
-        var x = prompt('请输入一组四位数')
-        if (((+(x.charAt(3)) - +(x.charAt(0)) - +(x.charAt(1)) - +(x.charAt(2))) >= 0)) { // 函数获取某一位字符串的字
-            counter++
-        }
-    }
-    console.log(counter)
-</script>
-<script id="ch0105/27">
-    var K = Number(prompt('请输入n'))
-    var sn = 0
-    for (var i = 1;; i++) { //此处不需要循环条件 ，当sn大于n退出循环
-        sn = sn + 1 / i // sn从0开始+1  / i  当i 的值足够大的时候，sn > n
-        if (sn > n) {
-            break
-        }
-    }
-    console.log(i)
-</script>
-<script id="ch0105/28">
-    var x = prompt('输入一个整数') // 思路，把这个数的个位数求出来，然后一个一个输出个位数
-    var g = 0
-    while (true) {
-        g = x % 10 // 求出个位数
-        console.log(g) // 输出个位数
-        x = (x - g) / 10 // x - g 减去个位数 ， / 10 小数点向前一位，百位数变成个位数
-        if (x == 0) { // 当个位数等于0 ，代表没有数字了，则跳出循环
-            break
-        }
-    }
-</script>
-<script id="ch0105/29">
-    var x = prompt('输入一个整数') // 思路，把这个数的个位数求出来，然后一个一个输出个位数
-    var g = 0
-    var ans = 0 //反转值
-    while (1) {
-        g = x % 10
-        ans = ans * 10 + g
-        x = (x - g) / 10
-        if (x == 0) {
-            break
-        }
-    }
-    console.log(ans)
-</script>
-<script id="ch0105/30">
-    var x = prompt('输入一个整数') // 思路，把这个数的个位数求出来，然后一个一个输出个位数
-    var g = 0
-    var ans = 0 //反转值
-    while (1) {
-        g = x % 10
-        ans = ans * 10 + g
-        x = (x - g) / 10
-        if (x == 0) {
-            break
-        }
-    }
-    console.log(ans)
 </script>

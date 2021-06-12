@@ -733,27 +733,11 @@
     var x = prompt('输入一个整数') // 思路，把这个数的个位数求出来，然后一个一个输出个位数
     var g = 0
     var ans = 0 //反转值
-    while (1) {
+    while (true) {
         g = x % 10
         ans = ans * 10 + g
         x = (x - g) / 10
-        if (x == 0) {
-            break
-        }
+
+
     }
-    console.log(ans)
-</script>
-<script id="ch0105/30">
-    var x = prompt('输入一个整数') // 思路，把这个数的个位数求出来，然后一个一个输出个位数
-    var g = 0
-    var ans = 0 //反转值
-    while (1) {
-        g = x % 10
-        ans = ans * 10 + g
-        x = (x - g) / 10
-        if (x == 0) {
-            break
-        }
-    }
-    console.log(ans)
 </script>
