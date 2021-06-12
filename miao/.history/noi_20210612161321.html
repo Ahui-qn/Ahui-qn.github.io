@@ -730,12 +730,12 @@
     }
 </script>
 <script id="ch0105/29">
-    var x = prompt('输入一个整数') // 提取个位数，然后用上次提取的个位数 * 10 ，就变成十位数，再加上个位数，以此类推
+    var x = prompt('输入一个整数')
     var g = 0
     var ans = 0 //反转值
     while (1) {
         g = x % 10
-        ans = ans * 10 + g
+        ans = ans * 10 + g // 
         x = (x - g) / 10
         if (x == 0) {
             break
@@ -744,48 +744,6 @@
     console.log(ans)
 </script>
 <script id="ch0105/30">
-    var m = +prompt('输入一组含有3的数')
-    var k = +prompt('输入上组数字有几个3')
-    var m3 = m
-    var counter = 0 // 记录有几个3 
-    var a = 0
-    while (true) {
-        a = m % 10 // 提出个位数
-        if (a == 3) {
-            counter++
-            m = (m - a) / 10
-        } else if (counter !== k) {
-            m = (m - a) / 10
-        } else if (counter == k) {
-            break
-        }
-    }
-    if (m3 % 19 == 0 && counter == k) {
-        console.log('YES')
-    } else {
-        console.log('NO')
-    }
-</script>
-<script id="ch0105/31">
-    var m = +prompt('输入一组含有3的数')
-    var k = +prompt('输入上组数字有几个3')
-    var m3 = m
-    var counter = 0 // 记录有几个3 
-    var a = 0
-    while (true) {
-        a = m % 10 // 提出个位数
-        if (a == 3) {
-            counter++
-            m = (m - a) / 10
-        } else if (counter !== k) {
-            m = (m - a) / 10
-        } else if (counter == k) {
-            break
-        }
-    }
-    if (m3 % 19 == 0 && counter == k) {
-        console.log('YES')
-    } else {
-        console.log('NO')
-    }
+    var x = +prompt('输入一组含有3的数')
+    var r = +prompt('输入上组数字有几个3')
 </script>

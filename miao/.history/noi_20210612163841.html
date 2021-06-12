@@ -746,46 +746,20 @@
 <script id="ch0105/30">
     var m = +prompt('输入一组含有3的数')
     var k = +prompt('输入上组数字有几个3')
-    var m3 = m
     var counter = 0 // 记录有几个3 
-    var a = 0
+    var m3 = m // 将每次提出来的个位数赋值到这个变量
     while (true) {
-        a = m % 10 // 提出个位数
-        if (a == 3) {
+        m = m % 10 // 提出个位数
+        if (m % 19 == 0 && counter == k) {
+            console.log('YES')
             counter++
-            m = (m - a) / 10
-        } else if (counter !== k) {
-            m = (m - a) / 10
-        } else if (counter == k) {
+            m = (m - m3) / 10
+        } else if (m == 3) {
+
+            break
+        } else {
+            console.log('NO')
             break
         }
-    }
-    if (m3 % 19 == 0 && counter == k) {
-        console.log('YES')
-    } else {
-        console.log('NO')
-    }
-</script>
-<script id="ch0105/31">
-    var m = +prompt('输入一组含有3的数')
-    var k = +prompt('输入上组数字有几个3')
-    var m3 = m
-    var counter = 0 // 记录有几个3 
-    var a = 0
-    while (true) {
-        a = m % 10 // 提出个位数
-        if (a == 3) {
-            counter++
-            m = (m - a) / 10
-        } else if (counter !== k) {
-            m = (m - a) / 10
-        } else if (counter == k) {
-            break
-        }
-    }
-    if (m3 % 19 == 0 && counter == k) {
-        console.log('YES')
-    } else {
-        console.log('NO')
     }
 </script>
