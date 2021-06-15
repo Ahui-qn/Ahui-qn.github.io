@@ -683,11 +683,11 @@
 <script id="ch0105/25">
     var k = +prompt('输入一个十进制数') //  将十进依次转为 7 进制和 9 进制，
     for (var i = 49; i <= 666; i++) { //再遍历 7 进制或者 9 进制最小到最大的数
-        var a7 = k % 7 //  十进制转 7 进制
+        var a7 = k % 7
         var b7 = (k - a7 / 7) % 7
         var c7 = (k - a7 - b7 * 7) / 7 % 7
 
-        var a9 = k % 9 // 十进制转 9 进制
+        var a9 = k % 9
         var b9 = (k - a9 / 9) % 9
         var c9 = (k - a9 - b9 * 9) / 9 % 9
         if (a7 == c9 && b7 == b9 && c7 == a9) { // 如果顺序正好相反则跳出循环
@@ -751,7 +751,6 @@
     console.log(ans)
 </script>
 <script id="ch0105/30">
-    //  有问题
     var m = +prompt('输入一组含有3的数')
     var k = +prompt('输入上组数字有几个3')
     var m3 = m
@@ -775,6 +774,12 @@
     }
 </script>
 <script id="ch0105/31">
+    var 灯具 = +propmt('请输入灯的数量')
+    var 人数 = +propmt('请输入人的数量')
+    var 每次关灯 = 0
+    for (var i = 0; i < 灯具; i++) {
+        for (var j = 0;) {}
+    }
 </script>
 <script id="ch0105/32">
     var n = +prompt('输入n项数列')
@@ -793,43 +798,4 @@
 </script>
 <script id="ch0105/33">
     var n = +prompt('输入n项数列')
-    var sum = 0
-    for (var i = 1; i <= n; i++) {
-        if (i % 2 == 0) {
-            sum += 1 / i
-        } else {
-            sum -= 1 / i
-        }
-    }
-</script>
-<script id="ch0105/34">
-    var n = +prompt('输入n项数列')
-    var sum = 0
-    var fact = 1
-
-    for (var i = 1; i <= n; i++) {
-        fact *= i //  拿上次乘积 乘上第i的数
-        sum += fact
-    }
-    console.log(sum)
-</script>
-<script id="ch0105/35">
-    var n = +prompt('输入n项数列')
-    var sum = 0
-    var fact = 1
-
-    for (var i = 1; i <= n; i++) {
-        sum += 1 / fact
-        fact *= i //  拿上次乘积 乘上第i的数
-    }
-    console.log(sum)
-</script>
-<script id="ch0105/36">
-    var x = +prompt()
-    var n = +prompt()
-    var sum = 1
-    for (var i = 1; i <= n; i++) {
-        sum += x ** i
-    }
-    console.log(sum)
 </script>

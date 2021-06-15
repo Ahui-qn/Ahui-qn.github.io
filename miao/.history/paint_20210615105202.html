@@ -144,7 +144,7 @@
         x = 350
         for (var j = 0; j < 100; j++) {
             x++
-            dot(x, y, 'green')
+            dot(x, y, color = 'pinik')
         }
     }
     //  10  * 画两个个空心的圆，居中：
@@ -157,11 +157,10 @@
         x = 200
         for (var j = 0; j < 100; j++) {
             x++
-            dot(x, y, String(rgb(i + 100, j + 200, j + 130)))
+            dot(x, y, color = '255,255,1')
         }
     }
 </script>
-
-
+<!-- color = i + 100 + '', j + 200 + '', j + 130 + '' -->
 
 </html>

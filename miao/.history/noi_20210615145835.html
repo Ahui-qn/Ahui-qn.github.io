@@ -808,28 +808,8 @@
     var fact = 1
 
     for (var i = 1; i <= n; i++) {
-        fact *= i //  拿上次乘积 乘上第i的数
+        fact *= i
         sum += fact
-    }
-    console.log(sum)
-</script>
-<script id="ch0105/35">
-    var n = +prompt('输入n项数列')
-    var sum = 0
-    var fact = 1
-
-    for (var i = 1; i <= n; i++) {
-        sum += 1 / fact
-        fact *= i //  拿上次乘积 乘上第i的数
-    }
-    console.log(sum)
-</script>
-<script id="ch0105/36">
-    var x = +prompt()
-    var n = +prompt()
-    var sum = 1
-    for (var i = 1; i <= n; i++) {
-        sum += x ** i
     }
     console.log(sum)
 </script>
