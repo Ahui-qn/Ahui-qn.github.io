@@ -848,7 +848,7 @@
         if (i % 7 == 0) { // 判断能否被 7 整除，能则与 7 有关，直接跳过。否则 else
             continue
         } else {
-            var x = i // 如果于 7 无关 ，将 7 的值赋给x ，后续用循环遍历这个与 7 无关的数字的每个位数
+            var x = i // 于 7 无关 ，将 7 的值赋给x ，后续用循环遍历这个与 7 无关的数字的每个位数
             var about7 = false // 与7 有关的数一开始为假
 
             // 遍历该数值十进制各个位上的数
@@ -869,11 +869,11 @@
     console.log(sum)
 </script>
 <script id="ch0105/40">
-    // 判断 1 在n 个数里面出现了多少次,类似上题
     var n = Number(prompt())
+
     var count = 0
 
-    for (var i = 1; i <= n; i++) { // 遍历所有数字
+    for (var i = 1; i <= n; i++) {
         var x = i
         do {
             var digit = x % 10
@@ -881,7 +881,7 @@
                 count++
             }
             x = (x - digit) / 10
-        } while (x) //  当 i 为个数的时候减去个数一定为 0 ，则为 false ，代表这个数已经被遍历完了，则跳出循环
+        } while (x)
     }
 
     console.log(count)

@@ -792,17 +792,15 @@
     console.log(sum.toFixed(4))
 </script>
 <script id="ch0105/33">
-    var n = Number(prompt())
-
+    var n = +prompt('输入n项数列')
     var sum = 0
-    var sign = 1
-
     for (var i = 1; i <= n; i++) {
-        sum += sign * 1 / i
-        sign = sign * -1
+        if (i % 2 == 0) {
+            sum += 1 / i
+        } else {
+            sum -= 1 / i
+        }
     }
-
-    console.log(sum)
 </script>
 <script id="ch0105/34">
     var n = +prompt('输入n项数列')
@@ -840,49 +838,8 @@
 <script id="ch0105/38">
 </script>
 <script id="ch0105/39">
-    // 题目：遍历一组数，求出与 7 无关的数的平方和  ，与 7 有关的条件为：能被 7 整除和位数上有 7 的数字
-    var n = Number(prompt())
-    var sum = 0 // 与 7 无关的平方和
+    var n = +propmt()
+    for (var i = 1; i <= n; i++) {
 
-    for (var i = 1; i <= n; i++) { //  遍历 1 到 n 的数
-        if (i % 7 == 0) { // 判断能否被 7 整除，能则与 7 有关，直接跳过。否则 else
-            continue
-        } else {
-            var x = i // 如果于 7 无关 ，将 7 的值赋给x ，后续用循环遍历这个与 7 无关的数字的每个位数
-            var about7 = false // 与7 有关的数一开始为假
-
-            // 遍历该数值十进制各个位上的数
-            do {
-                var digit = x % 10 //遍历个位数
-                if (digit == 7) {
-                    about7 = true // 当这个数与 7 有关的时候，为真
-                    break //   如果个位数与有关则跳出循环
-                }
-                x = (x - digit) / 10 //  遍历十位数  将十位数
-            } while (x) //  遍历完之后 ， 这个x 的值为 0，则为 false，跳出循环
-
-            if (!about7) { // 判断是否是与 7 有关的数，如果是与 7 有关的数，那么则为!true  ，则不加平方
-                sum += i * i
-            }
-        }
     }
-    console.log(sum)
-</script>
-<script id="ch0105/40">
-    // 判断 1 在n 个数里面出现了多少次,类似上题
-    var n = Number(prompt())
-    var count = 0
-
-    for (var i = 1; i <= n; i++) { // 遍历所有数字
-        var x = i
-        do {
-            var digit = x % 10
-            if (digit == 1) {
-                count++
-            }
-            x = (x - digit) / 10
-        } while (x) //  当 i 为个数的时候减去个数一定为 0 ，则为 false ，代表这个数已经被遍历完了，则跳出循环
-    }
-
-    console.log(count)
 </script>
