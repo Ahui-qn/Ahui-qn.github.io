@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>画图</title>
+    <style>
+        canvas {
+            border: 2px solid #f0f;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="500"></canvas>
+</body>
+<script>
+    var canvas = document.querySelector('canvas')
+    canvas.style.imageRendering = 'pixelated' //放大时的插帧方式：不插帧，直接放大像素
+    var ctx = canvas.getContext('2d')
+
+    function dot(x, y, color = 'black') {
+        x = Math.round(x)
+        y = Math.round(y)
+        ctx.fillStyle = color
+        ctx.fillRect(x, y, 1, 1)
+    }
+    /**
+     * YOUR TASK
+        * 在 坐标 (42, 42) 画出一个点
+        * 画一条实线
+        * 画一条一个实点一个空点的虚线
+        * 画一条两个实点两个空点的虚线
+        * 画一条三个实点两个空点的虚线
+        * 画一条45度的斜线
+        * 画一条30度的斜线（与x轴或y轴的夹角呈30度）
+        * 画一条跨越画布左上角和右下角的对角线
+        * 画一个空心矩形
+        * 画一个实心矩形
+        * 画两个个空心的圆，居中：
+          * 一个半径为50像素
+          * 一个半径为200像素
+        * 画一个实心的圆，半径至少为100像素
+        * 画一个【大小合适】的sin(x)的图像
+
+        * 画出rgb色彩空间的某一面（尺寸要大于100x100）
+          如果做出上一题后，尝试将其每个点的坐标乘以一个矩阵（如(2,0,0,2)或(1,0.27得到新的位置，即绘制出被线性变幻后的色彩空间某一面
+          可以考虑如下几种矩阵：
+             2 0
+             0 2
+             ------
+             1  0.27
+             0  1
+             ------
+             0.5    0.87
+             -0.87  0.5
+
+     */
+</script>
+<script>
+    //1  画一个点
+    dot(42, 42, 'red')
+
+    // 2、 画一条实线
+    var x = 50
+    for (var i = 0; i < 200; i++) {
+        x++
+        dot(x, 3, 'green')
+    }
+    // 3 、画一条一个实点一个空点的虚线
+    x = 50
+    for (i = 0; i < 100; i++) {
+        x += 2
+        dot(x, 9, 'green')
+    }
+    // 4 、画一条两个实点两个空点的虚线
+    x = 50
+    for (i = 1; i <= 50; i++) {
+        x += 4 // 每次往右偏移的个 x
+        dot(x, 16, 'green') // 隔四个点画一次
+        dot(x + 1, 16, 'green') // 隔五个点画一次
+    }
+    // 5 、画一条三个实点两个空点的虚线
+    x = 50
+    for (i = 1; i <= 40; i++) {
+        x += 5 // 每次往右偏移的个 x //中间的空格
+        dot(x, 25, 'green') // 隔四个点画一次
+        dot(x + 1, 25, 'green') // 隔五个点画一次
+        dot(x + 2, 25, 'green') // 隔五个点画一次
+    }
+    // 6 、画一条45度的斜线
+    var y = 2
+    x = 280
+    for (var i = 0; i < 40; i++) {
+        y++
+        x++
+        dot(x, y, 'green')
+    }
+    // 7 、画一条30度的斜线（与x轴或y轴的夹角呈30度）
+    y = 2
+    x = 300
+
+    for (i = 0; i < 40; i++) {
+        y++
+        x = x + 3
+        dot(x, y, 'green')
+        dot(x + 1, y, 'green')
+        dot(x + 2, y, 'green')
+    }
+
+    // 8、画一条跨越画布左上角和右下角的对角线
+    x = 0
+    y = 0
+
+    for (i = 0; i <= 500; i++) {
+        y++
+        x++
+        dot(x, y, 'green')
+    }
+    var q = 500
+    var p = 0
+    for (var i = 0; i <= 500; i++) {
+        q -= 1
+        p++
+        dot(q, p, 'green')
+    }
+    // 9 画一个空心矩形 
+    x = 40
+    y = 200
+    for (var i = 0; i < 100; i++) {
+        x++
+        y++
+        dot(x, 200, 'green')
+        dot(x, 300, 'green')
+        dot(41, y, 'green')
+        dot(140, y, 'green')
+    }
+    // 9 画一个实心矩形
+    y = 200
+    for (var i = 0; i < 100; i++) {
+        y++
+
+        x = 350
+        for (var j = 0; j < 100; j++) {
+            x++
+            dot(x, y, 'green')
+        }
+    }
+</script>
+
+</html>

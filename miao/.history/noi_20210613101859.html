@@ -681,23 +681,30 @@
     console.log(time)
 </script>
 <script id="ch0105/25">
-    var k = +prompt('输入一个十进制数')
-    for (var i = 81)
-</script>
-<script id="ch0105/26">
-    var n = +prompt('n')
-    var count = 0
+    var n = +prompt('输入需要测试多少次血压')
+    var time = 0
     for (var i = 0; i < n; i++) {
-        var k = +prompt('输入一个四位数')
-        var a = k % 10
-        var b = (k - a) / 10 % 10
-        var c = (k - a - b * 10) / 100 % 10
-        var d = (k - a - b * 10 - c * 100) / 1000 % 10
-        if (a - d - c - b > 0) {
-            count++
+        var shrink = +prompt('收缩压')
+        var diastole = +prompt('舒张压')
+
+        if (shrink >= 90 && shrink <= 140 && diastole >= 60 && diastole <= 90) {
+            time++ //  保持了则加1
+        } else {
+            time = 0 //  如果没有保持上面那个正常范围，则归零
         }
     }
-    console.log(count)
+    console.log(time)
+</script>
+<script id="ch0105/26">
+    var n = +prompt('输入需要测试多少次血压')
+    var counter = 0
+    for (var i = 0; i < n; i++) {
+        var x = prompt('请输入一组四位数')
+        if (((+(x.charAt(3)) - +(x.charAt(0)) - +(x.charAt(1)) - +(x.charAt(2))) >= 0)) { // 函数获取某一位字符串的字
+            counter++
+        }
+    }
+    console.log(counter)
 </script>
 <script id="ch0105/27">
     var K = Number(prompt('请输入K'))
@@ -763,8 +770,8 @@
     var 灯具 = +propmt('请输入灯的数量')
     var 人数 = +propmt('请输入人的数量')
     var 每次关灯 = 0
-    for (var i = 0; i < 灯具; i++) {
-        for (var j = 0;) {}
+    for (var i = 0; i < 人数; i++) {
+
     }
 </script>
 <script id="ch0105/32">
@@ -784,4 +791,16 @@
 </script>
 <script id="ch0105/33">
     var n = +prompt('输入n项数列')
+    var a = 1
+    var b = 2 // 定义好第二次的p2值
+    var c = 3
+    var sum = 2 // 第一次的值为2      2 / 1  ==  2
+
+    for (var i = 1; i < n; i++) {
+        c = a + b // 从第二次开始计算  c = 3
+        sum += c / b // 第一次2 / 1 + 3 / 2
+        a = b //  变量交换
+        b = c
+    }
+    console.log(sum.toFixed(4))
 </script>

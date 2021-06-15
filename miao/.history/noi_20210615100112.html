@@ -681,8 +681,19 @@
     console.log(time)
 </script>
 <script id="ch0105/25">
-    var k = +prompt('输入一个十进制数')
-    for (var i = 81)
+    var n = +prompt('输入需要测试多少次血压')
+    var time = 0
+    for (var i = 0; i < n; i++) {
+        var shrink = +prompt('收缩压')
+        var diastole = +prompt('舒张压')
+
+        if (shrink >= 90 && shrink <= 140 && diastole >= 60 && diastole <= 90) {
+            time++ //  保持了则加1
+        } else {
+            time = 0 //  如果没有保持上面那个正常范围，则归零
+        }
+    }
+    console.log(time)
 </script>
 <script id="ch0105/26">
     var n = +prompt('n')
