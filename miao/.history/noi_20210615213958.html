@@ -888,20 +888,19 @@
 </script>
 <script id="ch0105/41">
     // 判断 1 在n 个数里面出现了多少次,类似上题
-    var L = +prompt()
-    var R = +prompt()
-    var count = 0
+    var L = +(prompt() var R = +prompt()
+            var count = 0
 
-    for (var i = L; L <= R; L++) { // 从 L 开始，遍历到 R 的所有数字，每遍历一次L++
-        var x = L
-        do {
-            var digit = x % 10
-            if (digit == 2) {
-                count++
+            for (var i = 1; i <= n; i++) { // 遍历所有数字
+                var x = i
+                do {
+                    var digit = x % 10
+                    if (digit == 1) {
+                        count++
+                    }
+                    x = (x - digit) / 10
+                } while (x) //  当 i 为个数的时候减去个数一定为 0 ，则为 false ，代表这个数已经被遍历完了，则跳出循环
             }
-            x = (x - digit) / 10
-        } while (x) //  当 i 为个数的时候减去个数一定为 0 ，则为 false ，代表这个数已经被遍历完了，则跳出循环
-    } 
 
-    console.log(count)
+            console.log(count)
 </script>
