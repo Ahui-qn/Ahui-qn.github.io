@@ -81,18 +81,14 @@
     //判断是否是完全数 //完美数等于他的约数之和
     let c = completeNumbe(+prompt('输入一个数'))
 
-    function completeNumbe(n) { // 6
+    function completeNumbe(n) {
         let sum = 0
-        for (let i = 1; i <= n; i++) {
-            if (n % i == 0) { // 能被n整除的数就是他的约数
-                sum += i
+        for (let i = 1; i < n; i++) {
+            if (i % n == 0) {
+
             }
-        }
-        sum -= n // 约数和减去自身
-        if (sum == n) {
-            console.log('YES')
-        } else {
-            console.log('NO')
+
+
         }
     }
 </script>
