@@ -1,8 +1,8 @@
 <script id="narcissistic">
     //判断是否水仙花数
-    var c = narcissistic()
+    var c = daffodilNumber()
 
-    function narcissistic(x) {
+    function daffodilNumber(x) {
         var x = +prompt('输入一个数')
 
         var s = x //  替换x的值后面参与每个数位的运算
@@ -27,10 +27,11 @@
 <script id="narcissistics">
     // 输出1千以内的水仙花数
 
-    var a = narcissistics()
+    var a = daffodilNumbers()
 
-    function narcissistics(x) {
+    function daffodilNumbers(x) {
         var x = +prompt('输入一个数')
+            //2346
         var s = x //  替换x的值后面参与每个数位的运算
 
         for (var j = 1; j <= x; j++) {
@@ -49,34 +50,11 @@
         }
     }
 </script>
+<script id="narcissistics">
+    // 判断一个数是否是回文数字
+    var c = palindromeNumbers()
 
-<script id="palindrom">
-    // 判断一个数是否是回文数字  123321 // 将回文数翻转过来，如果还是原来的数那么YES
-    var c = palindrom()
-
-    function palindrom(x) {
-        var x = +prompt('输入一个数')
-        var s = x
-        var sum = 0
-
-        do {
-            var p = x % 10
-            sum = sum * 10 + p
-            x = (x - p) / 10
-        } while (x)
-        if (sum == s) {
-            console.log('YES')
-        } else {
-            console.log('NO')
-        }
-    }
-</script>
-
-<script id="weekday">
-    // 判断一个数是否是回文数字  123321 // 将回文数翻转过来，如果还是原来的数那么YES
-    var c = weekday()
-
-    function weekday(x) {
+    function daffodilNumber(x) {
 
     }
 </script>
