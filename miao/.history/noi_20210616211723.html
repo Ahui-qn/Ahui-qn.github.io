@@ -1,8 +1,10 @@
 <script id="narcissistic">
     //判断是否水仙花数
-    var c = narcissistic(+prompt('输入一个数'))
+    var c = narcissistic()
 
     function narcissistic(x) {
+        var x = +prompt('输入一个数')
+
         var s = x //  替换x的值后面参与每个数位的运算
         var i = ('' + x).length // 获取这个数字的长度
         var sum = 0
@@ -29,6 +31,7 @@
 
     function narcissistics(x) {
         var s = x //  替换x的值后面参与每个数位的运算
+
         for (var j = 1; j <= x; j++) {
             var a = j
             var i = ('' + j).length

@@ -1,8 +1,10 @@
 <script id="narcissistic">
     //判断是否水仙花数
-    var c = narcissistic(+prompt('输入一个数'))
+    var c = narcissistic()
 
     function narcissistic(x) {
+        var x = +prompt('输入一个数')
+
         var s = x //  替换x的值后面参与每个数位的运算
         var i = ('' + x).length // 获取这个数字的长度
         var sum = 0
@@ -25,10 +27,12 @@
 <script id="narcissistics">
     // 输出1千以内的水仙花数
 
-    var a = narcissistics(+prompt('输入一个数'))
+    var a = narcissistics()
 
     function narcissistics(x) {
+        var x = +prompt('输入一个数')
         var s = x //  替换x的值后面参与每个数位的运算
+
         for (var j = 1; j <= x; j++) {
             var a = j
             var i = ('' + j).length
@@ -46,13 +50,13 @@
     }
 </script>
 
-
 <script id="palindrom">
     // 判断一个数是否是回文数字  123321 // 将回文数翻转过来，如果还是原来的数那么YES
 
-    var x = palindrom(+prompt())
+    var x = +prompt(palindrom())
 
     function palindrom(x) {
+
         var s = x
         var sum = 0
 
