@@ -1,64 +1,26 @@
 <script id="narcissistic">
     //判断是否水仙花数
-    var c = daffodilNumber()
 
-    function daffodilNumber(x) {
-        var x = +prompt('输入一个数')
 
-        var s = x //  替换x的值后面参与每个数位的运算
-        var i = ('' + x).length // 获取这个数字的长度
+
+    var x = +prompt('输入一个数')
+    for (var i = 1; i <= x; i++) {
+        var s = i
         var sum = 0
-        var a = x //  存储x的初始值后面进行if判断
         do {
-            var p = x % 10 // 获取个位数
-            s = p ** i //  每位数乘数字长度
+            s = s % 10 ** i //  个位数
             sum += s
-            x = (x - p) / 10
-
-        } while (x)
-        if (sum == a) {
+            s = (i - s) / 10
+        } while (s)
+        if (sum == x) {
             console.log('YES')
+            break
         } else {
             console.log('NO')
+            break
         }
     }
 </script>
-
-<script id="narcissistics">
-    // 输出1千以内的水仙花数
-
-    var c = daffodilNumber()
-
-    function daffodilNumber(x) {
-        var x = +prompt('输入一个数')
-            //2346
-        var s = x //  替换x的值后面参与每个数位的运算
-
-        for (var j = 1; j <= x; j++) {
-            var a = j
-            var i = ('' + j).length
-            var sum = 0
-            do {
-                var p = a % 10 // 获取个位数
-                s = p ** i //  每位数乘数字长度
-                sum += s
-                a = (a - p) / 10
-            } while (a)
-            if (sum == j) {
-                console.log(sum)
-            }
-        }
-    }
-</script>
-<script id="narcissistics">
-    // 判断一个数是否是回文数字
-    var c = palindromeNumbers()
-
-    function daffodilNumber(x) {
-
-    }
-</script>
-
 
 
 

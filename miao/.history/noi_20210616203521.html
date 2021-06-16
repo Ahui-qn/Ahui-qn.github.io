@@ -33,29 +33,23 @@
         var x = +prompt('输入一个数')
             //2346
         var s = x //  替换x的值后面参与每个数位的运算
+        var sum = 0
 
         for (var j = 1; j <= x; j++) {
             var a = j
             var i = ('' + j).length
-            var sum = 0
             do {
-                var p = a % 10 // 获取个位数
+                var p = j % 10 // 获取个位数
                 s = p ** i //  每位数乘数字长度
                 sum += s
-                a = (a - p) / 10
-            } while (a)
-            if (sum == j) {
+                j = (j - p) / 10
+            } while (j)
+
+            if (sum == a) {
                 console.log(sum)
             }
+
         }
-    }
-</script>
-<script id="narcissistics">
-    // 判断一个数是否是回文数字
-    var c = palindromeNumbers()
-
-    function daffodilNumber(x) {
-
     }
 </script>
 
