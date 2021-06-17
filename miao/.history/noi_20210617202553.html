@@ -167,25 +167,12 @@
 
     let icficm = icf_icm(+prompt('输入一个数'), +prompt('输入一个数'))
 
-
     function icf_icm(icf, icm) {
-        if (icf < icm) { // 用如果icf不大于icm则交换一下
-            let p = 0
-            p = icf
-            icf = icm
-            icm = icf
-        }
-        let a = icf
-        let b = icm
-        let c = 0
         do {
-            c = a % b
-            a = b
-            b = c
-        } while (c)
-        let icfStore  = a // 最后模完等于0，由于交换了一轮，所以最小公约数是a
-        let icmStore = icf * icm / icfStore
-        console.log(icfStore, icmStore)
+            let a = icf % icm // 模出来的值
+            let b = icm % sum
+
+        }
     }
 </script>
 

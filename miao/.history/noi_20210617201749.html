@@ -152,6 +152,7 @@
         }
     }
 
+
     function prime(n) {
         let a = Math.sqrt(n)
         for (let i = 2; i <= a; i++) {
@@ -165,28 +166,12 @@
 <script id="icf&icm">
     // 最大公约数和最小公倍数
 
-    let icficm = icf_icm(+prompt('输入一个数'), +prompt('输入一个数'))
+    let icficm =
 
 
-    function icf_icm(icf, icm) {
-        if (icf < icm) { // 用如果icf不大于icm则交换一下
-            let p = 0
-            p = icf
-            icf = icm
-            icm = icf
+        function icf_icm(n) {
+
         }
-        let a = icf
-        let b = icm
-        let c = 0
-        do {
-            c = a % b
-            a = b
-            b = c
-        } while (c)
-        let icfStore  = a // 最后模完等于0，由于交换了一轮，所以最小公约数是a
-        let icmStore = icf * icm / icfStore
-        console.log(icfStore, icmStore)
-    }
 </script>
 
 
