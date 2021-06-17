@@ -80,11 +80,6 @@
 <script id="complete-number">
     //判断是否是完全数 //完美数等于他的约数之和
     let c = completeNumbe(+prompt('输入一个数'))
-    if (c) {
-        console.log(true)
-    } else {
-        console.log(false)
-    }
 
     function completeNumbe(n) { // 6
         let sum = 0
@@ -93,31 +88,33 @@
                 sum += i
             }
         }
-        return sum == n // 返回一个布尔值
+        if (sum == n) {
+            console.log('YES')
+        } else {
+            console.log('NO')
+        }
     }
 </script>
 
 <script id="complete-numbers">
-    //输出一万以内的完全数 //完全数等于他的约数之和
-
-
+    //判断是否是完全数 //完美数等于他的约数之和
+    let c = completeNumbes()
     for (n = 1; n <= 10000; n++) {
+        function completeNumbes(n) { // 10000
 
-        if (completeNumbe(n)) { // if里面调用判断是否为完全数的函数
-            console.log(n)
-        }
-    }
+            let sum = 0
 
-    function completeNumbe(n) { // 10000
-        let sum = 0
+            for (let j = 1; j <= n; j++) {
+                if (n % j == 0) {
+                    sum += j
+                }
+            }
 
-        for (let j = 1; j < n; j++) {
-            if (n % j == 0) {
-                sum += j
+            sum -= n // 约数和减去自身
+            if (sum == n) {
+                console.log(n)
             }
         }
-
-        return sum == n
     }
 </script>
 

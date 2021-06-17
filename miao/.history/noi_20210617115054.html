@@ -99,11 +99,11 @@
 
 <script id="complete-numbers">
     //输出一万以内的完全数 //完全数等于他的约数之和
-
+    let c = completeNumbe()
 
     for (n = 1; n <= 10000; n++) {
 
-        if (completeNumbe(n)) { // if里面调用判断是否为完全数的函数
+        if (c) {
             console.log(n)
         }
     }
