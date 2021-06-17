@@ -26,25 +26,24 @@
 <script id="narcissistics">
     // 输出10000以内的水仙花数
 
+    let a = narcissistic()
+
     for (let j = 1; j <= 10000; j++) {
-        if (narcissistic(j)) { // 当j1时，如果是水仙花数那么会返回真，那么则输出
-            console.log(j)
+        function narcissistic(x) {
+            let s = x //  替换x的值后面参与每个数位的运算
+            let a = j
+            let i = ('' + j).length
+            let sum = 0
+            do {
+                let p = a % 10 // 获取个位数
+                s = p ** i //  每位数乘数字长度
+                sum += s
+                a = (a - p) / 10
+            } while (a)
+            if (sum == j) {
+                console.log(sum)
+            }
         }
-    }
-
-    function narcissistic(x) {
-        let s = x //  替换x的值后面参与每个数位的运算
-        let i = ('' + x).length // 获取这个数字的长度
-        let sum = 0
-        let a = x //  存储x的初始值后面进行if判断
-        do {
-            let p = x % 10 // 获取个位数
-            s = p ** i //  每位数乘数字长度
-            sum += s
-            x = (x - p) / 10
-
-        } while (x)
-        return sum == a
     }
 </script>
 
@@ -53,11 +52,6 @@
     // 判断一个数是否是回文数字  123321 // 将回文数翻转过来，如果还是原来的数那么YES
 
     let x = palindrom(+prompt())
-    if (x) {
-        console.log(true)
-    } else {
-        console.log(false)
-    }
 
     function palindrom(x) {
         let s = x
@@ -68,7 +62,11 @@
             sum = sum * 10 + p
             x = (x - p) / 10
         } while (x)
-        return sum == s
+        if (sum == s) {
+            console.log('YES')
+        } else {
+            console.log('NO')
+        }
     }
 </script>
 
