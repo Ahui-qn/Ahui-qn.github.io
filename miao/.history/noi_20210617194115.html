@@ -2,9 +2,9 @@
     //判断是否水仙花数
     let c = narcissistic(+prompt('输入一个数'))
     if (c) {
-        console.log('YES')
+        console.log(true)
     } else {
-        console.log('NO')
+        console.log(false)
     }
 
     function narcissistic(x) {
@@ -54,9 +54,9 @@
 
     let x = palindrom(+prompt())
     if (x) {
-        console.log('YES')
+        console.log(true)
     } else {
-        console.log('NO')
+        console.log(false)
     }
 
     function palindrom(x) {
@@ -84,9 +84,9 @@
     //判断是否是完全数 //完美数等于他的约数之和
     let c = completeNumbe(+prompt('输入一个数'))
     if (c) {
-        console.log('YES')
+        console.log(true)
     } else {
-        console.log('NO')
+        console.log(false)
     }
 
     function completeNumbe(n) { // 6
@@ -128,25 +128,25 @@
     // 判断一个数是否是素数
     let c = prime(+prompt('请输入一个数'))
     if (c) {
-        console.log('YES')
+        console.log(true)
     } else {
-        console.log('NO')
+        console.log(false)
     }
 
     function prime(n) {
         let a = Math.sqrt(n)
-        for (let i = 2; i <= a; i++) {
+        for (let i = 2; i < a; i++) {
             if (n % i == 0) {
-                return false // 如果能被整除则不是质数
+                return false
             }
+            return n
         }
-        return n
     }
 </script>
 <script id="primes">
     // 输出10000以内的素数
 
-    for (let j = 2; j <= 10000; j++) {
+    for (let j = 1; j <= 10000; j++) {
         if (prime(j)) {
             console.log(j)
         }
@@ -154,13 +154,13 @@
 
 
     function prime(n) {
-        let a = Math.sqrt(n)
-        for (let i = 2; i <= a; i++) {
+
+        for (let i = 2; i < n; i++) {
             if (n % i == 0) {
-                return false // 如果能被整除则不是质数
+                return false
             }
+            return n
         }
-        return n
     }
 </script>
 
