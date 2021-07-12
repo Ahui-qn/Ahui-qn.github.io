@@ -19,6 +19,7 @@ var ahui_qn = function () {
                 newArray.push(array[i])
         }
         return newArray
+         }
     }
 
     function unique (array) {   // 数组去重
@@ -127,6 +128,9 @@ var ahui_qn = function () {
         return newArray
     }
 
+    function keys (object) {
+
+    }
     return {
         chunk : chunk,
         compact : compact,
@@ -143,8 +147,8 @@ var ahui_qn = function () {
         zip : zip,
         unzip : unzip,
         keys : keys,
-        
+
 
 
     }
-}
+}();
