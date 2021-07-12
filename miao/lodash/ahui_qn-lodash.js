@@ -129,8 +129,19 @@ var ahui_qn = function () {
     }
 
     function keys (object) {
-
+        var newArray = []
+        if (typeof object == 'object') {
+            for (let k in object) {
+                newArray.push(k)
+            }
+        }else {
+            for (let i = 0; i < object.length; i++) {
+                
+            }
+        }
+        
     }
+
     return {
         chunk : chunk,
         compact : compact,
@@ -147,8 +158,5 @@ var ahui_qn = function () {
         zip : zip,
         unzip : unzip,
         keys : keys,
-
-
-
     }
 }();
