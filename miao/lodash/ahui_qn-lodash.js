@@ -1,7 +1,7 @@
 var ahui_qn = function () {
     function chunk (array, size = 1){ // 将数组拆分成二维数组，，size为每个二维数组的长度
-        let newArray = []
-        let sum = size
+        var newArray = []
+        var sum = size
         while (sum) {
           newArray.push(array.splice(0,size))
           sum--
@@ -13,8 +13,8 @@ var ahui_qn = function () {
     }
 
     function compact (array) {  // 去除数组假值
-        let newArray = []
-        for (let i = 0; i < array.length; i++) {
+        var newArray = []
+        for (var i = 0; i < array.length; i++) {
             if (array[i]){
                 newArray.push(array[i])
         }
@@ -23,9 +23,9 @@ var ahui_qn = function () {
     }
 
     function unique (array) {   // 数组去重
-        let newArray = []
-        let map = {}
-        for (let i = 0; i < array.length; i++) {
+        var newArray = []
+        var map = {}
+        for (var i = 0; i < array.length; i++) {
             if (array[i] in map) {
                 continue
             }else {
@@ -62,7 +62,7 @@ var ahui_qn = function () {
     }
 
     function forEach (collection , f) {
-        for (let i = 0; i < collection.length; i++) {
+        for (var i = 0; i < collection.length; i++) {
             f(collection[i], i, collection)
         }
         return collection
@@ -78,7 +78,7 @@ var ahui_qn = function () {
 
     function filter (array, f) {
         var newArray = []
-        for (let i = 0; i < array.length; i++) {
+        for (var i = 0; i < array.length; i++) {
             if (f(array[i],i)) {
                 return newArray.push(array[i])
             }
@@ -98,7 +98,7 @@ var ahui_qn = function () {
         var count = array[0].length
         var sum = 0   // 控制遍历子数组的第几项
         while(count){
-            let temporary = []
+            var temporary = []
             for (var i = 0; i < array.length; i++) {
                 temporary.push(array[i][sum])
             }
@@ -114,7 +114,7 @@ var ahui_qn = function () {
         var count = array[0].length
         var sum = 0   // 控制遍历子数组的第几项
         while(count){
-            let temporary = []
+            var temporary = []
             for (var i = 0; i < array.length; i++) {
                 temporary.push(array[i][sum])
             }
@@ -128,23 +128,33 @@ var ahui_qn = function () {
     function keys (object) {   // 返回key
         var newArray = []
         if (typeof object == 'object') {
-            for (let k in object) {
+            for (var k in object) {
                 newArray.push(k)
             }
         }else {
-            let obj = {}
-            for (let i = 0; i < object.length; i++) {
+            var obj = {}
+            for (var i = 0; i < object.length; i++) {
                 obj[i] = object[i]
             }
-            for (let j in obj) {
+            for (var j in obj) {
                 newArray.push(j)
             }
         }
         return newArray
     }
 
-    function values() {  // 返回值
+    function values(object) {  // 返回值
         var newArray = []
+        if (typeof object == 'object') {
+            for (var k of object) {
+                newArray.push(k)
+            }
+        }else{
+            for (var i = 0; i < object.length; i++) {
+                newArray.push(object[i])
+            }
+        }
+        return newArray
     }
     
     return {
@@ -160,5 +170,6 @@ var ahui_qn = function () {
         zip : zip,
         unzip : unzip,
         keys : keys,
+        values : values,
     }
 }();
