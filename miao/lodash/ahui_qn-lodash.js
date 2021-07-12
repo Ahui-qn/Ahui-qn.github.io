@@ -36,11 +36,9 @@ var ahui_qn = function () {
         return newArray
     }
 
-
-
     function flattenDeep (array){   // 降低多维数组为一维数组
         return array.reduce((newArray, item) => {  // 创建一个新数组，和数组传入的每个元素
-            return newArray.concat(Array.isArray(item) ? flattenDeep(item) : item)   // 创建一个空数组，判断传入的数组元素是否是数组，如果是直接拼，如果不是，就分解
+            return newArray.concat(Array.isArray(item) ? flattenDeep(item) : item)   
         },[])
     }
 
@@ -111,7 +109,6 @@ var ahui_qn = function () {
         return newArray
     }
     
-
     function unzip(array) {
         var newArray = []
         var count = array[0].length
@@ -128,7 +125,7 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function keys (object) {
+    function keys (object) {   // 返回key
         var newArray = []
         if (typeof object == 'object') {
             for (let k in object) {
@@ -140,21 +137,22 @@ var ahui_qn = function () {
                 obj[i] = object[i]
             }
             for (let j in obj) {
-                
+                newArray.push(j)
             }
         }
-        
+        return newArray
     }
 
+    function values() {  // 返回值
+        var newArray = []
+    }
+    
     return {
         chunk : chunk,
         compact : compact,
         unique : unique,
-        uniqueBy : uniqueBy,
         flattenDeep : flattenDeep,
         flattenDepth : flattenDepth,
-        groupBy : gorupBy,
-        keyBy : keyBy,
         forEach : forEach,
         map : map,
         filter : filter,
