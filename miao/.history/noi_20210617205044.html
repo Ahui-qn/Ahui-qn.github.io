@@ -135,7 +135,7 @@
 
     function prime(n) {
         let a = Math.sqrt(n)
-        for (let i = 2; i <= a; i++) { //判断小于等于他平方根的数
+        for (let i = 2; i <= a; i++) {
             if (n % i == 0) {
                 return false // 如果能被整除则不是质数
             }
@@ -183,7 +183,7 @@
             a = b
             b = c
         } while (c)
-        let icfStore = a // 最后模完等于0，由于交换了一轮，所以最小公约数是a
+        let icfStore  = a // 最后模完等于0，由于交换了一轮，所以最小公约数是a
         let icmStore = icf * icm / icfStore // 最大公倍数
         console.log(icfStore, icmStore)
     }
