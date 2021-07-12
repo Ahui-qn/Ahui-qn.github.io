@@ -17,9 +17,9 @@ var ahui_qn = function () {
         for (var i = 0; i < array.length; i++) {
             if (array[i]){
                 newArray.push(array[i])
-        }
-        return newArray
+            }
          }
+         return newArray
     }
 
     function unique (array) {   // 数组去重
@@ -79,7 +79,7 @@ var ahui_qn = function () {
     function filter (array, f) {
         var newArray = []
         for (var i = 0; i < array.length; i++) {
-            if (f(array[i],i)) {
+            if (f(array[i])) {
                 return newArray.push(array[i])
             }
         }
@@ -157,6 +157,25 @@ var ahui_qn = function () {
         return newArray
     }
     
+    function every(array, test) {
+        for (let i = 0; i < array.length; i++) {
+            if (test(array[i])) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
+    function some(array, test) {
+        for (let i = 0; i < array.length; i++) {
+            if (!test(array[i])) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
     return {
         chunk : chunk,
         compact : compact,
@@ -171,5 +190,8 @@ var ahui_qn = function () {
         unzip : unzip,
         keys : keys,
         values : values,
+        every : every,
+        some : some,
+
     }
 }();
