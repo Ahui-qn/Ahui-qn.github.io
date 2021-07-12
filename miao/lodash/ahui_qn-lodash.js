@@ -135,7 +135,11 @@ var ahui_qn = function () {
                 newArray.push(k)
             }
         }else {
+            let obj = {}
             for (let i = 0; i < object.length; i++) {
+                obj[i] = object[i]
+            }
+            for (let j in obj) {
                 
             }
         }
