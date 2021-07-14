@@ -222,7 +222,7 @@ var ahui_qn = function () {
             }
         }
     }
-    function difference (array, ...values) {
+    function difference (array, values = []) {
         var newArray = []
         newArray = array.slice()
         values.forEach((x) => {

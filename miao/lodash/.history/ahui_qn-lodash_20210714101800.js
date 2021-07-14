@@ -222,7 +222,7 @@ var ahui_qn = function () {
             }
         }
     }
-    function difference (array, ...values) {
+    function difference (array, values = []) {
         var newArray = []
         newArray = array.slice()
         values.forEach((x) => {
@@ -264,25 +264,17 @@ var ahui_qn = function () {
         })
         return newArray
     }
-    function differenceWith (array, values = [],f) {
+    function differenceWith (array, values = []) {
         var newArray = []
         newArray = array.slice()
-        if (typeof f == 'function') {
-            for (let i = 0; i < values.length; i++) {
-                  values[i] =  f(values[i])
-            }
-            for (let i = 0; i < newArray.length; i++) {
-                newArray[i] =  f(newArray[i])
-          }
-          values.forEach((x) => {
+        values.forEach((x) => {
             newArray.forEach((j,i) => {
-                if (isEqual(x,j)) {
-                    array.splice(i,1)
+                if (x == j) {
+                    newArray.splice(i,1)
                 }
             })
         })
-        return array
-        }
+        return newArray
     }
 
     return {
