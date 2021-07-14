@@ -216,7 +216,7 @@ var ahui_qn = function () {
             }
         }
     }
-
+    
     function difference (array, ...values) {
         var newArray = array.slice()
         values = values.flat()
@@ -231,9 +231,11 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function differenceBy (array, ...values, f) {
-        var newArray = array.slice()
+    function differenceBy (array, ...values = [], f) {
+        var newArray = []
+        newArray = array.slice()
         values = values.flat()
+
         if (typeof f == 'function') {
             for (let i = 0; i < values.length; i++) {
                   values[i] =  f(values[i])
@@ -261,8 +263,9 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function differenceWith (array, values,f) {
-        var newArray = array.slice()
+    function differenceWith (array, values = [],f) {
+        var newArray = []
+        newArray = array.slice()
         if (typeof f == 'function') {
             for (let i = 0; i < values.length; i++) {
                   values[i] =  f(values[i])

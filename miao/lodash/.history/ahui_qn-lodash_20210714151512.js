@@ -262,7 +262,8 @@ var ahui_qn = function () {
     }
 
     function differenceWith (array, values,f) {
-        var newArray = array.slice()
+        var newArray = []
+        newArray = array.slice()
         if (typeof f == 'function') {
             for (let i = 0; i < values.length; i++) {
                   values[i] =  f(values[i])
