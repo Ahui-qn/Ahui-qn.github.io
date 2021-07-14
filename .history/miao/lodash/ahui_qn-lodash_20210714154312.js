@@ -317,6 +317,5 @@ var ahui_qn = function () {
         differenceBy : differenceBy,
         differenceWith : differenceWith,
         drop : drop,
-        dropRight : dropRight,
     }
 }();

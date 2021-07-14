@@ -292,7 +292,7 @@ var ahui_qn = function () {
     function dropRight(array, n = 1) {
         var newArray = array.slice()
         for (let i = 0; i < n; i++) {
-            newArray.pop()
+            newArray.shift()
         }
         return newArray
     }
@@ -317,6 +317,5 @@ var ahui_qn = function () {
         differenceBy : differenceBy,
         differenceWith : differenceWith,
         drop : drop,
-        dropRight : dropRight,
     }
 }();

@@ -281,22 +281,6 @@ var ahui_qn = function () {
         }
     }
 
-    function drop(array, n = 1) {
-        var newArray = array.slice()
-        for (let i = 0; i < n; i++) {
-            newArray.shift()
-        }
-        return newArray
-    }
-
-    function dropRight(array, n = 1) {
-        var newArray = array.slice()
-        for (let i = 0; i < n; i++) {
-            newArray.pop()
-        }
-        return newArray
-    }
-    
     return {
         chunk : chunk,
         compact : compact,
@@ -316,7 +300,5 @@ var ahui_qn = function () {
         difference : difference,
         differenceBy : differenceBy,
         differenceWith : differenceWith,
-        drop : drop,
-        dropRight : dropRight,
     }
 }();
