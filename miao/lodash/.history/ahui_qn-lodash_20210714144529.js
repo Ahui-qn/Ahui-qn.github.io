@@ -223,24 +223,18 @@ var ahui_qn = function () {
         }
     }
     function difference (array, ...values) {
-        var newArray = array.slice()
-        values = values.flat()
+        var newArray = []
+        newArray = array.slice()
+        for (let i = 0; i < values.length; i++) {
+            let newidx = newArray.indexOf(values[i])
 
-        values.forEach((x) => {
-            newArray.forEach((j,i) => {
-                if (x == j) {
-                    newArray.splice(i,1)
-                }
-            })
-        })
+        }
         return newArray
     }
 
-    function differenceBy (array, ...values = [], f) {
+    function differenceBy (array, values = [], f) {
         var newArray = []
         newArray = array.slice()
-        values = values.flat()
-        
         if (typeof f == 'function') {
             for (let i = 0; i < values.length; i++) {
                   values[i] =  f(values[i])

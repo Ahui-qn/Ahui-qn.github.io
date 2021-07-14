@@ -225,7 +225,6 @@ var ahui_qn = function () {
     function difference (array, ...values) {
         var newArray = array.slice()
         values = values.flat()
-
         values.forEach((x) => {
             newArray.forEach((j,i) => {
                 if (x == j) {
@@ -236,11 +235,9 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function differenceBy (array, ...values = [], f) {
+    function differenceBy (array, values = [], f) {
         var newArray = []
         newArray = array.slice()
-        values = values.flat()
-        
         if (typeof f == 'function') {
             for (let i = 0; i < values.length; i++) {
                   values[i] =  f(values[i])
