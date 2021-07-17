@@ -396,18 +396,24 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function pullAll (array, ...values) {  // 去除多维
+    function pullAll (array, ...values) {
+        if (array.length == 0) {
+            return array
+        }
         var newArray = []
         array.forEach((it) => {
-            if (Array.isArray(it)) {
-                it = pullAll(it,...values)  
+            if (Array.isArray(it)) {  // 只展开到二维
+                pullAll(it,...values)
                 for (var val of it) {
-                    newArray.push(val)
+                    if (!values.includes(val)) {
+                        newArray.push(val)
+                    }
                 }
                 return
-            }else if (!values.includes(it)) {
+            }
+            if (!values.includes(it)) {
                 newArray.push(it)
-            }            
+            }
         })
         return newArray
     }

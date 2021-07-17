@@ -402,7 +402,9 @@ var ahui_qn = function () {
             if (Array.isArray(it)) {
                 it = pullAll(it,...values)  
                 for (var val of it) {
-                    newArray.push(val)
+                    if (!values.includes(val)) {
+                        newArray.push(val)
+                    }
                 }
                 return
             }else if (!values.includes(it)) {
