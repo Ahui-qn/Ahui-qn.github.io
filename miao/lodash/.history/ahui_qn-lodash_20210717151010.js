@@ -202,6 +202,68 @@ var ahui_qn = function () {
         }
         return newArray
     }
+    
+    function every(collection, f) {  // 不同类型
+        if (typeof(f) == 'function') {
+            return collection.reduce()
+        }
+        if (Array.isArray(f)) {  // 对比键值对
+            for (var k of collection) {
+                if (k[f[0]] !== f[1]) {
+                    return false
+                }
+            }
+            return true
+        }
+        if (typeof(f) == 'object') {
+            for (var k of collection) {
+                if (!isEqual(k, f)) {   // 深度对比
+                    return false
+                }
+            }
+            return true
+        }
+        if (typeof(f) == 'string') {
+            for (var k of collection) {
+                if (!k[f]) {
+                    return false
+                }
+            }
+            return true
+        }
+    }
+
+    function some(collection, f) {
+        if (typeof(f) == 'function') {
+            return collection.reduce((a, b) => {
+                f(a) || f(b)
+            })
+        }
+        if (Array.isArray(f)) {
+            for (var k of collection) {
+                if (k[f[0]] == f[1]) {
+                    return true
+                }
+            }
+            return false
+        }
+        if (typeof(f) == 'object') {
+            for (var k of collection) {
+                if (isEqual(k, f)) {
+                    return true
+                }
+            }
+            return false
+        }
+        if (typeof(f) == 'string') {
+            for (var k of collection) {
+                if (k[f]) {
+                    return true
+                }
+            }
+            return false
+        }
+    }
 
     function difference (array, ...values) {
         var newArray = array.slice()
@@ -283,60 +345,7 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function concat(array,...values) {
-        for (let i = 0; i < values.length; i++) {
-            if (Array.isArray(values[i])) {
-                values[i].forEach(a => array.push(a))
-            }else {
-                array.push(values[i])
-            }
-        }
-        return array
-    }  
-
-    function fill (array, filler, idx = 0, toIdx = array.length) {
-        for (let i = idx; i < toIdx; i++) {
-            array[i] = filler
-        }
-        return array
-    }
-
-    function head (array) {
-        var newArray = array
-        return newArray.shift()
-    }
-
-    function indexOf (array, value, fromIndex = 0) {
-        for (let i = fromIndex; i < array.length; i++) {
-            if (value == array[Math.abs(i)]) return Math.abs(i)
-        }
-        return -1
-    }
     
-    function initial (array) {
-        var newArray = []
-        for (let i = 0; i < array.length - 1; i++) {
-            newArray.push(array[i])
-        }
-        return newArray
-    }
-
-    function intersection (...array) {
-        var newArray = []
-        for (let i = 0; i < array[0].length; i++) {
-            for (let j = 1; j < array.length; j++) {
-                if (!(array[j].includes(array[0][i]))) {
-                    break  // 没有直接break
-                }  
-            }
-            if (j == array.length) {   // 当后面两个数组都遍历完成后
-                newArray.push(array[0][i])
-            }
-        return newArray
-        }
-    }    
-    
-
     return {
         chunk : chunk,
         compact : compact,
@@ -351,15 +360,12 @@ var ahui_qn = function () {
         unzip : unzip,
         keys : keys,
         values : values,
+        every : every,
+        some : some,
         difference : difference,
         differenceBy : differenceBy,
         differenceWith : differenceWith,
         drop : drop,
         dropRight : dropRight,
-        concat : concat,
-        fill : fill,
-        head : head,
-        indexOf : indexOf,
-        intersection : intersection,
     }
 }();

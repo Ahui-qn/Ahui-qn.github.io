@@ -293,50 +293,9 @@ var ahui_qn = function () {
         }
         return array
     }  
-
     function fill (array, filler, idx = 0, toIdx = array.length) {
-        for (let i = idx; i < toIdx; i++) {
-            array[i] = filler
-        }
-        return array
+        
     }
-
-    function head (array) {
-        var newArray = array
-        return newArray.shift()
-    }
-
-    function indexOf (array, value, fromIndex = 0) {
-        for (let i = fromIndex; i < array.length; i++) {
-            if (value == array[Math.abs(i)]) return Math.abs(i)
-        }
-        return -1
-    }
-    
-    function initial (array) {
-        var newArray = []
-        for (let i = 0; i < array.length - 1; i++) {
-            newArray.push(array[i])
-        }
-        return newArray
-    }
-
-    function intersection (...array) {
-        var newArray = []
-        for (let i = 0; i < array[0].length; i++) {
-            for (let j = 1; j < array.length; j++) {
-                if (!(array[j].includes(array[0][i]))) {
-                    break  // 没有直接break
-                }  
-            }
-            if (j == array.length) {   // 当后面两个数组都遍历完成后
-                newArray.push(array[0][i])
-            }
-        return newArray
-        }
-    }    
-    
-
     return {
         chunk : chunk,
         compact : compact,
@@ -358,8 +317,5 @@ var ahui_qn = function () {
         dropRight : dropRight,
         concat : concat,
         fill : fill,
-        head : head,
-        indexOf : indexOf,
-        intersection : intersection,
     }
 }();

@@ -322,21 +322,15 @@ var ahui_qn = function () {
     }
 
     function intersection (...array) {
-        var newArray = []
         for (let i = 0; i < array[0].length; i++) {
             for (let j = 1; j < array.length; j++) {
-                if (!(array[j].includes(array[0][i]))) {
-                    break  // 没有直接break
-                }  
+                if (array[0][i].includes(array[j])) {
+                    if (j == array.length) {  
+                    }
+                }
             }
-            if (j == array.length) {   // 当后面两个数组都遍历完成后
-                newArray.push(array[0][i])
-            }
-        return newArray
         }
-    }    
-    
-
+    }
     return {
         chunk : chunk,
         compact : compact,
@@ -360,6 +354,5 @@ var ahui_qn = function () {
         fill : fill,
         head : head,
         indexOf : indexOf,
-        intersection : intersection,
     }
 }();
