@@ -119,14 +119,6 @@ var ahui_qn = function () {
         return newArray
     }
 
-    function fromPairs (array) {
-        var map = {}
-        for (let i = 0; i < array[0].length; i++) {
-            map[array[i][0]] = array[i][1]
-        }
-        return map
-    }
-
     function forEach (collection , f) {
         for (var i = 0; i < collection.length; i++) {
             f(collection[i], i, collection)
@@ -329,7 +321,7 @@ var ahui_qn = function () {
 
     function indexOf (array, value, fromIndex = 0) {
         for (let i = fromIndex; i < array.length; i++) {
-            if (value == array[i]) return i
+            if (value == array[Math.abs(i)]) return Math.abs(i)
         }
         return -1
     }
@@ -344,8 +336,8 @@ var ahui_qn = function () {
 
     function intersection (...array) {
         var newArray = []
-        for (var i = 0; i < array[0].length; i++) {
-            for (var j = 1; j < array.length; j++) {
+        for (let i = 0; i < array[0].length; i++) {
+            for (let j = 1; j < array.length; j++) {
                 if (!(array[j].includes(array[0][i]))) {
                     break  // 没有直接break
                 }  
@@ -357,54 +349,6 @@ var ahui_qn = function () {
         }
     }    
     
-    function join (array, separator = ',') {
-        var sum = array.length
-        return  array.reduce((str,x) => {
-             sum--
-             if (!(sum == 0)) return str += x + separator 
-             return str += x
-        },'')
-    }
-   
-    function last (array) {
-        return array.pop()
-    }
-
-    function lastIndexOf (array, value, fromIndex = array.length - 1) {
-        while (fromIndex >= 0) {
-            if (array[fromIndex] == value) return fromIndex
-            fromIndex--
-        }
-        return -1
-    }
-
-    function nth (array, n = 0) {
-        if (n >= 0) {
-            return array[n]
-        }else {
-            return array[n + array.length]
-        }
-    }
-    
-    function pull (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
-
-    function pullAll (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
 
     return {
         chunk : chunk,
@@ -413,7 +357,6 @@ var ahui_qn = function () {
         flatten : flatten,
         flattenDeep : flattenDeep,
         flattenDepth : flattenDepth,
-        fromPairs : fromPairs,
         forEach : forEach,
         map : map,
         filter : filter,
@@ -431,13 +374,6 @@ var ahui_qn = function () {
         fill : fill,
         head : head,
         indexOf : indexOf,
-        initial : initial,
         intersection : intersection,
-        join : join,
-        last : last,
-        lastIndexOf : lastIndexOf,
-        nth : nth,
-        pull : pull,
-        pullAll : pullAll,
     }
 }();

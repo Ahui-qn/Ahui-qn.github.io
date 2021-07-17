@@ -388,17 +388,7 @@ var ahui_qn = function () {
     
     function pull (array, ...values) {
         var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
-
-    function pullAll (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
+        array.forEach((it, idx) => {
             if (!values.includes(it)) {
                 newArray.push(it)
             }
@@ -438,6 +428,6 @@ var ahui_qn = function () {
         lastIndexOf : lastIndexOf,
         nth : nth,
         pull : pull,
-        pullAll : pullAll,
+        pullAll
     }
 }();

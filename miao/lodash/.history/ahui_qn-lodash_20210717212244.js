@@ -378,34 +378,6 @@ var ahui_qn = function () {
         return -1
     }
 
-    function nth (array, n = 0) {
-        if (n >= 0) {
-            return array[n]
-        }else {
-            return array[n + array.length]
-        }
-    }
-    
-    function pull (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
-
-    function pullAll (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
-
     return {
         chunk : chunk,
         compact : compact,
@@ -436,8 +408,5 @@ var ahui_qn = function () {
         join : join,
         last : last,
         lastIndexOf : lastIndexOf,
-        nth : nth,
-        pull : pull,
-        pullAll : pullAll,
     }
 }();

@@ -370,42 +370,13 @@ var ahui_qn = function () {
         return array.pop()
     }
 
-    function lastIndexOf (array, value, fromIndex = array.length - 1) {
-        while (fromIndex >= 0) {
+    function lastIndexOf(array, value, fromIndex = array.length) {
+        while (fromIndex) {
             if (array[fromIndex] == value) return fromIndex
             fromIndex--
         }
         return -1
     }
-
-    function nth (array, n = 0) {
-        if (n >= 0) {
-            return array[n]
-        }else {
-            return array[n + array.length]
-        }
-    }
-    
-    function pull (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
-
-    function pullAll (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
-            }
-        })
-        return newArray
-    }
-
     return {
         chunk : chunk,
         compact : compact,
@@ -435,9 +406,6 @@ var ahui_qn = function () {
         intersection : intersection,
         join : join,
         last : last,
-        lastIndexOf : lastIndexOf,
-        nth : nth,
-        pull : pull,
-        pullAll : pullAll,
+
     }
 }();

@@ -357,53 +357,19 @@ var ahui_qn = function () {
         }
     }    
     
-    function join (array, separator = ',') {
-        var sum = array.length
-        return  array.reduce((str,x) => {
-             sum--
-             if (!(sum == 0)) return str += x + separator 
-             return str += x
-        },'')
-    }
-   
-    function last (array) {
-        return array.pop()
-    }
-
-    function lastIndexOf (array, value, fromIndex = array.length - 1) {
-        while (fromIndex >= 0) {
-            if (array[fromIndex] == value) return fromIndex
-            fromIndex--
-        }
-        return -1
-    }
-
-    function nth (array, n = 0) {
-        if (n >= 0) {
-            return array[n]
-        }else {
-            return array[n + array.length]
-        }
-    }
-    
-    function pull (array, ...values) {
+    function intersectionBy (...array,f) {
         var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
+        for (var i = 0; i < array[0].length; i++) {
+            for (var j = 1; j < array.length; j++) {
+                if (!(array[j].includes(array[0][i]))) {
+                    break  // 没有直接break
+                }  
             }
-        })
-        return newArray
-    }
-
-    function pullAll (array, ...values) {
-        var newArray = []
-        array.forEach((it) => {
-            if (!values.includes(it)) {
-                newArray.push(it)
+            if (j == array.length) {   // 当后面两个数组都遍历完成后
+                newArray.push(array[0][i])
             }
-        })
         return newArray
+        }
     }
 
     return {
@@ -433,11 +399,6 @@ var ahui_qn = function () {
         indexOf : indexOf,
         initial : initial,
         intersection : intersection,
-        join : join,
-        last : last,
-        lastIndexOf : lastIndexOf,
-        nth : nth,
-        pull : pull,
-        pullAll : pullAll,
+        intersectionBy : intersectionBy,
     }
 }();

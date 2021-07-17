@@ -388,7 +388,7 @@ var ahui_qn = function () {
     
     function pull (array, ...values) {
         var newArray = []
-        array.forEach((it) => {
+        array.forEach((it, idx) => {
             if (!values.includes(it)) {
                 newArray.push(it)
             }
@@ -398,7 +398,7 @@ var ahui_qn = function () {
 
     function pullAll (array, ...values) {
         var newArray = []
-        array.forEach((it) => {
+        array.forEach((it, idx) => {
             if (!values.includes(it)) {
                 newArray.push(it)
             }
