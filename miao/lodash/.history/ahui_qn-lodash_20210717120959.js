@@ -191,7 +191,7 @@ var ahui_qn = function () {
 
     function values(object) {  // 返回值
         var newArray = []
-        if (typeof(object) == 'object') {
+        if (typeof object == 'object') {
             for (var k of object) {
                 newArray.push(k)
             }
@@ -203,31 +203,31 @@ var ahui_qn = function () {
         return newArray
     }
     
-    function every(collection, f) {  // 不同类型
+    function every(collection, f) {
         if (typeof(f) == 'function') {
             return collection.reduce((a, b) => {
-                f(a) && f(b)     
+                f(a) && f(b)
             })
         }
         if (Array.isArray(f)) {
-            for (var k of collection) {
-                if (k[f[0]] !== f[1]) {
+            for (var key of collection) {
+                if (key[f[0]] !== f[1]) {
                     return false
                 }
             }
             return true
         }
         if (typeof(f) == 'object') {
-            for (var k of collection) {
-                if (!isEqual(k, f)) {   // 深度对比
+            for (var key of collection) {
+                if (!isEqual(key, f)) {
                     return false
                 }
             }
             return true
         }
         if (typeof(f) == 'string') {
-            for (var k of collection) {
-                if (!k[f]) {
+            for (var key of collection) {
+                if (!key[f]) {
                     return false
                 }
             }
@@ -235,35 +235,13 @@ var ahui_qn = function () {
         }
     }
 
-    function some(collection, f) {
-        if (typeof(f) == 'function') {
-            return collection.reduce((a, b) => {
-                f(a) || f(b)
-            })
-        }
-        if (Array.isArray(f)) {
-            for (var k of collection) {
-                if (k[f[0]] == f[1]) {
-                    return true
-                }
+    function some(array, test) {
+        for (let i = 0; i < array.length; i++) {
+            if (!test(array[i],i)) {
+                return true
+            } else {
+                return false
             }
-            return false
-        }
-        if (typeof(f) == 'object') {
-            for (var k of collection) {
-                if (isEqual(k, f)) {
-                    return true
-                }
-            }
-            return false
-        }
-        if (typeof(f) == 'string') {
-            for (var k of collection) {
-                if (k[f]) {
-                    return true
-                }
-            }
-            return false
         }
     }
 

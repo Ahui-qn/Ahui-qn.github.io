@@ -191,7 +191,7 @@ var ahui_qn = function () {
 
     function values(object) {  // 返回值
         var newArray = []
-        if (typeof(object) == 'object') {
+        if (typeof object == 'object') {
             for (var k of object) {
                 newArray.push(k)
             }
