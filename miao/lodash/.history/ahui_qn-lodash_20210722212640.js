@@ -405,7 +405,7 @@ var ahui_qn = function () {
                     newArray.push(val)
                 }
                 return
-            }else if (!values[0].includes(it)) {
+            }else if (!values.includes(it)) {
                 newArray.push(it)
             }            
         })

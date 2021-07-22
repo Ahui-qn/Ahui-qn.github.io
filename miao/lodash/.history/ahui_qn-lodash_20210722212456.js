@@ -357,12 +357,12 @@ var ahui_qn = function () {
         }
     }    
     
-    function join (array, separator = ',') {
+    function join (array, String(separator = ',')) {
         var sum = array.length
         return  array.reduce((str,x) => {
              sum--
-             if (!(sum == 0)) return str += String(x) + separator 
-             return str += String(x)
+             if (!(sum == 0)) return str += x + separator 
+             return str += x
         },'')
     }
    
@@ -405,7 +405,7 @@ var ahui_qn = function () {
                     newArray.push(val)
                 }
                 return
-            }else if (!values[0].includes(it)) {
+            }else if (!values.includes(it)) {
                 newArray.push(it)
             }            
         })
