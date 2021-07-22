@@ -449,16 +449,6 @@ var ahui_qn = function () {
         }
         return i
     }
-
-    function sortedLastIndexOf (array, value) {
-        for (var i = array.length - 1; i >= 0; i--) {
-            if (array[i] == value) {
-                return i
-            }
-        }
-        return -1
-    }
-
     return {
         chunk : chunk,
         compact : compact,
@@ -496,6 +486,5 @@ var ahui_qn = function () {
         sortedIndex : sortedIndex,
         sortedIndexOf : sortedIndexOf,
         sortedLastIndex : sortedLastIndex,
-        sortedLastIndexOf : sortedLastIndexOf,
     }
 }();
