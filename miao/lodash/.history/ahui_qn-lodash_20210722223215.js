@@ -462,7 +462,7 @@ var ahui_qn = function () {
     function sortedUniq (array) {
         var newArray = []
         var roverRepeat = new Set(array)
-         for (var key of roverRepeat) {
+         for (var key in roverRepeat) {
               newArray.push(key)
          }
          return newArray

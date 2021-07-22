@@ -460,14 +460,8 @@ var ahui_qn = function () {
     }
 
     function sortedUniq (array) {
-        var newArray = []
-        var roverRepeat = new Set(array)
-         for (var key of roverRepeat) {
-              newArray.push(key)
-         }
-         return newArray
+        
     }
-
     return {
         chunk : chunk,
         compact : compact,
@@ -506,6 +500,6 @@ var ahui_qn = function () {
         sortedIndexOf : sortedIndexOf,
         sortedLastIndex : sortedLastIndex,
         sortedLastIndexOf : sortedLastIndexOf,
-        sortedUniq : sortedUniq,
+
     }
 }();
