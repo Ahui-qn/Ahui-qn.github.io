@@ -424,14 +424,6 @@ var ahui_qn = function () {
         return array
     }
 
-    function sortedIndex (array, value) {
-        for (var i = array.length - 1; i >= 0; i--) {
-            if (array[i] < value) {
-                return i + 1
-            }
-        } 
-    }
-
     return {
         chunk : chunk,
         compact : compact,
@@ -466,6 +458,5 @@ var ahui_qn = function () {
         pull : pull,
         pullAll : pullAll,
         reverse : reverse,
-        sortedIndex : sortedIndex,
     }
 }();

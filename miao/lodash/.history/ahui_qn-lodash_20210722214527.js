@@ -413,23 +413,12 @@ var ahui_qn = function () {
     }
 
     function reverse (array) {
-        var j = array.length - 1
+        var a = array.length - 1
         var swap = 0
+        var 
         for (var i = 0; i < array.length >> 1; i++) {
-            swap = array[i]
-            array[i] = array[j]
-            array[j] = swap
-            j--
-        }
-        return array
-    }
 
-    function sortedIndex (array, value) {
-        for (var i = array.length - 1; i >= 0; i--) {
-            if (array[i] < value) {
-                return i + 1
-            }
-        } 
+        }
     }
 
     return {
@@ -466,6 +455,5 @@ var ahui_qn = function () {
         pull : pull,
         pullAll : pullAll,
         reverse : reverse,
-        sortedIndex : sortedIndex,
     }
 }();

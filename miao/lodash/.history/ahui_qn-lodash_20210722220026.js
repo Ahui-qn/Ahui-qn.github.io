@@ -427,7 +427,7 @@ var ahui_qn = function () {
     function sortedIndex (array, value) {
         for (var i = array.length - 1; i >= 0; i--) {
             if (array[i] < value) {
-                return i + 1
+                return i
             }
         } 
     }
