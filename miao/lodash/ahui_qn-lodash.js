@@ -134,7 +134,7 @@ var ahui_qn = function () {
         return collection
     }
 
-    function property(prop) {  // 传入一个属性名，返回里面这个函数参数这个对象的属性值
+    function property(prop) {  // 传入一个属性名，返回一个函数，这个函数接一个对象
         return function (obj) {
            return obj[prop]   // 获取obj对象的属性值
         }
@@ -155,20 +155,26 @@ var ahui_qn = function () {
         var key = ary[0]
         var val = ary[1]
         return function (obj) {
-            return obj[key] ==  val           
+            return obj[key] ==  val
+        }
+    }
+    function iteratee (maybePredicate) {   // 将收到的参数 转换 成一个接收对象为参数的一个函数
+        if (typeof maybePredicate == 'function') {
+            return maybePredicate
+        }
+        if (typeof maybePredicate == 'string') {  
+             return property(maybePredicate)
+        }
+        if (Array.isArray(maybePredicate)) {
+             return matchesProperty(...maybePredicate)
+        }
+        if (typeof maybePredicate == 'object') {    
+             return matches(...maybePredicate)
         }
     }
 
-    function map(collection, mapper) {
-        if (typeof mapper == 'string') {
-            mapper = property(mapper)
-        }
-        if (Array.isArray(mapper)) {
-            mapper = matchesProperty(...mapper)
-        }
-        if (typeof mapper == 'object') {
-            mapper = matches(...mapper)
-        }
+    function map(collection, mapper) { // mapper 是需要进行操作的对象
+        mapper = itaeartee()  // 将传入的不同类型的值都转为函数 ,再执行 map 该执行的操作
 
         var result = []
         for (var key in collection) {
@@ -177,14 +183,16 @@ var ahui_qn = function () {
         return result
     }
 
-    function filter (array, f) {
-        var newArray = []
-        for (var i = 0; i < array.length; i++) {
-            if (f(array[i])) {
-                 newArray.push(array[i])
+    function filter (collection, predicate) {
+        predicate = iteartee(predicate)
+
+        var result = []
+        for (var key in collection) {
+            if (predicate(collection[i], i , collection) === true) {
+                result.push(collection[i])
             }
         }
-        return newArray
+        return result
     }
 
 
@@ -515,6 +523,7 @@ var ahui_qn = function () {
         property : property,
         matches : matches ,
         matchesProperty : matchesProperty,
+        iteratee : iteratee,
         map : map,
         filter : filter,
         reduce : reduce,
