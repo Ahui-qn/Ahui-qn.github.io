@@ -134,48 +134,13 @@ var ahui_qn = function () {
         return collection
     }
 
-    function property(prop) {  // 传入一个属性名，返回里面这个函数参数这个对象的属性值
-        return function (obj) {
-           return obj[prop]   // 获取obj对象的属性值
+    function map(array, f) {
+        var newArray = []
+        for (var i = 0; i < array.length; i++) {
+            newArray.push(f(array[i], i))  // push进一个新的数组
         }
-    }
-
-    function matches (src) {
-        return function (obj) {
-            for (var key in src) {
-                if (src[key] !== obj[key]) {
-                    return false  
-                }
-            }
-            return true
-        }    
-    }
-
-    function matchesProperty(ary) {
-        var key = ary[0]
-        var val = ary[1]
-        return function (obj) {
-            return obj[key] ==  val           
-        }
-    }
-
-    function map(collection, mapper) {
-        if (typeof mapper == 'string') {
-            mapper = property(mapper)
-        }
-        if (Array.isArray(mapper)) {
-            mapper = matchesProperty(...mapper)
-        }
-        if (typeof mapper == 'object') {
-            mapper = matches(...mapper)
-        }
-
-        var result = []
-        for (var key in collection) {
-            result.push(mapper(collection[key], key , collection))
-        }
-        return result
-    }
+        return newArray
+      }
 
     function filter (array, f) {
         var newArray = []
@@ -512,9 +477,6 @@ var ahui_qn = function () {
         flattenDepth : flattenDepth,
         fromPairs : fromPairs,
         forEach : forEach,
-        property : property,
-        matches : matches ,
-        matchesProperty : matchesProperty,
         map : map,
         filter : filter,
         reduce : reduce,
