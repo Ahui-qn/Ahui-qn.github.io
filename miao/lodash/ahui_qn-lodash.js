@@ -511,6 +511,32 @@ var ahui_qn = function () {
          return newArray
     }
 
+    function get (obj, path) {
+        for (var i = 0; i < path.length; i++) {
+            if (obj == undefined) {
+                return defaultVal
+            }else {
+                obj = obj[path[i]]
+            }
+        } 
+        return obj
+    }
+
+    function bind (f, thisArg, ...fixedArgs) {
+        return function (...args) {
+            var ary = fixedArgs.slice()  // 复制一份
+            var j = 0
+            for (var i = 0; i < ary.length; i++) {
+                if (ary[i] == bind.placeholder) {
+                    if (j < args.length) {
+                        ary[i] = args[j++]
+                    }else {
+                        ary[i] = undefined
+                    }
+                }
+            }
+        }
+    }
     return {
         chunk : chunk,
         compact : compact,
@@ -554,5 +580,7 @@ var ahui_qn = function () {
         sortedLastIndex : sortedLastIndex,
         sortedLastIndexOf : sortedLastIndexOf,
         sortedUniq : sortedUniq,
+        get : get,
+        bind : bind,
     }
 }();
