@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section,pre,textarea{
+            margin: 0;
+            padding: 0;
+        } 
+        input[type="text"]{ 
+            width: 494px;
+        }
+        em {
+            background-color: rgb(130, 226, 255);
+            font-style: normal;
+        }
+        
+        em:nth-of-type(even) {
+            background-color: rgba(154, 211, 249, 0.672);
+        }
+        em:empty{
+            border-left: 1px dotted rgb(246, 93, 172);
+            margin-left: -1px;              /*border 需要占位，加个负margin抵消移位*/
+            background-color: #0000;
+        }
+        section {
+            width: 500px;
+            height:300px;
+            position: relative;
+
+        }
+        section pre {
+            height: 100%;
+            width: 100%;
+            position:absolute;
+            top: 1px;
+            left: 1px;
+            padding: 5px;
+            line-height: 1.2px;
+            font-size: 16px;
+            overflow-x: hidden;
+            font-family:consolas ;
+            color: transparent;
+
+        }
+        section textarea {
+            resize: none;
+            display:block;
+            font-size: 16px;
+            height: 100%;
+            width: 100%;
+            padding: 5px;
+            line-height: 1.2px;
+            position: relative;
+            z-index: 8;
+            background-color: rgba(207, 66, 66, 0);
+            font-family:consolas ;
+        }
+        p#regError{
+            margin: 0;
+            position: absolute;
+            font-size: 10px;
+            color: red;
+        }
+    </style>
+</head>
+    <div>
+        请输入正则表达式: 
+        <label for=""><input type="checkbox" onclick="run()"  id="ignoreCase">i </label>
+        <label for=""><input type="checkbox" onclick="run()" checked id="global">g  </label>
+        <label for=""><input type="checkbox" onclick="run()"  id="multi">m  </label>   
+        <br> 
+        <input type="text" id="regexp" value="fo.(" onkeyup="run()"> 
+        <p id="regError"></p>
+        <br><br>
+        请输入测试内容:<br>
+    <section>
+        <textarea  id="testcontent" cols="30" rows="10" onkeyup="run()" >hsgfoodafksffoosfsfdofoooofo dafgajhg
+        dadfa d  dafoo 
+       dd ada foo dadfoo</textarea> 
+        <pre id="result"></pre>
+     </section>
+    </div>  
+
+    <script>
+        function run() {  
+            var regexpSource = regexp.value  // 获取input 输入
+            var igmForm = getFlags()  // 获取RegExp的 igm 状态
+            if (regexpSource == '') {
+                result.innerHTML = ''   // 当input输入为空的时候，不匹配任何
+                return 
+            }
+            try {   // 如果有语法错误
+                var reg = new RegExp(regexpSource, igmForm) // 将拿到的输入  构建正则表达式
+                regError.innerHTML = ''
+            }catch (e){
+                regError.innerHTML = e.message  // 获取语法错误信息，展示到页面
+                result.innerHTML = ''    // 如果有错误，则下面的匹配不高亮
+                return
+            }
+            console.log(reg)
+            var matchTest =  testcontent.value   // 获取测试内容的 字符串
+            var match
+            if (reg.global) { // 如果有g 标志，循环匹配，如果没有，只匹配一次 
+                var resultHTML = ''  // 将匹配的结果放到result 上 并且将匹配到的字符拼上em标签使其高亮
+                var lastIndex = reg.lastIndex
+                while(match = reg.exec(matchTest)) {   // 有g标志的
+                    resultHTML += matchTest.slice(lastIndex, match.index) 
+                    resultHTML += '<em>' + match[0] + '</em>'
+                    lastIndex = reg.lastIndex
+                    if(match[0] == '') {  // 当匹配的是零宽的时候，reg的lastindex属性不会变，就会一直循环
+                        reg.lastIndex++
+                    }
+                }
+                resultHTML += matchTest.slice(lastIndex) 
+                result.innerHTML = resultHTML    
+            }else {   // 没有g标志的
+                var resultHTML = ''
+                match = reg.exec(matchTest)
+                resultHTML += matchTest.slice(0, match.index)
+                resultHTML += '<em>' + match[0] + '</em>'
+                resultHTML += matchTest.slice(match[0].length + match.index)  // 裁出 匹配后的第一个字符到最后的字符(reg.lastIndex没有改变,因为没有g)
+                result.innerHTML = resultHTML
+            }  
+        }  
+        run()   // 每次加载页面运行一次
+        
+        function getFlags () {  // 拿到igm的状态并拼上相应符号
+            var flags = ''
+            if (ignoreCase.checked) {
+                flags += 'i'
+            }
+            if (global.checked) {
+                flags += 'g'
+            }
+            if (multi.checked) {
+                flags += 'm'
+            }
+            return flags
+        }
+    </script>
+
+</body>
+</html>
