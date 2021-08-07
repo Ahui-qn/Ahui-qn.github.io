@@ -29,23 +29,16 @@
         }
         label {
             margin-right: 5px;
-            font-size: 15px;
+            font-size: 12px;
         }
         label input[type="checkbox"]{
             margin-right: 2px;
             vertical-align: middle;
             width: 15px;
-            height: 14px;
+            height: 15px;
         }
         input[type="text"]{ 
-            padding-left: 5px;
             width: 500px;
-            border-radius: 5px;
-            border: solid 1px rgb(127, 127, 127);
-        }
-        p.test {
-            font-size: 12px;
-            margin-top: 16px;
         }
         input::-webkit-input-placeholder{
             color:rgb(212, 212, 212);
@@ -100,7 +93,6 @@
             position: relative;
             z-index: 8;
             background-color: rgba(207, 66, 66, 0);
-            border-radius: 6px;
         }
         p#regError{
             margin: 0;
@@ -119,13 +111,10 @@
         textarea#regReplace { 
             width:500px ;  /* 替换 */
             margin-top: 5px;
-            padding:5px;
-            font-size: 16px;
+            padding:5px ;
             display: block;
             font-family:consolas;
             resize: none;
-            border-radius: 6px;
-            letter-spacing: 1px;
         }   
     </style>
 </head>
@@ -133,20 +122,21 @@
     <div>
         <span class="regex">请输入正则表达式</span>
         <span class="igm"> 
-            <label for=""><input type="checkbox" onclick="run()"  id="ignoreCase">i</label>
-            <label for=""><input type="checkbox" onclick="run()" checked id="global">g</label>
-            <label for=""><input type="checkbox" onclick="run()"  id="multi">m</label>  
+            <label for=""><input type="checkbox" onclick="run()"  id="ignoreCase">i </label>
+            <label for=""><input type="checkbox" onclick="run()" checked id="global">g  </label>
+            <label for=""><input type="checkbox" onclick="run()"  id="multi">m  </label>  
         </span> 
-        <br>
-        <input type="text" id="regexp" placeholder="/ 输入正则表达式内容 /" value="e" oninput="run()"> 
+        <br> 
+        <input type="text" id="regexp" placeholder="/ 输入正则表达式内容 /" value="foo" oninput="run()"> 
         <p id="regError"></p>
+        <br><br>
         <p class="test">请输入测试内容</p> 
     <section>
-        <textarea onscroll="setScroll()" id="testcontent" cols="30" rows="10" placeholder="输入测试内容" oninput="run()" >Please enter test content</textarea> 
+        <textarea onscroll="setScroll()" id="testcontent" cols="30" rows="10" placeholder="输入测试内容" oninput="run()" >foofffofoofooofofof</textarea> 
         <pre id="result"></pre>
      </section>
         <p class="swap" >替换</p>
-        <input type="text" id="replace"  placeholder= "输入替换内容" oninput="run()">
+        <input type="text" id="replace"  placeholder= "输入替换内容">
         <textarea  id="regReplace" cols="30" rows="10"  readonly></textarea>
     </div>  
 </div>

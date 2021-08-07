@@ -6,46 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        } 
         div.box {
             display: flex;
             justify-content: center;
             font-size: 18px;
         }
-        span.regex {
-            font-size: 12px;
-        }
         section,pre,textarea{
             margin: 0;
             padding: 0;
         } 
-        span.igm{
-            display: inline-block;
-            float: right;
-        }
-        label {
-            margin-right: 5px;
-            font-size: 15px;
-        }
         label input[type="checkbox"]{
-            margin-right: 2px;
-            vertical-align: middle;
+            vertical-align: bottom;
             width: 15px;
-            height: 14px;
+            height: 15px;
         }
         input[type="text"]{ 
-            padding-left: 5px;
-            width: 500px;
-            border-radius: 5px;
-            border: solid 1px rgb(127, 127, 127);
-        }
-        p.test {
-            font-size: 12px;
-            margin-top: 16px;
+            width: 504px;
+            
         }
         input::-webkit-input-placeholder{
             color:rgb(212, 212, 212);
@@ -75,15 +52,14 @@
             height:300px;
             position: relative;
         }
-        section pre,
-        section textarea {
+        section pre,section textarea {
             letter-spacing: 1px;
             height: 100%;
             width: 100%;
             line-height: 1.5em;
             font-size: 16px;
             padding: 5px;
-            font-family:consolas;
+            font-family:consolas ;
         }
         section pre {
             position:absolute;
@@ -100,7 +76,6 @@
             position: relative;
             z-index: 8;
             background-color: rgba(207, 66, 66, 0);
-            border-radius: 6px;
         }
         p#regError{
             margin: 0;
@@ -108,46 +83,27 @@
             font-size: 10px;
             color: red;
         }
-        p.swap {
-            margin-top: 14px;
-            font-size: 12px;
-        }
-        input#replace {
+        textarea#regReplace {
             display: block;
-            padding-left:5px ;
         }
-        textarea#regReplace { 
-            width:500px ;  /* 替换 */
-            margin-top: 5px;
-            padding:5px;
-            font-size: 16px;
-            display: block;
-            font-family:consolas;
-            resize: none;
-            border-radius: 6px;
-            letter-spacing: 1px;
-        }   
     </style>
 </head>
 <div class="box">
     <div>
-        <span class="regex">请输入正则表达式</span>
-        <span class="igm"> 
-            <label for=""><input type="checkbox" onclick="run()"  id="ignoreCase">i</label>
-            <label for=""><input type="checkbox" onclick="run()" checked id="global">g</label>
-            <label for=""><input type="checkbox" onclick="run()"  id="multi">m</label>  
-        </span> 
-        <br>
-        <input type="text" id="regexp" placeholder="/ 输入正则表达式内容 /" value="e" oninput="run()"> 
+        请输入正则表达式: 
+        <label for=""><input type="checkbox" onclick="run()"  id="ignoreCase">i </label>
+        <label for=""><input type="checkbox" onclick="run()" checked id="global">g  </label>
+        <label for=""><input type="checkbox" onclick="run()"  id="multi">m  </label>   
+        <br> 
+        <input type="text" id="regexp" placeholder="/ 输入正则表达式内容 /" value="" oninput="run()"> 
         <p id="regError"></p>
-        <p class="test">请输入测试内容</p> 
+        <br><br>
+        请输入测试内容:<br>
     <section>
-        <textarea onscroll="setScroll()" id="testcontent" cols="30" rows="10" placeholder="输入测试内容" oninput="run()" >Please enter test content</textarea> 
+        <textarea onscroll="setScroll()" id="testcontent" cols="30" rows="10" placeholder="输入测试内容" oninput="run()" ></textarea> 
         <pre id="result"></pre>
      </section>
-        <p class="swap" >替换</p>
-        <input type="text" id="replace"  placeholder= "输入替换内容" oninput="run()">
-        <textarea  id="regReplace" cols="30" rows="10"  readonly></textarea>
+        <textarea  id="regReplace" cols="30" rows="10"></textarea>
     </div>  
 </div>
     <script>
@@ -158,8 +114,6 @@
         function run() {  
             var regexpSource = regexp.value  // 获取input 输入
             var igmForm = getFlags()  // 获取RegExp的 igm 状态
-            regReplace.innerHTML = testcontent.value  
-            var ReplaceVal = replace.value
             if (regexpSource == '') {
                 result.innerHTML = ''   // 当input输入为空的时候，不匹配任何
                 return 
@@ -175,22 +129,19 @@
             console.log(reg)
             var matchTest =  testcontent.value   // 获取测试内容的 字符串
             var match
-
             if (reg.global) { // 如果有g 标志，循环匹配，如果没有，只匹配一次 
                 var resultHTML = ''  // 将匹配的结果放到result 上 并且将匹配到的字符拼上em标签使其高亮
                 var lastIndex = reg.lastIndex
                 while(match = reg.exec(matchTest)) {   // 有g标志的
                     resultHTML += matchTest.slice(lastIndex, match.index)   // 裁出匹配到的字符的前面部分
-                    resultHTML += '<em>' + match[0] + '</em>'  
+                    resultHTML += '<em>' + match[0] + '</em>'    
                     lastIndex = reg.lastIndex   // 改变lastIndex ，下一次从这个位置匹配
-                       // 
                     if(match[0] == '') {  // 当匹配的是零宽的时候，reg的lastindex属性不会变，就会一直循环
                         reg.lastIndex++
                     }
                 }
                 resultHTML += matchTest.slice(lastIndex) 
-                result.innerHTML = resultHTML  + '\n' 
-
+                result.innerHTML = resultHTML  + '\n'    
             }else {   // 没有g标志的
                 var resultHTML = ''
                 match = reg.exec(matchTest)
@@ -199,14 +150,9 @@
                 resultHTML += matchTest.slice(match[0].length + match.index)  // 裁出 匹配后的第一个字符到最后的字符(reg.lastIndex没有改变,因为没有g)
                 result.innerHTML = resultHTML  + '\n'
             }  
-
-            regReplace.innerHTML = regReplace.innerHTML.replace(reg, replace.value)
-
         }  
         run()   // 每次加载页面运行一次
         
-       
-
         function getFlags () {  // 拿到igm的状态并拼上相应符号
             var flags = ''
             if (ignoreCase.checked) {
