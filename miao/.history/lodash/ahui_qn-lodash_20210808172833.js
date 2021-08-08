@@ -537,11 +537,10 @@ var ahui_qn = function () {
             }
         }
     }
-var parseJson = (function () {
+var parseJson = function () {
         var i, str
 
-     return  function parseJson (input) {
-             str = input
+     return  function parseJson (str) {
              i = 0
             return parseValue()
         }
@@ -583,16 +582,16 @@ var parseJson = (function () {
         }
         function parseNumber () {
             var numStr = ''
-            while (str[i] >= '0' && str[i] <= '9') {
-                numStr += str[i++]
+            while (c >= '0' && c <= '9') {
+                numStr += c++
             }
             return Number(numStr)
         }
         function parseString () {
             i++  
             var result = ''
-            while (str[i] != '"') {
-                result += str[i++]
+            while (c != '"') {
+                result += c++
             }
             i++
             return result
@@ -600,12 +599,12 @@ var parseJson = (function () {
         function parseArray () {
             i++
             var result = []
-            while (str[i] != ']') {
+            while (c != ']') {
                 var arrayVal = parseValue()
                 result.push(arrayVal)
-                if (str[i] == ',') {
+                if (c == ',') {
                     i++
-                }else if (str[i] == ']') {
+                }else if (c == ']') {
                     i++
                     break
                 }
@@ -615,18 +614,18 @@ var parseJson = (function () {
         function parseObject () {
             var result = {}
             i++
-            while (str[i] != '}') {
+            while (c != '}') {
                 var key = parseString()
                 i++
                 result[key] = parseValue()
-                if (str[i] == ',') {
+                if (c == ',') {
                     i++
                 }
             }
             i++
             return result
         }
-    })()
+    }
 
 
 

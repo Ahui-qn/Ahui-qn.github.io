@@ -548,22 +548,22 @@ var parseJson = (function () {
 
         function parseValue() {
             var c = str[i] 
-            if (c == '[') {
+            if (str[i] == '[') {
                 return parseArray()
             }
-            if (c == '{') {
+            if (str[i] == '{') {
                 return parseObject()
             }
-            if (c == '"') {
+            if (str[i] == '"') {
                 return parseString()
             }
-            if (c == 'f') {
+            if (str[i] == 'f') {
                 return parseFlase()
             }
-            if (c == 't') {
+            if (str[i] == 't') {
                 return parseTrue()
             }
-            if (c == 'n') {
+            if (str[i] == 'n') {
                 return parseNull()
             }
             return parseNumber()
@@ -584,7 +584,7 @@ var parseJson = (function () {
         function parseNumber () {
             var numStr = ''
             while (str[i] >= '0' && str[i] <= '9') {
-                numStr += str[i++]
+                numStr += c++
             }
             return Number(numStr)
         }
@@ -592,7 +592,7 @@ var parseJson = (function () {
             i++  
             var result = ''
             while (str[i] != '"') {
-                result += str[i++]
+                result += c++
             }
             i++
             return result

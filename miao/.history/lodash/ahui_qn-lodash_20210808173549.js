@@ -584,7 +584,7 @@ var parseJson = (function () {
         function parseNumber () {
             var numStr = ''
             while (str[i] >= '0' && str[i] <= '9') {
-                numStr += str[i++]
+                numStr += c++
             }
             return Number(numStr)
         }
@@ -592,7 +592,7 @@ var parseJson = (function () {
             i++  
             var result = ''
             while (str[i] != '"') {
-                result += str[i++]
+                result += c++
             }
             i++
             return result
