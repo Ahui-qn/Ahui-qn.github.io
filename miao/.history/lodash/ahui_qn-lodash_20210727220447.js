@@ -537,10 +537,6 @@ var ahui_qn = function () {
             }
         }
     }
-
-    function paresJson () {
-        
-    }
     return {
         chunk : chunk,
         compact : compact,
@@ -586,6 +582,5 @@ var ahui_qn = function () {
         sortedUniq : sortedUniq,
         get : get,
         bind : bind,
-        paresJson: parseJson,
     }
 }();
