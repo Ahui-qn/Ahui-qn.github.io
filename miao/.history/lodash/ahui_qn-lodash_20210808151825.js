@@ -537,96 +537,48 @@ var ahui_qn = function () {
             }
         }
     }
-var parseJson = function () {
-        var i, str
 
-     return  function paresJson (str) {
-             i = 0
-            return parseValue()
-        }
-
-        function parseValue() {
-            var c = str[i] 
-            if (c == '[') {
-                return parseArray()
-            }
-            if (c == '{') {
-                return parseObject()
-            }
-            if (c == '"') {
-                return parseString()
-            }
-            if (c == 'f') {
-                return parseFlase()
-            }
-            if (c == 't') {
-                return parseTrue()
-            }
-            if (c == 'n') {
-                return parseNull()
-            }
-            return parseNumber()
-        }
-
-        function parseFlase() {
-            i += 5
-            return false
-        }
-        function parseTrue () {
-            i += 4
-            return true
-        }
-        function parseNull () {
-            i += 4
-            return null
-        }
-        function parseNumber () {
-            var numStr = ''
-            while (c >= '0' && c <= '9') {
-                numStr += c++
-            }
-            return Number(numStr)
-        }
-        function parseString () {
-            i++  
-            var result = ''
-            while (c != '"') {
-                result += c++
-            }
-            i++
-            return result
-        }
-        function parseArray () {
-            i++
-            var result = []
-            while (c != ']') {
-                var arrayVal = parseValue()
-                result.push(arrayVal)
-                if (c == ',') {
-                    i++
-                }else if (c == ']') {
-                    i++
-                    break
-                }
-            }
-            return result
-        }
-        function parseObject () {
-            var result = {}
-            i++
-            while (c != '}') {
-                var key = parseString()
-                i++
-                result[key] = parseValue()
-                if (c == ',') {
-                    i++
-                }
-            }
-            i++
-            return result
-        }
+    function paresJson (str) {
+        var i 
+        return parseValue()
     }
 
+    function parseValue() {
+        var c = str[i] 
+        if (c == '[') {
+            return parseArray()
+        }
+        if (c == '{') {
+            return parseObject()
+        }
+        if (c == '"') {
+            return parseString()
+        }
+        if (c == 'f') {
+            return parseFlase()
+        }
+        if (c == 't') {
+            return parseTrue()
+        }
+        if (c == 'n') {
+            return parseNull()
+        }
+        return parseNumber()
+    }
+
+    function parseFlase() {
+        i += 5
+        return false
+    }
+    function parseTrue () {
+        i += 4
+        return true
+    }
+    function parseNull () {
+        i += 4
+        return null
+    }
+    function 
 
 
     return {

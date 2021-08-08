@@ -540,8 +540,8 @@ var ahui_qn = function () {
 var parseJson = function () {
         var i, str
 
-     return  function paresJson (str) {
-             i = 0
+     return  function paresJson () {
+            var i 
             return parseValue()
         }
 
