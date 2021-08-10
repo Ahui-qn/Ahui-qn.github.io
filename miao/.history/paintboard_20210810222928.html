@@ -15,7 +15,6 @@
 </head>
 <body>
     <svg width="500" height="500"></svg>
-    <br>
     <input type="color" id="colorInput">
     <input type="range" max="10" min="1" id="rangeInput">
     <span id="rangeval"></span>
@@ -41,7 +40,6 @@
                     line.setAttribute('x2', pos.x)  
                     line.setAttribute('y2', pos.y)
                     line.setAttribute('stroke', colorInput.value)
-                    line.setAttribute('stroke-linecap', 'round')
                     line.setAttribute('stroke-width', 2)  
                 }else{
                     line.setAttribute('x1', pos.x)  
@@ -49,7 +47,6 @@
                     line.setAttribute('x2', lastpos.x)  
                     line.setAttribute('y2', lastpos.y)  
                     line.setAttribute('stroke', colorInput.value)
-                    line.setAttribute('stroke-linecap', 'round')
                     line.setAttribute('stroke-width', rangeInput.value)  
                 }
 

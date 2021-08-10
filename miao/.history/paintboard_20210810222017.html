@@ -15,22 +15,17 @@
 </head>
 <body>
     <svg width="500" height="500"></svg>
-    <br>
     <input type="color" id="colorInput">
-    <input type="range" max="10" min="1" id="rangeInput">
-    <span id="rangeval"></span>
+    <input type="range" id="rangeInput">
 
     <script>
         var draw = false
         var svg = document.querySelector('svg')
-        var span = document.querySelector('span')
-        span.innerHTML = rangeInput.value
 
         var lastpos = null   // 终点位置
 
         document.addEventListener('mousedown', function (e) {
             function drawDot(e) {  // 每次运行这个函数都画出一条线段
-                span.innerHTML = rangeInput.value
                 var pos = mousePos(svg)  // 鼠标相对于svg的位置
 
                 var line = document.createElementNS("http://www.w3.org/2000/svg", 'line')
@@ -41,7 +36,6 @@
                     line.setAttribute('x2', pos.x)  
                     line.setAttribute('y2', pos.y)
                     line.setAttribute('stroke', colorInput.value)
-                    line.setAttribute('stroke-linecap', 'round')
                     line.setAttribute('stroke-width', 2)  
                 }else{
                     line.setAttribute('x1', pos.x)  
@@ -49,10 +43,8 @@
                     line.setAttribute('x2', lastpos.x)  
                     line.setAttribute('y2', lastpos.y)  
                     line.setAttribute('stroke', colorInput.value)
-                    line.setAttribute('stroke-linecap', 'round')
-                    line.setAttribute('stroke-width', rangeInput.value)  
+                    line.setAttribute('stroke-width', rangeInput)  
                 }
-
                 lastpos = pos
                 svg.append(line)
             }
