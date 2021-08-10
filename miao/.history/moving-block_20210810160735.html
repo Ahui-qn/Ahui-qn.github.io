@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                border-radius: 999px;
+                background-color: cornflowerblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="top: 25px; left: 25px"></div>
+        <script>
+            var div = document.querySelector("div");
+            var vx = 0;
+
+            document.addEventListener("keydown", function (e) {
+                console.log(e);
+                if (e.key == "ArrowRight") {
+                    vx = 1;
+                }
+                if (e.key == "ArrowLeft") {
+                    vx = -1;
+                }
+            });
+
+            document.addEventListener("keyup", function (e) {
+                if (e.key == "ArrowRight") {
+                    vx = 0;
+                }
+                if (e.key == "ArrowLeft") {
+                    vx = 0;
+                }
+            });
+
+            requestAnimationFrame(function move() {
+                // 直接通过触发ArrowRight是不行的，因为当两个键同时按下的时候，会有一个事件被打断，无法持续触发，想要左键按住右键被打断的情况下还继续触发右键，需要requestAnimationFrame
+                div.style.left = parseFloat(div.style.left) + vx + "px";
+
+                requestAnimationFrame(move);
+            });
+        </script>
+    </body>
+</html>

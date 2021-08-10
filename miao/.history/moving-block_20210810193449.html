@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div:nth-child(1) {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                border-radius: 999px;
+                background-color: cornflowerblue;
+            }
+            div:nth-child(2) {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                border-radius: 999px;
+                background-color: rgb(249, 129, 147);
+            }
+        </style>
+    </head>
+    <body>
+        <div style="top: 25px; left: 25px"></div>
+        <div style="top: 80px; left: 25px"></div>
+        <script>
+            var blue = document.querySelector("div:nth-child(1)")
+            var pink = document.querySelector("div:nth-child(2)")
+            var blueVX = 0 /// 记录移动
+            var blueVY = 0
+
+            var pinkVX = 0
+            var pinkVY = 0
+
+            var rightPress = false // 记录左右键是否松开
+            var leftPress = false
+            var upPress = false
+            var downPress = false
+
+            var aPress = false
+            var dPress = false
+            var wPress = false
+            var sPress = false
+
+            document.addEventListener("keydown", function (e) {
+                console.log(e)
+                if (e.key == "ArrowRight") {
+                    blueVX = 1
+                    rightPress = true
+                }
+                if (e.key == "ArrowLeft") {
+                    blueVX = -1
+                    leftPress = true
+                }
+                if (e.key == "ArrowUp") {
+                    blueVY = -1
+                    upPress = true
+                }
+                if (e.key == "ArrowDown") {
+                    blueVY = 1
+                    downPress = true
+                }
+                // 下面是粉色球
+                if (e.key == "d") {
+                    pinkVX = 1
+                    rightPress = true
+                }
+                if (e.key == "a") {
+                    pinkVX = -1
+                    leftPress = true
+                }
+                if (e.key == "w") {
+                    pinkVY = -1
+                    upPress = true
+                }
+                if (e.key == "s") {
+                    pinkVY = 1
+                    downPress = true
+                }
+            })
+
+            document.addEventListener("keyup", function (e) {
+                if (e.key == "ArrowRight") {
+                    blueVX = 0
+                    rightPress = false //代表右键松开
+                    if (leftPress) {
+                        // 如果左键还没有松开
+                        blueVX = -1 // 继续往左移动
+                    } else {
+                        blueVX = 0 // 松开了就停止
+                    }
+                }
+                if (e.key == "ArrowLeft") {
+                    blueVX = 0
+                    leftPress = false
+                    if (rightPress) {
+                        blueVX = 1
+                    } else {
+                        blueVX = 0
+                    }
+                }
+                if (e.key == "ArrowUp") {
+                    blueVY = 0
+                    upPress = false
+                    if (downPress) {
+                        blueVY = 1
+                    } else {
+                        blueVY = 0
+                    }
+                }
+                if (e.key == "ArrowDown") {
+                    blueVY = 0
+                    downPress = false
+                    if (upPress) {
+                        blueVY = -1
+                    } else {
+                        blueVY = 0
+                    }
+                }
+                //  下面是粉色球
+                if (e.key == "d") {
+                    pinkVX = 0
+                    rightPress = false //代表右键松开
+                    if (leftPress) {
+                        // 如果左键还没有松开
+                        pinkVX = -1 // 继续往左移动
+                    } else {
+                        pinkVX = 0 // 松开了就停止
+                    }
+                }
+                if (e.key == "a") {
+                    pinkVX = 0
+                    leftPress = false
+                    if (rightPress) {
+                        pinkVX = 1
+                    } else {
+                        pinkVX = 0
+                    }
+                }
+                if (e.key == "w") {
+                    pinkVY = 0
+                    upPress = false
+                    if (downPress) {
+                        pinkVY = 1
+                    } else {
+                        pinkVY = 0
+                    }
+                }
+                if (e.key == "s") {
+                    pinkVY = 0
+                    downPress = false
+                    if (upPress) {
+                        pinkVY = -1
+                    } else {
+                        pinkVY = 0
+                    }
+                }
+            })
+
+            var lastTime = 0
+            requestAnimationFrame(function move(time) {
+                var timeDiff = time - lastTime
+                lastTime = time
+                // 直接通过触发ArrowRight是不行的，因为当两个键同时按下的时候，会有一个事件被打断，无法持续触发，想要左键按住右键被打断的情况下还继续触发右键，需要requestAnimationFrame
+                blue.style.left = parseFloat(blue.style.left) + blueVX * timeDiff * 0.02+ "px"
+                blue.style.top = parseFloat(blue.style.top) + blueVY * timeDiff * 0.02+ "px"
+
+                pink.style.left = parseFloat(pink.style.left) + pinkVX * timeDiff * 0.02+ "px"
+                pink.style.top = parseFloat(pink.style.top) + pinkVY * timeDiff * 0.02+ "px"
+                requestAnimationFrame(move)
+            })
+        </script>
+    </body>
+</html>
