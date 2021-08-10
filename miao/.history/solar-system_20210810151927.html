@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #sun,#earth,#moon {
+            position: absolute;
+            border-radius:10000px;
+            background-color:rgb(234, 78, 35);
+            width: 200px;
+            height: 200px;
+        }
+        #earth {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(88, 170, 242);
+        }
+        #moon {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(232, 226, 195);
+        }
+
+        section {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            border-radius: 999px;
+            margin-top: 400px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+    <div id="sun"></div>
+    <div id="earth"></div>
+    <div id="moon"></div>
+</section>
+    <script>
+        var sun = document.querySelector('#sun')
+        var earth = document.querySelector('#earth')
+        var moon = document.querySelector('#moon')
+
+    
+        requestAnimationFrame(function animate (time) {
+            var sunAngle = time * 0.0002
+            var earthAngle = time * 0.001
+            var moonAngle = time * 0.004
+
+            var sunX = Math.cos(sunAngle) * 100 + 50
+            var sunY = Math.sin(sunAngle) * 100 + 50
+            sun.style.left = sunX + 'px'
+            sun.style.top = sunY + 'px'
+
+            var earthX = Math.cos(earthAngle) * 300 + sunX + 100 - 40
+            var earthY = Math.sin(earthAngle) * 300 + sunY + 100 - 40
+            earth.style.left = earthX + 'px'
+            earth.style.top = earthY + 'px'
+
+            var moonX = Math.cos(moonAngle) * 40 + earthX + 40 - 10
+            var moonY = Math.sin(moonAngle) * 40 + earthY + 40 - 10
+            moon.style.top = moonY + 'px'
+            moon.style.left = moonX + 'px'
+
+            requestAnimationFrame(animate)
+        })
+    </script>
+</body>
+</html>
