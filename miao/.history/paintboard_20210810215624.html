@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red; 
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500"></svg>
+    <input type="color" id="colorInput">
+    <script>
+        var draw = false
+        var svg = document.querySelector('svg')
+
+        var lastpos = null   // 终点位置
+
+        document.addEventListener('mouesedown', function (e) {
+            function drawDot(e) {
+                var pos = mousePos(svg)  // 鼠标相对于svg的位置
+
+                var line = document.createElementNS("http://www.w3.org/2000/svg", 'line')
+
+                line.setAttribute('x1', pos.x)  // 起点位置
+                line.setAttribute('y1', pos.y)
+                line.setAttribute('x2', lastpos.x)  // 终点位置 
+                line.setAttribute('y2', lastpos.y)
+                line.setAttribute('stroke', 'red')
+                line.setAttribute('stroke-width', 2)  
+
+                lastpos = pos   // 起点位置等于终点位置
+            }
+
+
+
+        })
+
+        // 拿到鼠标相对于node的位置
+        function mousePos (node) {
+            var box = node.getBoundingClientRect()  // 元素相对于窗口的位置
+            return {
+                x : window.event.clientX - box.x,
+                y : window.event.clientY - box.y
+            }
+        }
+    </script>
+</body>
+</html>

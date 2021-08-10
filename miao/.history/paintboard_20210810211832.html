@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            width: 5px;
+            height: 5px;
+            background-color: cornflowerblue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500"></svg>
+    <input type="color" id="colorInput">
+    <script>
+        var draw = false
+        var svg = document.querySelector('svg')
+
+        // 拿到鼠标相对于node的位置
+        function mousePos (node) {
+            var box = node.getBoundingClientRect()  // 元素相对于窗口的位置
+            return {
+                x : window.event.clientX - box.x,
+                y : window.event.clientY - box.y
+            }
+        }
+    </script>
+</body>
+</html>
