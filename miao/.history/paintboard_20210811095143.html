@@ -29,8 +29,7 @@
         var lastpos = null   // 终点位置
 
         document.addEventListener('mousedown', function (e) {
-            // var div = document.createElement('div')  
-            // svg.append(div)
+            var div = createElemetnt('div')
             function drawDot(e) {  // 每次运行这个函数都画出一条线段
                 span.innerHTML = rangeInput.value + '号笔'
                 var pos = mousePos(svg)  // 鼠标相对于svg的位置
