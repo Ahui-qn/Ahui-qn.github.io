@@ -38,6 +38,7 @@
     red.addEventListener("mousedown", function (e) {
         count++
         red.style.zIndex = count
+        
         var pos = mousePos(red)
         function drag(e) {
             if (e.pageX) red.style.top = e.pageY - pos.y + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里

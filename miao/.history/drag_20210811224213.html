@@ -34,10 +34,10 @@
     var red = document.querySelector("#red")
     var blue = document.querySelector("#blue")
     var i = 0
-    var count = 0
     red.addEventListener("mousedown", function (e) {
-        count++
-        red.style.zIndex = count
+        yellow.style.zIndex = 5
+        blue.style.zIndex = 6
+        red.style.zIndex = 7
         var pos = mousePos(red)
         function drag(e) {
             if (e.pageX) red.style.top = e.pageY - pos.y + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里
@@ -52,8 +52,9 @@
     })
 
     blue.addEventListener("mousedown", function (e) {
-        count++
-        blue.style.zIndex = count
+        yellow.style.zIndex = 7
+        red.style.zIndex = 8
+        blue.style.zIndex = 9
         var pos = mousePos(blue)
         function drag(e) {
             if (e.pageX) blue.style.top = e.pageY - pos.y + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里
@@ -69,8 +70,9 @@
     })
 
     yellow.addEventListener("mousedown", function (e) {
-        count++
-        yellow.style.zIndex = count
+        red.style.zIndex = 8
+        blue.style.zIndex = 9
+        yellow.style.zIndex = 10
         var pos = mousePos(yellow)
         function drag(e) {
             if (e.pageX) yellow.style.top = e.pageY - pos.y + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里
