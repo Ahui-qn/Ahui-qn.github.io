@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
+           * {
+               padding: 0;
+               margin: 0;
+           }
             #red,
             #blue,
             #yellow {
@@ -23,36 +23,39 @@
             #blue {
                 background-color: rgb(97, 175, 244);
             }
-            #yellow {
+            #yellow{
                 background-color: rgb(249, 249, 117);
+            }
+            section {
+                margin-top: 50px;
+                height: 300px;
+                background-color: rgb(206, 218, 255);
+                position: relative;
             }
         </style>
     </head>
     <body>
-            <div id="red" style="left: 60px; top: 5px"></div>
-            <div id="blue" style="left: 5px; top: 5px"></div>
-            <div id="yellow" style="left: 115px; top: 5px"></div>
+        <section>
+            <div id="red" style="left: 80px; top: 0px"></div>
+            <div id="blue" style="left: 0px; top: 0px"></div>
+            <div id="yellow" style="left: 160px; top: 0px"></div>
+        </section>
     </body>
 </html>
 <script>
     var red = document.querySelector("#red")
     var blue = document.querySelector("#blue")
-    var yellow = document.querySelector('#yellow')
     var i = 0
     var count = 0
-  
     red.addEventListener("mousedown", function (e) {
         count++
         red.style.zIndex = count
-
         var pos = mousePos(red)
         function drag(e) {
-                red.style.top = e.pageY - pos.y  + "px" 
-                red.style.left = e.pageX - pos.x + "px"
-                console.log(e.pageX, e.pageY)
-            }
-        
-
+            if (e.pageX) red.style.top = e.pageY - pos.y - 50 + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里
+            red.style.left = e.pageX - pos.x + "px"
+            console.log(e.pageX, e.pageY)
+        }
         document.addEventListener("mousemove", drag)
         document.addEventListener("mouseup", function up() {
             document.removeEventListener("mousemove", drag)
@@ -63,15 +66,15 @@
     blue.addEventListener("mousedown", function (e) {
         count++
         blue.style.zIndex = count
-
         var pos = mousePos(blue)
         function drag(e) {
-            blue.style.top = e.pageY - pos.y + "px"
+            if (e.pageX) blue.style.top = e.pageY - 50 - pos.y + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里
             blue.style.left = e.pageX - pos.x + "px"
             console.log(e.pageX, e.pageY)
         }
         document.addEventListener("mousemove", drag)
         document.addEventListener("mouseup", function up() {
+
             document.removeEventListener("mousemove", drag)
             document.removeEventListener("mouseup", up)
         })
@@ -80,14 +83,11 @@
     yellow.addEventListener("mousedown", function (e) {
         count++
         yellow.style.zIndex = count
-
         var pos = mousePos(yellow)
         function drag(e) {
-            yellow.style.top = e.pageY - pos.y + "px"
+            if (e.pageX) yellow.style.top = e.pageY - 50 - pos.y + "px" // 得减去鼠标相对 方块位置才能点哪里拉哪里
             yellow.style.left = e.pageX - pos.x + "px"
             console.log(e.pageX, e.pageY)
-
-            
         }
         document.addEventListener("mousemove", drag)
         document.addEventListener("mouseup", function up() {
@@ -95,6 +95,7 @@
             document.removeEventListener("mouseup", up)
         })
     })
+
 
     function mousePos(node) {
         var box = node.getBoundingClientRect() // 元素相对于窗口的位置

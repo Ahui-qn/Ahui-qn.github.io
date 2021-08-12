@@ -66,7 +66,7 @@
 
         var pos = mousePos(blue)
         function drag(e) {
-            blue.style.top = e.pageY - pos.y + "px"
+            blue.style.top = e.pageY - 50 - pos.y + "px"
             blue.style.left = e.pageX - pos.x + "px"
             console.log(e.pageX, e.pageY)
         }
@@ -83,7 +83,7 @@
 
         var pos = mousePos(yellow)
         function drag(e) {
-            yellow.style.top = e.pageY - pos.y + "px"
+            yellow.style.top = e.pageY - 50 - pos.y + "px"
             yellow.style.left = e.pageX - pos.x + "px"
             console.log(e.pageX, e.pageY)
 
