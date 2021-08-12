@@ -10,19 +10,28 @@
                 padding: 0;
                 margin: 0;
             }
-            .dragBlock {
+            #red,
+            #blue,
+            #yellow {
                 width: 50px;
                 height: 50px;
-                position: absolute;
-
+                position: fixed;
             }
+            #red {
+                background-color: rgb(244, 119, 119);
+            }
+            /* #blue {
+                background-color: rgb(97, 175, 244);
+            }
+            #yellow {
+                background-color: rgb(249, 249, 117);
+            } */
         </style>
     </head>
     <body>
-        <div class="dragBlock" style="left: 5px; top: 5px; background-color: rgb(255, 177, 177);"></div>
-        <div class="dragBlock" style="left: 60px; top: 5px; background-color: rgb(237, 190, 244);"></div>
-        <div class="dragBlock" style="left: 115px; top: 5px; background-color: rgb(206, 255, 192);"></div>
-     
+        <div id="red" style="left: 5px; top: 5px"></div>
+        <div id=''></div>
+           
     </body>
 </html>
 <script>

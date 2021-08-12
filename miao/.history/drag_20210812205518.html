@@ -10,34 +10,42 @@
                 padding: 0;
                 margin: 0;
             }
-            .dragBlock {
+            #red,
+            #blue,
+            #yellow {
                 width: 50px;
                 height: 50px;
-                position: absolute;
-
+                position: fixed;
             }
+            #red {
+                background-color: rgb(244, 119, 119);
+            }
+            /* #blue {
+                background-color: rgb(97, 175, 244);
+            }
+            #yellow {
+                background-color: rgb(249, 249, 117);
+            } */
         </style>
     </head>
     <body>
-        <div class="dragBlock" style="left: 5px; top: 5px; background-color: rgb(255, 177, 177);"></div>
-        <div class="dragBlock" style="left: 60px; top: 5px; background-color: rgb(237, 190, 244);"></div>
-        <div class="dragBlock" style="left: 115px; top: 5px; background-color: rgb(206, 255, 192);"></div>
-     
+            <div id="red" style="left: 5px; top: 5px"></div>
+           
     </body>
 </html>
 <script>
     /// 修改后代码 ，如果直接使用鼠标移动位置赋值给元素，做限制往外拖拽的时候会有bug
     var countZindex = 0
     document.addEventListener("mousedown", function (e) {
-        if (!e.target.classList.contains('dragBlock')) {
+        if (e.target.classList.contains('dragBlock')) {
             return  // 目标元素的class 非 dragBlock 的直接return 
         }
-        var targetElme = e.target
-        targetElme.style.zIndex = countZindex++
+        red.style.zIndex = countZindex++
         var startX = e.clientX  
         var startY = e.clientY
-        var targetElmeStartY = parseFloat(targetElme.style.top)
-        var targetElmeStartX = parseFloat(targetElme.style.left)
+        var 
+        var redStartY = parseFloat(red.style.top)
+        var redStartX = parseFloat(red.style.left)
 
         document.addEventListener("mousemove", function drag (emove) {
             if (emove.which === 0 || emove.buttons === 0) {
@@ -49,25 +57,33 @@
             var dX = curX - startX    // 鼠标移动时的距离 - 鼠标点击时的距离
             var dY = curY - startY   // 移动距离
 
-            var left = targetElmeStartX + dX
-            var top = targetElmeStartY + dY
+            var left = redStartX + dX
+            var top = redStartY + dY
 
             if (top < 5) {
                 top = 0
             } 
-            if (top > window.innerHeight - targetElme.offsetHeight - 5) {
-                top = window.innerHeight - targetElme.offsetHeight
+            if (top > window.innerHeight - red.offsetHeight - 5) {
+                top = window.innerHeight - red.offsetHeight
             }
             if (left < 5) {
                 left = 0
             }
-            if (left > window.innerWidth - targetElme.offsetWidth - 5) {
-                left = window.innerWidth - targetElme.offsetWidth
+            if (left > window.innerWidth - red.offsetWidth - 5) {
+                left = window.innerWidth - red.offsetWidth
             }
-                targetElme.style.top = top + "px"
-                targetElme.style.left = left + "px"
+                red.style.top = top + "px"
+                red.style.left = left + "px"
         })
     })
 
+ 
 
+    function mousePos(node) {
+        var box = node.getBoundingClientRect() // 元素相对于窗口的位置
+        return {
+            x: window.event.clientX - box.x,
+            y: window.event.clientY - box.y,
+        }
+    }
 </script>

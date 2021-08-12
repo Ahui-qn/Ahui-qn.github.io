@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            #red,
+            #blue,
+            #yellow {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+            }
+            #red {
+                background-color: rgb(244, 119, 119);
+            }
+            #blue {
+                background-color: rgb(97, 175, 244);
+            }
+            #yellow {
+                background-color: rgb(249, 249, 117);
+            }
+        </style>
+    </head>
+    <body>
+            <div id="red" style="left: 60px; top: 5px"></div>
+           
+    </body>
+</html>
+<script>
+    var red = document.querySelector("#red")
+    var blue = document.querySelector("#blue")
+    var yellow = document.querySelector('#yellow')
+    var i = 0
+    var count = 0
+  
+    red.addEventListener("mousedown", function (e) {
+        count++
+        red.style.zIndex = count
+
+        var pos = mousePos(red)
+        function drag(e) {
+            if (parseFloat(red.style.top) < 0) {
+                console.log(22)
+                red.style.top = '0px'
+            }
+
+            red.style.top = e.pageY - pos.y  + "px" 
+            red.style.left = e.pageX - pos.x + "px"
+
+            }
+        
+
+        document.addEventListener("mousemove", drag)
+        document.addEventListener("mouseup", function up() {
+            document.removeEventListener("mousemove", drag)
+            document.removeEventListener("mouseup", up)
+        })
+    })
+
+ 
+
+    function mousePos(node) {
+        var box = node.getBoundingClientRect() // 元素相对于窗口的位置
+        return {
+            x: window.event.clientX - box.x,
+            y: window.event.clientY - box.y,
+        }
+    }
+</script>
