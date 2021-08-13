@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .shadow {
+            width: 5px;
+            height:5px;
+            background-color: rgb(40, 122, 72);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>  
+
+    <script>
+        window.addEventListener('mousemove',function (e) {
+            // 当鼠标移动的时候每隔多少毫秒创建一个div
+            setInterval(function (){
+                var div = document.createElement('div')
+                div.className = 'shadow'
+
+
+            },40)
+            console.log(e)
+        })
+    </script> 
+</body>
+</html>

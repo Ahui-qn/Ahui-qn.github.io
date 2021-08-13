@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    三击方块变黄
+</body>
+</html>
+<script>
+    let last = 0  // 当前时间
+    let c = 1
+    let div = document.querySelector('div')
+    div.addEventListener('click', function(e) {
+        let time = Date.now() 
+        if (time - last < 200) {  // 连续点击间隔少于200毫秒
+            c++
+        }else {
+            c = 1
+        }
+        last = time
+        console.log(c)
+
+        if (c == 3) {
+            div.style.backgroundColor = 'yellow'
+            setTimeout(function (){
+                div.style.backgroundColor = 'blue'
+            },2000)
+        }
+    })
+
+</script>

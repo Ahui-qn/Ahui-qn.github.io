@@ -24,7 +24,6 @@
         <input type="color" id="colorInput" />
         <input type="range" max="10" min="1" id="widthInput" />
         <span id="rangeval"></span>
-        <button class="save">save</button>
 
         <script>
             let draw = false
@@ -33,10 +32,10 @@
             span.innerHTML = widthInput.value + "号笔"
 
             let lastpos = null // 终点位置
-            let drawandnosave = false   // 只要画过就提示
 
             svg.addEventListener("mousedown", function (e) {
-                drawandnosave = true
+                span.innerHTML = widthInput.value + "号笔" // 几号笔
+
                 let pos = mousePos(svg) // 鼠标相对于svg的位置
 
                 let polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
@@ -81,22 +80,16 @@
                 }
             }
 
-            widthInput.addEventListener('mousedown', function (){
-                document.addEventListener('mousemove', function (){
-                    span.innerHTML = widthInput.value + "号笔" // 几号笔
-                })
-                
-            })
+            var drawandnosave = false   // 只要画过就提示
 
             window.addEventListener("beforeunload", (e) => {
                 if (drawandnosave) {
                     return (e.returnValue = "没有保存")
                 }
             })
-            let button = document.querySelector('.save')
-            button.addEventListener('click' ,function save(){
-                drawandnosave = false
 
+            function save() {
+                drawandnosave = false
                 var svgSource = svg.outerHTML
                 var blob = new Blob(['<?xml version="1.0" encoding="utf-8"?>', svgSource], { type: "image/xml+svg" })
                 var url = URL.createObjectURL(blob)
@@ -104,8 +97,7 @@
                 anchor.href = url
                 anchor.download = "xxxx.svg"
                 anchor.click()
-            })
-
+            }
         </script>
     </body>
 </html>

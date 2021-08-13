@@ -24,7 +24,6 @@
         <input type="color" id="colorInput" />
         <input type="range" max="10" min="1" id="widthInput" />
         <span id="rangeval"></span>
-        <button class="save">save</button>
 
         <script>
             let draw = false
@@ -33,14 +32,14 @@
             span.innerHTML = widthInput.value + "号笔"
 
             let lastpos = null // 终点位置
-            let drawandnosave = false   // 只要画过就提示
 
             svg.addEventListener("mousedown", function (e) {
-                drawandnosave = true
+                span.innerHTML = widthInput.value + "号笔" // 几号笔
+
                 let pos = mousePos(svg) // 鼠标相对于svg的位置
 
-                let polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
-
+                let polyline = document.createElementNS("http://www.w3.org/2000/svg","polyline")
+                
                 polyline.setAttribute("fill", "none")
                 polyline.setAttribute("stroke", colorInput.value)
                 polyline.setAttribute("stroke-width", widthInput.value)
@@ -53,7 +52,7 @@
 
                 function drawDot(e) {
                     var pos = mousePos(svg)
-                    var line = document.createElementNS("http://www.w3.org/2000/svg", "line")
+                    var line = document.createElementNS("http://www.w3.org/2000/svg","line")
                     points += `${pos.x} ${pos.y} `
                     polyline.setAttribute("points", points)
                 }
@@ -68,7 +67,7 @@
             // 删除最后的元素 cmd + z
             document.addEventListener("keydown", function (event) {
                 if (event.code == "KeyZ" && (event.ctrlKey || event.metaKey)) {
-                    if (svg.lastChild) svg.lastChild.remove()
+                    console.log("aaa")
                 }
             })
 
@@ -80,32 +79,6 @@
                     y: window.event.clientY - box.y,
                 }
             }
-
-            widthInput.addEventListener('mousedown', function (){
-                document.addEventListener('mousemove', function (){
-                    span.innerHTML = widthInput.value + "号笔" // 几号笔
-                })
-                
-            })
-
-            window.addEventListener("beforeunload", (e) => {
-                if (drawandnosave) {
-                    return (e.returnValue = "没有保存")
-                }
-            })
-            let button = document.querySelector('.save')
-            button.addEventListener('click' ,function save(){
-                drawandnosave = false
-
-                var svgSource = svg.outerHTML
-                var blob = new Blob(['<?xml version="1.0" encoding="utf-8"?>', svgSource], { type: "image/xml+svg" })
-                var url = URL.createObjectURL(blob)
-                var anchor = document.createElement("a")
-                anchor.href = url
-                anchor.download = "xxxx.svg"
-                anchor.click()
-            })
-
         </script>
     </body>
 </html>

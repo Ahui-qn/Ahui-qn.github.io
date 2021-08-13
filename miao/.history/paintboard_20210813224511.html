@@ -37,6 +37,8 @@
 
             svg.addEventListener("mousedown", function (e) {
                 drawandnosave = true
+                span.innerHTML = widthInput.value + "号笔" // 几号笔
+
                 let pos = mousePos(svg) // 鼠标相对于svg的位置
 
                 let polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
@@ -81,12 +83,6 @@
                 }
             }
 
-            widthInput.addEventListener('mousedown', function (){
-                document.addEventListener('mousemove', function (){
-                    span.innerHTML = widthInput.value + "号笔" // 几号笔
-                })
-                
-            })
 
             window.addEventListener("beforeunload", (e) => {
                 if (drawandnosave) {

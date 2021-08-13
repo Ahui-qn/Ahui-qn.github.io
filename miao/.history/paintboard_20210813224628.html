@@ -82,10 +82,7 @@
             }
 
             widthInput.addEventListener('mousedown', function (){
-                document.addEventListener('mousemove', function (){
-                    span.innerHTML = widthInput.value + "号笔" // 几号笔
-                })
-                
+                span.innerHTML = widthInput.value + "号笔" // 几号笔
             })
 
             window.addEventListener("beforeunload", (e) => {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 1px solid red; 
+        }
+    </style>
+</head>
+<body>
+    <svg width="400px" height="500px" version="1.1" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+    <br>
+    <input type="color" id="colorInput">
+    <input type="range" max="10" min="1" id="rangeInput">
+    <span id="rangeval"></span>
+
+    <script>
+        var draw = false
+        var svg = document.querySelector('svg')
+        var span = document.querySelector('span')
+        span.innerHTML = rangeInput.value + '号笔'
+
+        var lastpos = null   // 终点位置
+
+        document.addEventListener('mousedown', function (e) {
+            function drawDot(e) {  
+                span.innerHTML = rangeInput.value + '号笔'
+                var pos = mousePos(svg)  // 鼠标相对于svg的位置
+
+                var polyline = document.createElementNS("http://www.w3.org/2000/svg", 'line')
+                polyline.setAttribute('fill', 'none')
+                polyline.setAttribute('stroke', colorInput.value)
+                polyline.setAttribute('stroke-width', widthInput.value)
+                polyline.setAttribute('stroke-linecap', 'round')
+                polyline.setAttribute('stroke-linejoin', 'round')
+               
+                svg.append(polyline)
+                var points = `${pos.x} ${pos.y} `
+                polyline.setAttribute('points', points)
+            }
+            document.addEventListener('mousemove', drawDot)
+            document.addEventListener('mouseup', function once(){
+                lastpos = null
+                document.removeEventListener('mousemove', drawDot)  // 松开的时候让这个函数不在后台继续运行
+                document.removeEventListener('mouseuo', once)   
+            })
+        })
+        // 删除最后的元素 cmd + z
+        document.addEventListener('keydown' ,function (event){
+            if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)){
+                console.log('aaa')
+            }
+        })
+
+        // 拿到鼠标相对于node的位置
+        function mousePos (node) {
+            var box = node.getBoundingClientRect()  // 元素相对于窗口的位置
+            return {
+                x : window.event.clientX - box.x,
+                y : window.event.clientY - box.y
+            }
+        }
+    </script>
+</body>
+</html>

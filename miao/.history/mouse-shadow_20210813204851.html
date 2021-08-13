@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .span-shadow {
+            width: 10px;
+            height:10px;
+            background-color: rgb(107, 249, 161);
+            position: absolute;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body>  
+    <script>
+        let i = 0  
+        window.addEventListener('mousemove',function (e) {
+            i++
+            if (i % 2) { // 偶数就不添加
+                return 
+            }
+            console.log(1)
+            let span = document.createElement('span')
+
+            span.classList.add('span-shadow')
+            span.style.top = e.clientY + 'px'
+            span.style.left = e.clientX + 'px'
+
+            document.body.append(span)
+
+            setTimeout(() => {
+                span.remove()
+            }, 16 * 10)
+        })
+    </script> 
+</body>
+</html>
