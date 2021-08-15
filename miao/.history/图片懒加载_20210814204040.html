@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            opacity: 0;
+        }
+        ima.loaded {
+            transition: 1s;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <img data-src="https://travel.12306.cn/imgs/resources/uploadfiles/images/fcd7173f-7651-46e7-a126-bdc199e1f6f7_product_W572_H370.jpg" width="300" height="300" alt="">
+    aaaaaa
+    bbbbb
+  
+    <img data-src="https://travel.12306.cn/imgs/resources/uploadfiles/images/b0c76b21-531b-4af4-a607-cf5672c72ded_product_W572_H370.jpg" width="300" height="300" alt="">
+    aaaaaa
+    bbbbb
+  
+    <img data-src="https://travel.12306.cn/imgs/resources/uploadfiles/images/b0c76b21-531b-4af4-a607-cf5672c72ded_product_W572_H370.jpg" width="300" height="300" alt="">
+    aaaaaa
+    bbbbb
+  
+    <img data-src="https://travel.12306.cn/imgs/resources/uploadfiles/images/8b36f9a7-f780-4e71-b719-9300109a9ff2_product_W572_H370.jpg" width="300" height="300" alt="">
+    aaaaaa
+    bbbbb
+  
+    <img data-src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg" width="300" height="300" alt="">
+  
+    <script>
+        document.addEventListener('scroll', e => {
+            let imgs = document.querySelectorAll('img')
+
+            let soonShow = imgs.filter(it => {
+                if (it.getBoundingClientRect().y - window.innerHeight < 20) {  
+                    return true
+                }
+            })
+            
+        })
+        
+    </script>
+</body>
+</html>

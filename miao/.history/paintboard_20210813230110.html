@@ -51,7 +51,7 @@
                 let points = `${pos.x} ${pos.y} `
                 polyline.setAttribute("points", points)
 
-                // 鼠标移动的时候添加pos.x和pos.y 属性以画图 
+                // 鼠标移动的时候添加pos.x和pos.y 属性 
                 function drawDot(e) {
                     var pos = mousePos(svg)
                     var line = document.createElementNS("http://www.w3.org/2000/svg", "line")

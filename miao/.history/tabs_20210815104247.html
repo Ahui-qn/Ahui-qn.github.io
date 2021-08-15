@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            width: 500px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div data-tabid="home">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sapiente vitae cumque aliquid veniam, eligendi suscipit qui dolore deleniti eaque tempora optio, explicabo impedit maiores dolorem similique voluptatibus rem obcaecati!
+        </div>
+        <div data-tabid="hot">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, esse? Sequi nemo quo quas aliquid debitis labore pariatur aperiam ipsa et ratione dolore perspiciatis ducimus reprehenderit, repellat unde asperiores quidem.
+        </div>
+        <div data-tabid="serve">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit nisi dolorum officiis maxime non accusantium sequi error eveniet, dolorem, neque nemo saepe provident quibusdam quae officia pariatur, harum delectus quam.
+        </div>
+    </section>
+</body>
+</html>
+<script>
+    'use strict'
+    debugger
+    function asTabs (node) {
+        let divs = Array.from(node.children)
+        let buttons = []
+
+        for (let div of divs) {
+            div.style.display = 'none'
+            let button = document.createElement('button')
+            buttons.push(button)
+            button.textContent = div.dataset.tabid
+
+            button.addEventListener('click', function (){
+
+                buttons.forEach(it => {  // 当一个button被点击时，其他的button应该没颜色
+                    it.style.backgroundColor = ''
+                })
+                button.style.backgroundColor = 'green'
+
+                divs.forEach(it => {
+                    it.style.dispaly = 'none'
+                })
+                div.style.dispaly = 'block'
+            })
+            node.prepend(button)
+        }
+    }
+
+    asTabs(document.querySelector('section'))
+</script>

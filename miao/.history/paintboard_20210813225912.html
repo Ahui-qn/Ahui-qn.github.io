@@ -51,7 +51,6 @@
                 let points = `${pos.x} ${pos.y} `
                 polyline.setAttribute("points", points)
 
-                // 鼠标移动的时候添加pos.x和pos.y 属性以画图 
                 function drawDot(e) {
                     var pos = mousePos(svg)
                     var line = document.createElementNS("http://www.w3.org/2000/svg", "line")
@@ -66,7 +65,6 @@
                     document.removeEventListener("mouseuo", once)
                 })
             })
-
             // 删除最后的元素 cmd + z
             document.addEventListener("keydown", function (event) {
                 if (event.code == "KeyZ" && (event.ctrlKey || event.metaKey)) {
@@ -83,7 +81,6 @@
                 }
             }
 
-            // 显示笔画
             widthInput.addEventListener('mousedown', function (){
                 document.addEventListener('mousemove', function (){
                     span.innerHTML = widthInput.value + "号笔" // 几号笔
@@ -107,7 +104,7 @@
                 var anchor = document.createElement("a")
                 anchor.href = url
                 anchor.download = "xxxx.svg"
-                anchor.click()  // 点击button 也触发a标签点击
+
             })
 
          
