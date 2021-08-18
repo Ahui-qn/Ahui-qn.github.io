@@ -164,7 +164,7 @@
                 }
                 div.style.top = top + 'px'
                 div.style.left = left + 'px'
-                console.log('Drag')
+
                 
             })
         }else if (eDrag.target.classList.contains('inputCentent')){
@@ -175,7 +175,6 @@
         }else {
             return 
         }
-
     })
     /// 高度改变
     document.addEventListener('mousedown', eDragButton => {
@@ -263,10 +262,9 @@
         localStorage.setItem('notes', JSON.stringify(StorageData))
     })
     
-    window.addEventListener('storage', (e) => {
-        document.body.innerHTML = ''
-        initialize()
-    })
+    // window.addEventListener('storage', (e) => {
+    //     initialize()
+    // })
 
     function saveToStorage (array){  // 传入修改过后的对象
         let i = array[1]   // 第一项是取出来之前数组的下标

@@ -88,27 +88,62 @@
     let text = document.querySelector('.inputCentent')
     let div = document.querySelector('.note')
 
-    function initialize() {
+// window.addEventListener('load', () => {
+    StorageData = JSON.parse(localStorage.getItem("notes")) || newStorage(text)
+    localStorage.setItem('notes', JSON.stringify(StorageData))
+    // 有多少个就克隆几个，每克隆一个就将读取的对象属性放入DOM
+    // 初始化
+    debugger
+    let count =  StorageData.length
+    let tf = true
+    while(count) {
+        for (let obj of StorageData) {
+            if (tf) {  // 还剩一个的时候给页面里的div添加样式
+                tf = false
+                for (let key in obj) {
+                    if (key == 'left') {
+                        div.style.left = obj[key]  // 属性值自带px 不需要加
+                    }else if (key == 'top') {
+                        div.style.top = obj[key]
+                    }else if (key == 'id') {
+                        text.setAttribute('data-id', '')
+                        text.dataset.id = obj[key]
+                    }else if (key == 'height') {
+                        text.style.height = obj[key]
+                    }else if (key == 'width') {
+                        text.style.width = obj[key]
+                    }else if (key == 'text') {
+                        text.value = obj[key]
+                    }
+                }
+                count--
+            }else {
+                let divClone = div.cloneNode(true)
+                let textarea = divClone.querySelector('.inputCentent')
 
-        StorageData = JSON.parse(localStorage.getItem("notes")) || newStorage(text)
-        localStorage.setItem('notes', JSON.stringify(StorageData))
-        let count =  StorageData.length
-        div.remove()
-        for (let i = 0; i < count; i++) {
-            let divClone = div.cloneNode(true)
-            let textarea = divClone.querySelector('.inputCentent')
-
-            textarea.setAttribute('data-id', '')
-            divClone.style.left = StorageData[i]['left']
-            divClone.style.top = StorageData[i]['top']
-            textarea.style.height = StorageData[i]['height']
-            textarea.style.width = StorageData[i]['width']
-            textarea.value = StorageData[i]['text']
-            textarea.dataset.id = StorageData[i]['id']
-            document.body.append(divClone)  
+                for (let key in obj) {
+                    if (key == 'left') {
+                        divClone.style.left = obj[key] 
+                    }else if (key == 'top') {
+                        divClone.style.top = obj[key]
+                    }else if (key == 'id') {
+                        textarea.setAttribute('data-id', '')
+                        textarea.dataset.id = obj[key]
+                    }else if (key == 'height') {
+                        textarea.style.height = obj[key] 
+                    }else if (key == 'width') {
+                        textarea.style.width = obj[key] 
+                    }else if (key == 'text') {
+                        textarea.value = obj[key]
+                    }
+                }
+                document.body.append(divClone)
+                count--  
+            }
         }
     }
-    initialize()
+// })
+
 
     document.addEventListener('mouseup', eTextResize => {
         if (!eTextResize.target.classList.contains('inputCentent')) return 
@@ -164,7 +199,7 @@
                 }
                 div.style.top = top + 'px'
                 div.style.left = left + 'px'
-                console.log('Drag')
+
                 
             })
         }else if (eDrag.target.classList.contains('inputCentent')){
@@ -175,7 +210,6 @@
         }else {
             return 
         }
-
     })
     /// 高度改变
     document.addEventListener('mousedown', eDragButton => {
@@ -237,7 +271,7 @@
             })
     })
     // 克隆
-    document.addEventListener('click', (eClone) => {
+    document.addEventListener('click',  (eClone) => {
         if (!eClone.target.classList.contains('cloneNote')) return
         let newDiv =  eClone.target.parentNode.cloneNode(true)   
         let newNote = newDiv.querySelector('.inputCentent')  
@@ -255,7 +289,6 @@
 
     document.addEventListener('click', (eRemove) => {
         if (!eRemove.target.classList.contains('remove')) return 
-        if (StorageData.length == 1) return 
         eRemove.target.parentNode.remove()
         // debugger
         let alter = getAlterObj (eRemove.target.parentNode.querySelector('.inputCentent'))
@@ -264,8 +297,7 @@
     })
     
     window.addEventListener('storage', (e) => {
-        document.body.innerHTML = ''
-        initialize()
+       window.location.reload()  // 。。。。。。。
     })
 
     function saveToStorage (array){  // 传入修改过后的对象

@@ -89,26 +89,26 @@
     let div = document.querySelector('.note')
 
     function initialize() {
+    StorageData = JSON.parse(localStorage.getItem("notes")) || newStorage(text)
+    localStorage.setItem('notes', JSON.stringify(StorageData))
+    let count =  StorageData.length
+    div.remove()
+    for (let i = 0; i < count; i++) {
+        let divClone = div.cloneNode(true)
+        let textarea = divClone.querySelector('.inputCentent')
 
-        StorageData = JSON.parse(localStorage.getItem("notes")) || newStorage(text)
-        localStorage.setItem('notes', JSON.stringify(StorageData))
-        let count =  StorageData.length
-        div.remove()
-        for (let i = 0; i < count; i++) {
-            let divClone = div.cloneNode(true)
-            let textarea = divClone.querySelector('.inputCentent')
-
-            textarea.setAttribute('data-id', '')
-            divClone.style.left = StorageData[i]['left']
-            divClone.style.top = StorageData[i]['top']
-            textarea.style.height = StorageData[i]['height']
-            textarea.style.width = StorageData[i]['width']
-            textarea.value = StorageData[i]['text']
-            textarea.dataset.id = StorageData[i]['id']
-            document.body.append(divClone)  
-        }
+        textarea.setAttribute('data-id', '')
+        
+        divClone.style.left = StorageData[i]['letf']
+        divClone.style.top = StorageData[i]['top']
+        textarea.style.height = StorageData[i]['height']
+        textarea.style.width = StorageData[i]['width']
+        textarea.value = StorageData[i]['text']
+        textarea.style.dataset.id = StorageData[i]['id']
+        document.body.append(divClone)  
     }
-    initialize()
+}
+initialize()
 
     document.addEventListener('mouseup', eTextResize => {
         if (!eTextResize.target.classList.contains('inputCentent')) return 
@@ -164,7 +164,7 @@
                 }
                 div.style.top = top + 'px'
                 div.style.left = left + 'px'
-                console.log('Drag')
+
                 
             })
         }else if (eDrag.target.classList.contains('inputCentent')){
@@ -175,7 +175,6 @@
         }else {
             return 
         }
-
     })
     /// 高度改变
     document.addEventListener('mousedown', eDragButton => {
@@ -237,7 +236,7 @@
             })
     })
     // 克隆
-    document.addEventListener('click', (eClone) => {
+    document.addEventListener('click',  (eClone) => {
         if (!eClone.target.classList.contains('cloneNote')) return
         let newDiv =  eClone.target.parentNode.cloneNode(true)   
         let newNote = newDiv.querySelector('.inputCentent')  
@@ -255,7 +254,6 @@
 
     document.addEventListener('click', (eRemove) => {
         if (!eRemove.target.classList.contains('remove')) return 
-        if (StorageData.length == 1) return 
         eRemove.target.parentNode.remove()
         // debugger
         let alter = getAlterObj (eRemove.target.parentNode.querySelector('.inputCentent'))
@@ -264,8 +262,7 @@
     })
     
     window.addEventListener('storage', (e) => {
-        document.body.innerHTML = ''
-        initialize()
+       window.location.reload()  // 。。。。。。。
     })
 
     function saveToStorage (array){  // 传入修改过后的对象

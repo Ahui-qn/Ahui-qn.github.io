@@ -264,7 +264,8 @@
     })
     
     window.addEventListener('storage', (e) => {
-        document.body.innerHTML = ''
+        let div =  document.body.querySelectorAll('div')
+        div.remove
         initialize()
     })
 

@@ -164,7 +164,7 @@
                 }
                 div.style.top = top + 'px'
                 div.style.left = left + 'px'
-                console.log('Drag')
+
                 
             })
         }else if (eDrag.target.classList.contains('inputCentent')){
@@ -176,6 +176,7 @@
             return 
         }
 
+        
     })
     /// 高度改变
     document.addEventListener('mousedown', eDragButton => {
@@ -264,7 +265,6 @@
     })
     
     window.addEventListener('storage', (e) => {
-        document.body.innerHTML = ''
         initialize()
     })
 
