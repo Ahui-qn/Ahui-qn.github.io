@@ -115,8 +115,8 @@
         console.log(111)
         let textarea = eTextResize.target
         let alter = getAlterObj(textarea)
-        alter[0]['width'] = textarea.offsetWidth + 'px'
-        alter[0]['height'] = textarea.offsetHeight + 'px'
+        alter[0]['width'] = textarea.offsetWidth
+        alter[0]['height'] = textarea.offsetHeight
         saveToStorage(alter)
     })
     // 拖拽
@@ -261,9 +261,10 @@
         localStorage.setItem('notes', JSON.stringify(StorageData))
     })
     
-    // window.addEventListener('storage', (e) => {
-    //     initialize()
-    // })
+    window.addEventListener('storage', (e) => {
+        // document.body.innerHTML = ''
+        initialize()
+    })
 
     function saveToStorage (array){  // 传入修改过后的对象
         let i = array[1]   // 第一项是取出来之前数组的下标

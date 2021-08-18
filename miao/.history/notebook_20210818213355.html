@@ -111,12 +111,13 @@
     initialize()
 
     document.addEventListener('mouseup', eTextResize => {
+        debugger
         if (!eTextResize.target.classList.contains('inputCentent')) return 
         console.log(111)
         let textarea = eTextResize.target
         let alter = getAlterObj(textarea)
-        alter[0]['width'] = textarea.offsetWidth + 'px'
-        alter[0]['height'] = textarea.offsetHeight + 'px'
+        alter[0]['width'] = textarea.offsetWidth
+        alter[0]['height'] = textarea.offsetHeight
         saveToStorage(alter)
     })
     // 拖拽
