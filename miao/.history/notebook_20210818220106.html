@@ -93,7 +93,7 @@
         StorageData = JSON.parse(localStorage.getItem("notes")) || newStorage(text)
         localStorage.setItem('notes', JSON.stringify(StorageData))
         let count =  StorageData.length
-        document.body.innerHTML = ''
+        div.remove()
         for (let i = 0; i < count; i++) {
             let divClone = div.cloneNode(true)
             let textarea = divClone.querySelector('.inputCentent')
@@ -112,6 +112,7 @@
 
     document.addEventListener('mouseup', eTextResize => {
         if (!eTextResize.target.classList.contains('inputCentent')) return 
+        console.log(111)
         let textarea = eTextResize.target
         let alter = getAlterObj(textarea)
         alter[0]['width'] = textarea.offsetWidth + 'px'
@@ -119,7 +120,7 @@
         saveToStorage(alter)
     })
     // 拖拽
-    document.addEventListener('mousedown', eDrag => {   // 拖动 bug
+    document.addEventListener('mousedown', eDrag => {
             let targetElme = eDrag.target   // h2
             let div = targetElme.parentNode   // div\
             let textarea = div.querySelector('.inputCentent')
@@ -168,6 +169,9 @@
             })
         }else if (eDrag.target.classList.contains('inputCentent')){
             eDrag.target.parentNode.style.zIndex = maxZindex++
+            let alterZindex = getAlterObj(textarea)
+            alterZindex[0]['zIndex'] = maxZindex
+            saveToStorage(alterZindex)
         }else {
             return 
         }
@@ -222,7 +226,7 @@
             let noteInput = eSaveToStorage.target
 
             let alter = getAlterObj(noteInput)  // 拿到修改的对象
-            document.addEventListener('keydown',  eInputNote => {
+            document.addEventListener('change',  eInputNote => {
                 // debugger
                 alter[0]['text'] = noteInput.value   // 修改text
                 saveToStorage(alter)

@@ -93,7 +93,7 @@
         StorageData = JSON.parse(localStorage.getItem("notes")) || newStorage(text)
         localStorage.setItem('notes', JSON.stringify(StorageData))
         let count =  StorageData.length
-        document.body.innerHTML = ''
+        div.remove()
         for (let i = 0; i < count; i++) {
             let divClone = div.cloneNode(true)
             let textarea = divClone.querySelector('.inputCentent')
@@ -119,7 +119,7 @@
         saveToStorage(alter)
     })
     // 拖拽
-    document.addEventListener('mousedown', eDrag => {   // 拖动 bug
+    document.addEventListener('mousedown', eDrag => {
             let targetElme = eDrag.target   // h2
             let div = targetElme.parentNode   // div\
             let textarea = div.querySelector('.inputCentent')
@@ -168,6 +168,9 @@
             })
         }else if (eDrag.target.classList.contains('inputCentent')){
             eDrag.target.parentNode.style.zIndex = maxZindex++
+            // let alterZindex = getAlterObj(textarea)
+            // alterZindex[0]['zIndex'] = maxZindex
+            // saveToStorage(alterZindex)
         }else {
             return 
         }
@@ -258,6 +261,7 @@
     })
     
     window.addEventListener('storage', (e) => {
+        debugger
         console.log('storage')
         initialize()
     })
