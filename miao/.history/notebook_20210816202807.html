@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div.note {
+            float: left;
+            border: 1px solid green;
+            position: relative;
+        }
+        textarea#noteCentent {
+            vertical-align:top;
+        }
+        span.r-border {
+            position: absolute;
+            right: 0;
+            z-index: 2;
+            width: 5px;
+            height: 100%;
+            background-color: rgb(246, 104, 104);
+        }
+        span.b-border {
+            position: absolute;
+            bottom: 1px;
+            z-index: 3;
+            width: 100%;
+            height: 5px;
+            background-color: rgb(192, 237, 157);
+        }
+        span.triangle {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            z-index: 4;
+            width: 5px;
+            height: 5px;
+            background-color: rgb(132, 117, 247);
+        }
+    </style>
+</head>
+<body>
+    <div class="note">
+        <span class="triangle"></span>
+        <span class="r-border"></span>
+        <span class="b-border"></span>
+        <textarea name="" id="noteCentent" cols="30" rows="10"></textarea>
+    </div>
+</body>
+</html>

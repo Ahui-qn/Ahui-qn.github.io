@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div.note {
+            float: left;
+            border: 1px solid green;
+            position: relative;
+        }
+        textarea#noteCentent {
+            vertical-align:top;
+        }
+        span.r-border {
+            position: absolute;
+            right: 0;
+            z-index: 2;
+            width: 5px;
+            height: 100%;
+            background-color: rgb(246, 104, 104);
+            cursor: e-resize;
+        }
+        span.b-border {
+            position: absolute;
+            bottom: 1px;
+            z-index: 3;
+            width: 100%;
+            height: 5px;
+            background-color: rgb(192, 237, 157);
+            cursor: s-resize;
+        }
+        span.triangle {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            z-index: 4;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(132, 117, 247);
+            cursor: se-resize;
+        }
+        div>h2{
+            width: 100%;
+            height: 30px;
+            background-color: rgb(117, 232, 157);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="note" style="top: 10px; left: 10px">
+        <h2></h2>
+        <span class="triangle"></span>
+        <span class="r-border"></span>
+        <span class="b-border"></span>
+        <textarea name="" id="noteCentent" cols="30" rows="10"></textarea>
+    </div>
+</body>
+</html>
+<script>
+    let div = document.querySelector('div.note')
+    let triangle = document.querySelector('span.triangle')
+    let noteCentent = document.querySelector('#noteCentent')
+    let h2 = document.querySelector('div>h2')
+
+
+    h2.addEventListener('mousedown', eDrag => {
+        let startX = eDrag.clientX  
+        let startY = eDrag.clientY
+        let targetElmeStartY = parseFloat(div.style.top)
+        let targetElmeStartX = parseFloat(div.style.left)
+        
+        h2.addEventListener('mousemove',function h2Moving (eH2Moving) {
+            if (eH2Moving.which === 0 || eH2Moving.buttons === 0) {
+              document.removeEventListener('mousemove', h2Moving)
+              return 
+            }
+
+            let curY = eH2Moving.clientY
+            let curX = eH2Moving.clientX
+            let dX = curX - startX   
+            let dY = curY - startY   
+
+            div.style.top = targetElmeStartY - dY
+            div.style.left = targetElmeStartX = dX
+        })
+    })
+    triangle.addEventListener('mousedown', eResize => {
+        document.addEventListener('mousemove', eMoving => {
+            // 改变textarea的大小即可
+
+        })
+    })
+</script>

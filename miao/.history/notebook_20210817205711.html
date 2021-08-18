@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div.note {
+            display:inline-block;
+            border: 1px solid green;
+            position: absolute;
+            border: 2px solid rgb(73, 194, 250);
+        }
+        textarea#noteCentent {
+            padding: 40px 10px 10px 10px;
+            min-width: 100px;
+            min-height: 80px;
+            vertical-align:top;
+            background-color: #fff;
+        }
+        span.r-border {
+            position: absolute;
+            right: 0;
+            z-index: 2;
+            width: 5px;
+            height: calc(100% - 10px);
+            background-color: rgb(246, 104, 104);
+            cursor: e-resize;
+        }
+        span.b-border {
+            position: absolute;
+            bottom: 1px;
+            z-index: 3;
+            width: calc(100% - 10px);
+            height: 5px;
+            background-color: rgb(237, 111, 111);
+            cursor: s-resize;
+        }
+        div>h2{
+            width: 100%;
+            height: 30px;
+            background-color: rgb(117, 232, 157);
+            position: absolute;
+        }
+        p {
+            position: absolute;
+            z-index: 5;
+            left: 10px;
+            font-size: 20px;
+            color: rgb(48, 48, 48)(182, 182, 182);
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="note" style="top: 10px; left: 10px ;z-index: 0;">
+        <p class="cloneNote"> + </p>
+        <h2 class="h2"></h2>
+        <span class="r-border"></span>
+        <span class="b-border"></span>
+        <textarea name="" class="inputCentent" id="noteCentent" cols="30" rows="10" style="width: 300px; height:200px" ></textarea>
+    </div>
+</body>
+</html>
+<script>
+
+    
+    let maxZindex = 0
+    let StorageData = []  /// 数据存储  
+    let text = document.querySelector('.inputCentent')
+    let div = document.querySelector('.note')
+
+    let notes = JSON.parse(localStorage.getItem("notes")) || newSaveToStorage(text)
+    debugger
+    localStorage.setItem('notes',JSON.stringify(notes))
+    // 有多少个就克隆几个，每克隆一个就将读取的对象属性放入DOM,id是随机的，根据left和top来判定是哪个
+    while(notes.length - 1) {
+        let divClone = div.cloneNode(true)
+        let textarea = divClone.querySelector('.inputCentent')
+        for (let obj of notes) {
+            for (let key in obj) {
+                if (key == 'left') {
+                    divClone.style.left = obj[key] + 'px'
+                }
+                if (key == 'top') {
+                    divClone.style.top = obj[key] + 'px'
+                }
+                if (key == 'height') {
+                    textarea.style.height = obj[key] + 'px'
+                }
+                if (key == 'top') {
+                    textarea.style.width = obj[key] + 'px'
+                }
+                if (key == 'text') {
+                    textarea.value = obj[key]
+                }
+
+            }
+        }
+
+        document.body.divClone.append(divClone)
+        notes.length--
+    }
+    
+    
+
+    document.addEventListener('mousedown', eDrag => {
+        if (eDrag.target.classList.contains('h2')) {
+
+            let targetElme = eDrag.target
+            let h2OfDiv = targetElme.parentNode
+    
+            h2OfDiv.style.zIndex = maxZindex++
+            let startX = eDrag.clientX  
+            let startY = eDrag.clientY
+            let targetElmeStartY = parseFloat(h2OfDiv.style.top)
+            let targetElmeStartX = parseFloat(h2OfDiv.style.left)
+    
+            document.addEventListener('mousemove',function h2Moving (eH2Moving) {
+                if (eH2Moving.which === 0 || eH2Moving.buttons === 0) {
+                  document.removeEventListener('mousemove', h2Moving)
+                  return 
+                }
+    
+                let curY = eH2Moving.clientY
+                let curX = eH2Moving.clientX
+                let dX = curX - startX   
+                let dY = curY - startY   
+                let left = targetElmeStartX + dX
+                let top = targetElmeStartY + dY
+    
+                if (left < 0){
+                    left = 0
+                }
+                if (top < 0) {
+                    top = 0
+                }
+                if (left > window.innerWidth - h2OfDiv.offsetWidth) {
+                    left = window.innerWidth - h2OfDiv.offsetWidth
+                }
+                if (top > window.innerHeight - h2OfDiv.offsetHeight) {
+                    top = window.innerHeight - h2OfDiv.offsetHeight
+                }
+                h2OfDiv.style.top = top + 'px'
+                h2OfDiv.style.left = left + 'px'
+            })
+        }else if (eDrag.target.classList.contains('inputCentent')){
+            eDrag.target.parentNode.style.zIndex = maxZindex++
+        }else {
+            return 
+        }
+    })
+  
+    document.addEventListener('mousedown', eDragButton => {
+        if (!eDragButton.target.classList.contains('b-border')) return 
+        let buttonOfSpanNoet =  eDragButton.target.parentNode.querySelector('.inputCentent')
+
+        let startY = eDragButton.clientY
+        let targetElmeStartY = parseFloat(buttonOfSpanNoet.offsetHeight)
+
+        document.addEventListener('mousemove', function downUpResize (eButton) {  
+            let dY = eButton.clientY - startY 
+            if (eButton.which === 0 || eButton.buttons === 0) {
+              document.removeEventListener('mousemove', downUpResize)
+              return 
+            }
+            buttonOfSpanNoet.style.height =  targetElmeStartY + dY + 'px'
+        })
+    })
+
+    document.addEventListener('mousedown', eDragRight => {
+        if (!eDragRight.target.classList.contains('r-border')) return 
+        let rightOfSpanNoet =  eDragRight.target.parentNode.querySelector('.inputCentent')
+        console.log(rightOfSpanNoet)
+        let startX = eDragRight.clientX  
+        let targetElmeStartX = parseFloat(rightOfSpanNoet.offsetWidth)
+
+        document.addEventListener('mousemove', function leftRigthResize (eRight) {
+            let dX = eRight.clientX - startX   
+            if (eRight.which === 0 || eRight.buttons === 0) {
+              document.removeEventListener('mousemove', leftRigthResize)
+              return 
+            }
+            rightOfSpanNoet.style.width =  targetElmeStartX + dX + 'px'
+        })
+    })
+
+    document.addEventListener('mousedown', eSaveToStorage => {
+        if (!eSaveToStorage.target.classList.contains('inputCentent')) return 
+            let noteInput = eSaveToStorage.target.value
+            
+        document.addEventListener('input',  eInputNote => {
+
+        })
+    })
+
+    function newSaveToStorage (textarea) {   // 传入一个textarea节点，返回放入notes的id和输入内容
+        let resultObj = {}
+        resultObj['id'] = Math.random()
+        resultObj['text'] = textarea.value
+        resultObj['left'] = parseFloat(textarea.parentNode.style.left)
+        resultObj['top'] = parseFloat(textarea.parentNode.style.top)
+        resultObj['width'] = parseFloat(textarea.style.width)
+        resultObj['height'] = parseFloat(textarea.style.height)
+        StorageData.push(resultObj)
+        return StorageData
+    }
+    
+    document.addEventListener('click', function (eClone){
+        if (!eClone.target.classList.contains('cloneNote')) return
+        let newDiv =  eClone.target.parentNode.cloneNode(true)   
+        let newNote = newDiv.querySelector('.inputCentent')
+
+        let StorageValue = newSaveToStorage(newNote)  // 转JSON
+        console.log(StorageValue)
+        localStorage.setItem('notes',JSON.stringify(StorageValue))
+
+        newDiv.style.top = 10 + 'px'
+        newDiv.style.left = 10 + 'px'
+        newNote.style.width = 300 + 'px'
+        newNote.style.height = 200 + 'px'
+        document.body.append(newDiv)
+    })
+
+
+</script>
