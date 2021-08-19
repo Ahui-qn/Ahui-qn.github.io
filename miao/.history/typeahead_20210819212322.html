@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+</body>
+</html>
+<script>
+    let input = document.querySelector('input')
+
+    function getSuggest (word, callback) {
+        let suggests = Array(10).fill(0).map((_, i) => {
+            return word + i
+        })
+
+        setTimeout(() => {
+            callback(suggests)
+        }, 500 + 500 * Math.random() | 0)
+    }
+</script>
