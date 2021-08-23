@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <ul></ul>
+</body>
+</html>
+<script>
+    let input = document.querySelector('input')
+    let ul = document.querySelector('ul')
+    let currentShowStartTime = 0   // 当前联想内容数据请求时间
+
+
+    input.addEventListener('input', debounce((e) => {
+        let startTime = Date.now()  
+        getSuggest (e.target.value , function (suggests) {
+            if (currentShowStartTime > startTime) {
+                return   // 请求回来的时间大于现在的时间就直接返回
+            }
+
+            currentShowStartTime = startTime 
+            ul.innerHTML = ''
+            suggests.forEach(suggests => {
+                let li = document.createElement('li')
+                li.textContent = suggests
+                ul.append(li)
+            })
+
+        })
+
+    }, 100))
+
+    function getSuggest (word, callback) {
+        let suggests = Array(10).fill(0).map((_, i) => {
+            return word + i
+        })
+        setTimeout(() => {
+            callback(suggests)   // 回调传入联想的单词   模拟网络环境
+        }, 500 + 500 * Math.random() | 0)
+    }
+
+    function debounce(f, duration){
+        debugger
+        let id 
+        let latestArgs
+        return  function (...args) {
+            latestArgs = args
+            clearTimeout(id)
+            id = setTimeout(() => {
+                f.call(this, ...latestArgs)
+            }, duration)
+
+        }
+
+    }
+</script>
