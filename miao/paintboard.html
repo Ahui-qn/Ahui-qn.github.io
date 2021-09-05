@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./paintboard-font/iconfont.css">
+    <link rel="stylesheet" href="./paintboardPro-font/iconfont.css">
     <style>   
    
 /* ------------------------------上面是字体图标--------------------------------- */
@@ -102,14 +102,10 @@
         }
         .tool-rangeBox  input[name="toolselect"] {
             visibility: hidden;
+            position: absolute;
+            top: 0;
+            
         }
-
-
-
-
-
-
-
 
 
 
@@ -134,54 +130,65 @@
             background-color: rgb(255, 156, 206);
         }
         label.fill {
-            width: 33px;
-            height: 33px;
+            color: rgb(214, 214, 214);
+            width: 35px;
+            height: 35px;
             position: absolute;
-            top: 302px;
-            left:96px;
-            background-color: rgb(70, 70, 70);
+            top: 340px;
+            left:94px;
             border-radius: 12px;
             box-shadow: 0 0 0 0 rgba(17, 4, 4, 0);
-            border:solid 1px rgb(93, 93, 93);
+            border:solid 2px rgb(93, 93, 93);
             transform: translateY(0px);
             transition: 0.3s ease;
+            cursor: pointer;
         }
-        .tool-rangeBox p {
+        
+        .tool-rangeBox input[id="fillstart-input"]:checked ~ label.fill{
+            transition: 0.3s ease;
+            transform: translateY(-4px);
+            border:solid 1px rgb(255, 255, 255);
+            box-shadow: 0px 5px 5px 0 #00440933;
+        }
+
+        .tool-rangeBox .fillstart {
             position: absolute;
             text-align: center;
             line-height: 20px;
             border-radius: 6px;
-            width: 30px;
+            width: 35px;
             height: 20px;
-            background-color: rgb(218, 218, 218);
-            color: #333;
-            top: 342px;
-            left: 97px;
+            background-color: rgb(95, 95, 95);
+            color: rgb(216, 216, 216);
+            top: 383px;
+            left: 94px;
             font-size: 12px;
             transition: 0.4s ease;
-        }
-        .tool-rangeBox #fill {
-            visibility: hidden;
-        }
-        .tool-rangeBox #fill:checked + label.fill{
-            transition: 0.3s ease;
-            transform: translateY(-4px);
-            background-color: rgb(94, 255, 135);
-            border:solid 1px rgb(255, 255, 255);
-            box-shadow: 0px 5px 5px 0 #00440933;
-        }
-        .tool-rangeBox #fill:checked + label.fill + p {
-            background-color: rgb(94, 255, 135);
+            cursor: pointer;
         }
         
-        .tool-rangeBox > label  input[type="color"] {
-            visibility: hidden;
+        .tool-rangeBox input[id="fillstart-input"]:checked ~  .fillstart {
+            background-color: rgb(74, 238, 115);
+            color:#333;
         }
+        /* .tool-rangeBox #fill {
+            visibility: hidden;
+
+        } */
+        
+        .tool-rangeBox > label  input[type="color"],.tool-rangeBox input[id="fillstart-input"] {    /*背景色*/
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+        }
+
+
+
 
         /* 笔画大小 滑条*/
         em {
             position: absolute;
-            top: 28px;
+            top: 24px;
             left: 97px;
             width:30px;
             height: 30px;
@@ -202,12 +209,12 @@
         }
         .range{
             display: inline-block;
-            transform: rotate(-90deg) translate(321px, 8px);
+            transform:rotate(-90deg) translate(274px, -17px);
         }
         .range > input[type="range"] {
             -webkit-appearance: none; /*去除默认样式*/
             background-color: rgb(193, 222, 255);
-            width: 200px ;
+            width: 250px ;
             height:4px;
             padding: 0;
             border: none;    
@@ -243,6 +250,7 @@
             height: 45px;
             border-radius: 999px;
             border: 1px solid rgb(216, 216, 216);
+            transition: 0.4s ease;
         }
         #color{
             opacity: 0;
@@ -321,11 +329,9 @@
                     <input type="range" max="10" min="1" id="widthInput" value="2" >
                 </span>
                 <em>2</em>
-                <label class="back-bgc" for="back-bgc"><input type="color" id="back-bgc"></label>
-                <label class="forth-bgc" for="forth-bgc"><input type="color" id="forth-bgc"></label>
-                <input type="checkbox" id="fill">
-                <label class="fill" for="fill"></label>
-                <p>FILL</p>
+                <input type="checkbox" id="fillstart-input">
+                <label class="fill" for="fill-input" style="background-color: #70ffe7;"><input type="color" id="fill-input" value="#70FFE7"></label>
+                <label class="fillstart" for="fillstart-input">Fill</label>
             </div>
 
             <div class="colorContainer">
@@ -370,6 +376,9 @@
     let toolRangeBox = document.querySelector('.tool-rangeBox')   // 左边所有工具的容器
     let range = document.querySelector('.range')   // 滑动条
     let rangeText = document.querySelector('em')  // 滑动条的数字显示
+    let fillColor = document.querySelector('input[id="fill-input"]')   // 背景色的input
+    let labelFill = document.querySelector('.fill')    //背景色的input关联的label
+    let fillStart = document.querySelector('input[id="fillstart-input"]')  // 启动fill的按钮
     // 下面这块是右边工具的变量名
     let colorSelectUl = document.querySelector('.colorSelect') // 右边那一条的颜色框
     let colorSelectLis = colorSelectUl.children     /// 这个是颜色框里面的每一个颜色
@@ -378,11 +387,11 @@
     let widthInput = document.querySelector('input[type="range"]')  //笔画粗细
 
     // 各种画笔的变量名
-    let iconBi = document.querySelector('#icon-bi')
-    let iconZhiXian = document.querySelector('#icon-zhixian')
-    let iconWuBianXing = document.querySelector('#icon-wubianxing')
-    let iconYuanXing = document.querySelector('#icon-yuanxing')
-    let iconjuXing = document.querySelector('#icon-juXing')
+    let pen = document.querySelector('#icon-bi')
+    let linear = document.querySelector('#icon-zhixian')
+    let polygon = document.querySelector('#icon-wubianxing')
+    let circle = document.querySelector('#icon-yuanxing')
+    let rect = document.querySelector('#icon-juxing')
 
 
     let buttonSave = document.querySelector('.save')
@@ -391,6 +400,12 @@
 
 
     svgContainer.addEventListener('mousedown', (e) => {
+        //背景色改变
+        if (labelFill.contains(e.target)) {
+            svgContainer.addEventListener('mouseup', (fillE) => {
+                labelFill.style.backgroundColor = fillColor.value
+            })
+        }
 
         // 下面是改变input颜色选择器的外面label的颜色也跟着改变
         if (laberColors.contains(e.target)) {    // 这个是修改颜色，把html那个颜色样式也修改
@@ -448,26 +463,32 @@
         if ( (svg.contains(e.target) || toolContainer.contains(e.target))   && !(colorContainer.contains(e.target) || (toolRangeBox.contains(e.target)))){
 
             drawandnosave = true   // 改过了画面
+
                 // 这个是画笔工具
-            if (iconBi.checked) {  
+            if (pen.checked) {  
                 console.log(1)
-                var pos = mousePos(svg)   // 拿到鼠标开始画的位置
-                var polyline = document.createElementNS("http://www.w3.org/2000/svg", 'polyline')
+                let penStartPos = mousePos(svg)   // 拿到鼠标开始画的位置
+                let polyline = document.createElementNS("http://www.w3.org/2000/svg", 'polyline')
                 // 添加一堆Attribute
-                polyline.setAttribute('fill', 'none')
+
                 polyline.setAttribute('stroke', colorInput.value)
                 polyline.setAttribute('stroke-width', widthInput.value)
                 polyline.setAttribute('stroke-linecap', 'round')
                 polyline.setAttribute('stroke-linejoin', 'round')
+                if (fillStart.checked){
+                    polyline.setAttribute('fill', fillColor.value)
+                }else {
+                    polyline.setAttribute('fill', 'none')
+                }
 
                 svg.append(polyline)
-                var points = `${pos.x} ${pos.y} `   // 鼠标坐标
+                let points = `${penStartPos.x} ${penStartPos.y} `   // 鼠标坐标
                 polyline.setAttribute('points', points)   // 位置属性
 
                 function drawDot(e) {   // 鼠标持续移动，持续触发这函数，持续画线
-                    var pos = mousePos(svg)
-                    var line = document.createElementNS("http://www.w3.org/2000/svg", 'line')
-                    points += `${pos.x} ${pos.y} `
+                    let penMovePos = mousePos(svg)
+                    let line = document.createElementNS("http://www.w3.org/2000/svg", 'line')
+                    points += `${penMovePos.x} ${penMovePos.y} `
                     polyline.setAttribute('points', points)
                 }
 
@@ -480,24 +501,28 @@
             }
 
             // 下面是画圆形
-            if (iconYuanXing.checked) {
-                var ellipse = document.createElementNS("http://www.w3.org/2000/svg", 'ellipse')   // 创建圆的标签
+            if (circle.checked) {
+                let ellipse = document.createElementNS("http://www.w3.org/2000/svg", 'ellipse')   // 创建圆的标签
                 svg.append(ellipse)  // 插入svg
                 // 然后加一堆属性
                 ellipse.setAttribute('stroke', colorInput.value)
                 ellipse.setAttribute('stroke-width', widthInput.value)
-                ellipse.setAttribute('fill', 'none')
+                if (fillStart.checked){
+                    ellipse.setAttribute('fill', fillColor.value)
+                }else {
+                    ellipse.setAttribute('fill', 'none')
+                }
 
-                var startPos = mousePos(svg)   // 获取鼠标相对svg的位置
+                let startPos = mousePos(svg)   // 获取鼠标相对svg的位置
 
                 function drawEllipse() {
-                    var currPos = mousePos(svg)
-                    var cx = (startPos.x + currPos.x) / 2
-                    var cy = (startPos.y + currPos.y) / 2
+                    let currPos = mousePos(svg)
+                    let cx = (startPos.x + currPos.x) / 2
+                    let cy = (startPos.y + currPos.y) / 2
                     ellipse.setAttribute('cx', cx)
                     ellipse.setAttribute('cy', cy)
-                    var rx = Math.abs(startPos.x - currPos.x) / 2
-                    var ry = Math.abs(startPos.y - currPos.y) / 2
+                    let rx = Math.abs(startPos.x - currPos.x) / 2
+                    let ry = Math.abs(startPos.y - currPos.y) / 2
                     ellipse.setAttribute('rx', rx)
                     ellipse.setAttribute('ry', ry)
                 }
@@ -509,10 +534,112 @@
                     document.removeEventListener('mousemove', drawEllipse)
                 })
             }
+            // 矩形
+            if (rect.checked) {
+                // cosole.log(111)
+                let rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect')
+                svg.append(rect)
+                let rectStartPos = mousePos(svg)   // 鼠标位置
+
+                rect.setAttribute('stroke', colorInput.value)
+                rect.setAttribute('stroke-width', widthInput.value)
+                rect.setAttribute('x', rectStartPos.x)
+                rect.setAttribute('y', rectStartPos.y)
+                if (fillStart.checked){
+                    rect.setAttribute('fill', fillColor.value)
+                }else {
+                    rect.setAttribute('fill', 'none')
+                }
+                
+                function drawRect () {
+                    let rectMovePos = mousePos(svg)
+                    rect.setAttribute('width', rectMovePos.x - rectStartPos.x)
+                    rect.setAttribute('height', rectMovePos.y - rectStartPos.y)
+                    
+                }
+                svgContainer.addEventListener('mousemove', drawRect)
+
+                svgContainer.addEventListener('mouseup', (rectE) => {
+                    svgContainer.removeEventListener('mousemove', drawRect)
+                    svgContainer.removeEventListener('mouseuo', rectE)
+                })
+            }
+            // 直线
+            if (linear.checked) {
+                let linear = document.createElementNS("http://www.w3.org/2000/svg", 'line')
+                svg.append(linear)
+                let linearStartPos = mousePos(svg)
+
+                linear.setAttribute('stroke', colorInput.value)
+                linear.setAttribute('stroke-width', widthInput.value)
+                linear.setAttribute('stroke-linecap', 'round')
+                linear.setAttribute('stroke-linejoin', 'round')
+                linear.setAttribute('x1', linearStartPos.x)
+                linear.setAttribute('y1', linearStartPos.y)
+                linear.setAttribute('x2', linearStartPos.x)
+                linear.setAttribute('y2', linearStartPos.y)
+                if (fillStart.checked){
+                    linear.setAttribute('fill', fillColor.value)
+                }else {
+                    linear.setAttribute('fill', 'none')
+                }
+
+                function drawLinear () {
+                    let linearMoverPos = mousePos(svg)
+                    
+                    linear.setAttribute('x2', linearStartPos.x + (linearMoverPos.x - linearStartPos.x)) // 鼠标初始位置加上终点位置减去起始位置
+                    linear.setAttribute('y2', linearStartPos.y + (linearMoverPos.y - linearStartPos.y))
+                }
+                svgContainer.addEventListener('mousemove', drawLinear)
+
+                svgContainer.addEventListener('mouseup', (linerE) => {
+                    svgContainer.removeEventListener('mouseup', linerE) 
+                    svgContainer.removeEventListener('mousemove', drawLinear)
+                })
+            }
+            // // 多边形 ，每点击一下就加一对x，y值
+            // if (polygon.checked) {
+            //     //老三样
+            //     let polygon = document.createElementNS("http://www.w3.org/2000/svg", 'polygon')
+            //     svg.append(linear)
+            //     let palygonStartPos = mousePos(svg)
+            //     // 第一组x，y和最后一组x,y值不一样就不新建
+            //     if (){}
+            //     polygon.setAttribute('stroke', colorInput.value)
+            //     polygon.setAttribute('stroke-width', widthInput.value)
+            //     polygon.setAttribute('stroke-linecap', 'round')
+            //     polygon.setAttribute('stroke-linejoin', 'round')
+            //     if (fillStart.checked){
+            //         polygon.setAttribute('fill', fillColor.value)
+            //     }else {
+            //         polygon.setAttribute('fill', 'none')
+            //     }
+            //     let points = `${palygonStartPos.x} ${palygonStartPos.y}`
+            //     polygon.setAttribute('points', points)
+
+            //     function drawPalygon () {
+
+            //     }
+            //     svgContainer.addEventListener('mousemove', function drawPalygon () {
+
+            //     })
+
+            //     svgContainer.addEventListener('mouseup', (palygonE) => {
+            //         svgContainer.removeEventListener('mouseup', palygonE) 
+            //         svgContainer.removeEventListener('mousemove', drawLinear)
+            //     })
+            // }
+
         }
     })
 
 
+
+    document.addEventListener("keydown", function (event) {
+        if (event.code == "KeyZ" && (event.ctrlKey || event.metaKey)) {
+            if (svg.lastChild) svg.lastChild.remove()
+        }
+    })
 
     // 下面是退出浏览器提示
     // window.addEventListener('beforeunload', e => {
@@ -534,7 +661,34 @@
         anchor.click()  // 点击button 也触发a标签点击
     })
 
+    
 
+
+
+
+
+    // function openFile() {
+    //     if (drawandnosave) {
+    //         var answer = confirm('当前绘画未保存，确定要打开新文件吗？')
+    //         if (answer == false) {
+    //             return
+    //         }
+    //     }
+    //     fileInput.click()
+    // }
+    
+    // // 打开一个新svg文件
+    // fileInput.addEventListener('change', e => {
+    //   var svgFile = fileInput.files[0]
+    //   var fr = new FileReader()
+      
+    //   fr.addEventListener('load', () => {
+    //     var svgFileContent = fr.result
+    //     svgContainer.innerHTML = svgFileContent
+    //     svg = svgContainer.querySelector('svg')
+    //   })
+    //   fr.readAsText(svgFile)
+    // })
 
 
 
