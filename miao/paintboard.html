@@ -35,8 +35,9 @@
             background-color: rgb(255, 255, 255);
             position: relative;
         }
-        .svg {
-            border: 5px solid rgb(154, 241, 168);
+        .svgparent {
+            width: 100%;
+            height: 100%;
         }
         .toolContainer{
             position: absolute;
@@ -52,12 +53,12 @@
             width: 140px;
         }
         .toolbar {
-            border-radius: 0px 40px 40px 0;
+            border-radius: 0px 30px 30px 0;
             width: 70px;
             height: 450px;
             border: 2px solid rgb(255, 255, 255);
             box-shadow:  0px 1px 9px 0px rgba(90, 90, 90, 0.308);
-            background-color: rgb(227, 240, 255);
+            background-color: rgb(94 170 255);
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -68,38 +69,73 @@
             line-height: 45px;
             width: 60px;
             height: 50px;
-            border: solid 2px rgb(227, 240, 255);
-            border-radius: 10px;
+            border: solid 2px rgb(94 170 255);
+            border-radius: 20px;
             font-size: 25px;
-            color: rgb(15, 95, 223);
-            background-color: rgb(227, 240, 255);
+            color: rgb(255, 255, 255);
+            background-color: rgb(94 170 255);
+            box-shadow:0px 0px 0px 0px #00000000;
             transition: 0.4s ease;
         }
         .toolbar > label:hover {
             transition: 0.4s ease;
-            border: solid 2px rgb(125, 166, 255);
+            border: solid 2px rgb(255, 255, 255);
         }
 
         .tool-rangeBox  input[id="icon-bi"]:checked ~ .toolbar label.icon-bi {
             transition: 0.4s ease;
-            background-color: rgb(255, 161, 213);
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
+            
         }
         .tool-rangeBox  input[id="icon-zhixian"]:checked ~ .toolbar label.icon-zhixian {
             transition: 0.4s ease;
-            background-color: rgb(255, 161, 213);
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
+            
         }
         .tool-rangeBox  input[id="icon-wubianxing"]:checked ~ .toolbar label.icon-wubianxing {
             transition: 0.4s ease;
-            background-color: rgb(255, 161, 213);
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
+            
         }
         .tool-rangeBox  input[id="icon-yuanxing"]:checked ~ .toolbar label.icon-yuanxing {
             transition: 0.4s ease;
-            background-color: rgb(255, 161, 213);
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
+            
         }
         .tool-rangeBox  input[id="icon-juxing"]:checked ~ .toolbar label.icon-juxing {
             transition: 0.4s ease;
-            background-color: rgb(255, 161, 213);
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
         }
+        .tool-rangeBox  input[id="icon-yuanjiaojuxing"]:checked ~ .toolbar label.icon-yuanjiaojuxing {
+            transition: 0.4s ease;
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
+        }
+        .tool-rangeBox  input[id="icon-xiangpica"]:checked ~ .toolbar label.icon-xiangpica {
+            transition: 0.4s ease;
+            background-color: #fff;
+            width: 75px;
+            color: #3496f8;
+            box-shadow:3px 1px 5px 0px #6988e17a;
+        }
+
         .tool-rangeBox  input[name="toolselect"] {
             visibility: hidden;
             position: absolute;
@@ -183,8 +219,6 @@
         }
 
 
-
-
         /* 笔画大小 滑条*/
         em {
             position: absolute;
@@ -237,7 +271,6 @@
 
 
 
-
         /* ------------------------右边的颜色选择------------------------ */
         .colorContainer{
             margin-right: 40px;
@@ -277,16 +310,18 @@
         }
 
         /*保存和打开*/
-        div.save-open {
+        div.save-open-clear {
             position: absolute;
             display: flex;
             justify-content: space-between;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 180px;
+            width: 280px;
         }
-        div.save-open .save, div.save-open .open {
+        div.save-open-clear .save, div.save-open-clear .open, div.save-open-clear .clear {
+            text-align: center;
+            line-height: 40px;
             width: 80px;
             height: 40px;
             border-width: 0px;
@@ -299,11 +334,13 @@
             font-size: 16px; /* 字体大小 */
             transition: 0.4s ease;
         }
-        div.save-open .save:hover, div.save-open .open:hover {
+        div.save-open-clear .clear {
+            background-color: rgb(255, 85, 85);
+        }
+        div.save-open-clear .save:hover, div.save-open-clear .open:hover ,div.save-open-clear .clear:hover {
             transition: 0.4s ease;
             transform:translateY(4px);
             box-shadow: 0px 2px 6px 0px rgba(20, 50, 116, 0.397);
-
         }
     </style>
 </head>
@@ -314,15 +351,17 @@
             <div class="tool-rangeBox">
                     <input type="radio" name="toolselect" id="icon-bi" checked>
                     <input type="radio" name="toolselect" id="icon-zhixian">
-                    <input type="radio" name="toolselect" id="icon-wubianxing">
                     <input type="radio" name="toolselect" id="icon-yuanxing">
                     <input type="radio" name="toolselect" id="icon-juxing">
+                    <input type="radio" name="toolselect" id="icon-yuanjiaojuxing">
+                    <input type="radio" name="toolselect" id="icon-xiangpica">
                 <div class="toolbar">
                     <label for="icon-bi" class="iconfont icon-bi"></label>
                     <label for="icon-zhixian" class="iconfont icon-zhixian"></label>
-                    <label for="icon-wubianxing" class="iconfont icon-wubianxing"></label>
                     <label for="icon-yuanxing" class="iconfont icon-yuanxing"></label>
                     <label for="icon-juxing" class="iconfont icon-juxing"></label>
+                    <label for="icon-yuanjiaojuxing" class="iconfont icon-yuanjiaojuxing"></label>
+                    <label for="icon-xiangpica" class="iconfont icon-xiangpica"></label>
                 </div>
                 
                 <span class="range">
@@ -350,19 +389,23 @@
                 </ul>
             </div>
         </section>
-        <div class="save-open">
+        <div class="save-open-clear">
             <button class="save">save</button>
             <button class="open">open</button>
+            <div class="clear">clear</div>
+            <input type="file" id="fileInput" accept=".svg" hidden>
         </div>
-        
-        <svg
-        class="svg"
-        width="100%"
-        height="100%"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-    ></svg>
+        <div class="svgparent"> 
+            <svg
+            class="svg"
+            width="100%"
+            height="100%"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+        ></svg>
+     </div>
+       
     </div>
 </body>
 </html>
@@ -370,6 +413,7 @@
     
     let svgContainer = document.querySelector('div.svgContainer')
     let svg = document.querySelector('.svg')
+    let svgparent = document.querySelector('.svgparent')
     //  下面这块是左边工具的变量名
     let toolContainer = document.querySelector('.toolContainer')   // 中间工具栏那块，把svgContainer挡住了，所以事件监听再判断一个
     let colorContainer = document.querySelector('.colorContainer')  // 屏幕右边颜色调和colorinput的容器
@@ -386,18 +430,22 @@
     let colorInput = document.querySelector('input[id="color"]')  // input颜色选择器
     let widthInput = document.querySelector('input[type="range"]')  //笔画粗细
 
-    // 各种画笔的变量名
+    // 各种图画工具的变量名
     let pen = document.querySelector('#icon-bi')
     let linear = document.querySelector('#icon-zhixian')
-    let polygon = document.querySelector('#icon-wubianxing')
     let circle = document.querySelector('#icon-yuanxing')
     let rect = document.querySelector('#icon-juxing')
+    let eraser = document.querySelector('#icon-xiangpica')
+    let roundrect = document.querySelector('#icon-yuanjiaojuxing')
 
 
-    let buttonSave = document.querySelector('.save')
-    let buttonOpen = document.querySelector('.opne')
+
+    let saveFile = document.querySelector('.save')
+    let openFile = document.querySelector('.open')
+    let fileInput = document.querySelector('#fileInput')
+    let clear = document.querySelector('.clear')
     let = drawandnosave = false   // 没有修改过画面。为true  // 用来判断是否需要保存
-
+    let isDrawPolygon = false  // 定义当前是否有多边形正在画
 
     svgContainer.addEventListener('mousedown', (e) => {
         //背景色改变
@@ -464,14 +512,19 @@
 
             drawandnosave = true   // 改过了画面
 
-                // 这个是画笔工具
-            if (pen.checked) {  
+                // 这个是画笔工具 或者 橡皮擦工具
+            if (pen.checked || eraser.checked) {
                 console.log(1)
                 let penStartPos = mousePos(svg)   // 拿到鼠标开始画的位置
                 let polyline = document.createElementNS("http://www.w3.org/2000/svg", 'polyline')
                 // 添加一堆Attribute
 
-                polyline.setAttribute('stroke', colorInput.value)
+                if (pen.checked){
+                    polyline.setAttribute('stroke', colorInput.value)
+                }else if (eraser.checked) {
+                    polyline.setAttribute('stroke', '#ffffff')
+                }
+                
                 polyline.setAttribute('stroke-width', widthInput.value)
                 polyline.setAttribute('stroke-linecap', 'round')
                 polyline.setAttribute('stroke-linejoin', 'round')
@@ -482,6 +535,7 @@
                 }
 
                 svg.append(polyline)
+                console.log(2)
                 let points = `${penStartPos.x} ${penStartPos.y} `   // 鼠标坐标
                 polyline.setAttribute('points', points)   // 位置属性
 
@@ -500,7 +554,7 @@
                 })
             }
 
-            // 下面是画圆形
+            // 下面是画圆形,椭圆
             if (circle.checked) {
                 let ellipse = document.createElementNS("http://www.w3.org/2000/svg", 'ellipse')   // 创建圆的标签
                 svg.append(ellipse)  // 插入svg
@@ -534,8 +588,9 @@
                     document.removeEventListener('mousemove', drawEllipse)
                 })
             }
-            // 矩形
-            if (rect.checked) {
+
+            // 矩形和圆角矩形
+            if (rect.checked || roundrect.checked) {
                 // cosole.log(111)
                 let rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect')
                 svg.append(rect)
@@ -553,8 +608,39 @@
                 
                 function drawRect () {
                     let rectMovePos = mousePos(svg)
-                    rect.setAttribute('width', rectMovePos.x - rectStartPos.x)
-                    rect.setAttribute('height', rectMovePos.y - rectStartPos.y)
+                    
+                    let x = rectStartPos.x
+                    let y = rectStartPos.y
+                    let rx,ry
+                    // 右下角往左上角画矩形 
+
+                    if (rectMovePos.x < rectStartPos.x) {
+                        x = rectMovePos.x
+                    }
+                    if (rectMovePos.y < rectStartPos.y) {
+                        y = rectMovePos.y
+                    }
+
+                    let width = Math.abs(rectStartPos.x - rectMovePos.x)   // 一正一负，而宽高只能是正
+                    let height = Math.abs(rectStartPos.y - rectMovePos.y)
+
+                    // 圆角矩形
+                    if (roundrect.checked) {
+                        if (width < 50 && height < 50) {
+                            rx = (width + height) / 10
+                            ry = (width + height) / 10
+                        } else {
+                            rx = (Math.min(width, height) - 50) / 50 + 10
+                            ry = (Math.min(width, height) - 50) / 50 + 10
+                        }
+                    }
+
+                    rect.setAttribute('width', width)
+                    rect.setAttribute('height', height)
+                    rect.setAttribute('x', x)
+                    rect.setAttribute('y', y)
+                    rect.setAttribute('rx', rx)
+                    rect.setAttribute('ry', ry)
                     
                 }
                 svgContainer.addEventListener('mousemove', drawRect)
@@ -564,6 +650,7 @@
                     svgContainer.removeEventListener('mouseuo', rectE)
                 })
             }
+
             // 直线
             if (linear.checked) {
                 let linear = document.createElementNS("http://www.w3.org/2000/svg", 'line')
@@ -597,44 +684,39 @@
                     svgContainer.removeEventListener('mousemove', drawLinear)
                 })
             }
-            // // 多边形 ，每点击一下就加一对x，y值
-            // if (polygon.checked) {
-            //     //老三样
-            //     let polygon = document.createElementNS("http://www.w3.org/2000/svg", 'polygon')
-            //     svg.append(linear)
-            //     let palygonStartPos = mousePos(svg)
-            //     // 第一组x，y和最后一组x,y值不一样就不新建
-            //     if (){}
-            //     polygon.setAttribute('stroke', colorInput.value)
-            //     polygon.setAttribute('stroke-width', widthInput.value)
-            //     polygon.setAttribute('stroke-linecap', 'round')
-            //     polygon.setAttribute('stroke-linejoin', 'round')
-            //     if (fillStart.checked){
-            //         polygon.setAttribute('fill', fillColor.value)
-            //     }else {
-            //         polygon.setAttribute('fill', 'none')
-            //     }
-            //     let points = `${palygonStartPos.x} ${palygonStartPos.y}`
-            //     polygon.setAttribute('points', points)
 
-            //     function drawPalygon () {
-
-            //     }
-            //     svgContainer.addEventListener('mousemove', function drawPalygon () {
-
-            //     })
-
-            //     svgContainer.addEventListener('mouseup', (palygonE) => {
-            //         svgContainer.removeEventListener('mouseup', palygonE) 
-            //         svgContainer.removeEventListener('mousemove', drawLinear)
-            //     })
-            // }
-
+           
         }
     })
+    
+    // 清除所画内容
+    clear.addEventListener('click', (clickE) => {
+        svg.innerHTML = ''
+    })
+    // 打开一个新文件
+    openFile.addEventListener('click', function openLoaclFile () {
+        if (drawandnosave) {
+            var answer = confirm('当前绘画未保存，确定要打开新文件吗？')
+            if (answer == false) {
+                return
+            }
+        }
+        fileInput.click()   // 如果用户点击是
+    })
 
+    fileInput.addEventListener('change', e => {
+      var svgFile = fileInput.files[0]
+      var fr = new FileReader()
+      
+      fr.addEventListener('load', () => {
+        var svgFileContent = fr.result
+        svgparent.innerHTML = svgFileContent
+        svg = document.querySelector('.svg')
+      })
+      fr.readAsText(svgFile)
+    })
 
-
+    // 撤销
     document.addEventListener("keydown", function (event) {
         if (event.code == "KeyZ" && (event.ctrlKey || event.metaKey)) {
             if (svg.lastChild) svg.lastChild.remove()
@@ -649,7 +731,7 @@
     // })
     
     // 将图画保存到桌面
-    buttonSave.addEventListener('click' ,function save(){
+    saveFile.addEventListener('click' ,function save(){
         drawandnosave = false
 
         var svgSource = svg.outerHTML
@@ -660,39 +742,6 @@
         anchor.download = "xxxx.svg"
         anchor.click()  // 点击button 也触发a标签点击
     })
-
-    
-
-
-
-
-
-    // function openFile() {
-    //     if (drawandnosave) {
-    //         var answer = confirm('当前绘画未保存，确定要打开新文件吗？')
-    //         if (answer == false) {
-    //             return
-    //         }
-    //     }
-    //     fileInput.click()
-    // }
-    
-    // // 打开一个新svg文件
-    // fileInput.addEventListener('change', e => {
-    //   var svgFile = fileInput.files[0]
-    //   var fr = new FileReader()
-      
-    //   fr.addEventListener('load', () => {
-    //     var svgFileContent = fr.result
-    //     svgContainer.innerHTML = svgFileContent
-    //     svg = svgContainer.querySelector('svg')
-    //   })
-    //   fr.readAsText(svgFile)
-    // })
-
-
-
-    
 
 
     //  鼠标相对于元素的位置
